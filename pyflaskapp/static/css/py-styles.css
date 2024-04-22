@@ -1,0 +1,9 @@
+.py-headline-h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 60px auto;
+
+    text-align: center;
+    color: #2c1ea8;
+}
