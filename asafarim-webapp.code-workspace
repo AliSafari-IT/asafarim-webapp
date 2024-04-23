@@ -2,6 +2,24 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "ui-vue"
+		},
+		{
+			"path": "ui-angular"
+		},
+		{
+			"path": "ui-react"
+		},
+		{
+			"path": "server-php"
+		},
+		{
+			"path": "server-java"
+		},
+		{
+			"path": "pyflaskapp"
 		}
 	],
 	"settings": {}
