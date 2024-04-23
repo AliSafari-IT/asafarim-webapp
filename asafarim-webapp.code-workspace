@@ -16,10 +16,10 @@
 			"path": "server-php"
 		},
 		{
-			"path": "server-java"
+			"path": "pyflaskapp"
 		},
 		{
-			"path": "pyflaskapp"
+			"path": "./colabdocs"
 		}
 	],
 	"settings": {}
