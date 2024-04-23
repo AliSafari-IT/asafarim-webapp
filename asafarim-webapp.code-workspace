@@ -22,5 +22,11 @@
 			"path": "./colabdocs"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cSpell.words": [
+			"ASAFARIM",
+			"Colab",
+			"Frontends"
+		]
+	}
 }
