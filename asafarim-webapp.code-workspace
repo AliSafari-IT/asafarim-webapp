@@ -25,8 +25,16 @@
 	"settings": {
 		"cSpell.words": [
 			"ASAFARIM",
+			"asmlogo",
+			"callees",
 			"Colab",
-			"Frontends"
+			"flowbite",
+			"fontawesome",
+			"fortawesome",
+			"Frontends",
+			"tailwindcss",
+			"topnav",
+			"webfonts"
 		]
 	}
 }

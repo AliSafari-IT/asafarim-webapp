@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "settings": {
+    "tailwindcss": {
+      "callees": ["twMerge", "createTheme"],
+      "classRegex": "^(class(Name)|theme)?$"
+    }
+  }
+}

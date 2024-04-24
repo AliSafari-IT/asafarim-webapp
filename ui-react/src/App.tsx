@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from "./App.module.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+import TopMenu from "./components/TopMenu/TopMenu";
+import leftNavItems from "./data/leftNavItems";
+import { rightNavItems } from "./data/rightNavItems";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={styles.App + " min-h-screen dark:text-white dark:bg-gray-900 dark:font-sans dark:font-thin dark:overflow-hidden"} >
+      <TopMenu leftItems={leftNavItems} rightItems={rightNavItems}  />
+
+
+
+    </main>
   );
 }
 

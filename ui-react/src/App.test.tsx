@@ -2,8 +2,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('Asafarim', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // Check if DarkThemeToggle is rendered
+  const darkThemeToggle = screen.getByTestId('dark-theme-toggle');
+  expect(darkThemeToggle).toBeInTheDocument();
+
 });
+
+

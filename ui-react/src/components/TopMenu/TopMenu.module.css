@@ -1,0 +1,15 @@
+.TopMenu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px 0 var(--bs-gray-200);
+    background-color: var(--bs-gray-100);
+    border: 1px solid var(--bs-gray-200);
+    color: var(--bs-gray-600);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
