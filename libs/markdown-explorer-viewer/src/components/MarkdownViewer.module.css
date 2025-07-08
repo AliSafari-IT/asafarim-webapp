@@ -1,0 +1,375 @@
+.markdownViewer {
+  max-width: none;
+  line-height: 1.6;
+  color: var(--me-text-primary);
+  text-align: left;
+}
+
+.markdownViewer h1,
+.markdownViewer h2,
+.markdownViewer h3,
+.markdownViewer h4,
+.markdownViewer h5,
+.markdownViewer h6 {
+  margin: 1.5em 0 0.5em 0;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--me-text-primary);
+  text-align: left;
+}
+
+.markdownViewer h1 {
+  font-size: 2.25rem;
+  border-bottom: 2px solid var(--me-border);
+  padding-bottom: 0.5rem;
+}
+
+.markdownViewer h2 {
+  font-size: 1.875rem;
+  border-bottom: 1px solid var(--me-border);
+  padding-bottom: 0.25rem;
+}
+
+.markdownViewer h3 {
+  font-size: 1.5rem;
+}
+
+.markdownViewer h4 {
+  font-size: 1.25rem;
+}
+
+.markdownViewer h5 {
+  font-size: 1.125rem;
+}
+
+.markdownViewer h6 {
+  font-size: 1rem;
+  color: var(--me-text-secondary);
+}
+
+.markdownViewer p {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.markdownViewer ul,
+.markdownViewer ol {
+  padding-left: 2rem;
+  margin: 1rem 0;
+  list-style-position: outside;
+}
+
+.markdownViewer li {
+  margin: 0.25rem 0;
+}
+
+.markdownViewer ul li,
+.markdownViewer ol li {
+  margin-bottom: 0.5rem;
+}
+
+.markdownViewer blockquote {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid var(--me-primary);
+  background-color: var(--me-bg-secondary);
+  border-radius: 0 var(--me-radius) var(--me-radius) 0;
+}
+
+.markdownViewer blockquote p {
+  margin: 0.5rem 0;
+  color: var(--me-text-secondary);
+  font-style: italic;
+}
+
+.markdownViewer code {
+  background-color: var(--me-code-bg);
+  border: 1px solid var(--me-code-border);
+  border-radius: var(--me-radius);
+  padding: 0.125rem 0.25rem;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  color: var(--me-text-primary);
+  text-align: left;
+}
+
+.markdownViewer pre {
+  background-color: var(--me-code-bg);
+  border: 1px solid var(--me-code-border);
+  border-radius: var(--me-radius-lg);
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  position: relative;
+  text-align: left;
+}
+
+.markdownViewer pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+.markdownViewer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius-lg);
+  overflow: hidden;
+}
+
+.markdownViewer th,
+.markdownViewer td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--me-border);
+}
+
+.markdownViewer th {
+  background-color: var(--me-bg-secondary);
+  font-weight: 600;
+  color: var(--me-text-primary);
+}
+
+.markdownViewer td {
+  color: var(--me-text-primary);
+}
+
+.markdownViewer tr:last-child td {
+  border-bottom: none;
+}
+
+.markdownViewer tr:nth-child(even) {
+  background-color: var(--me-bg-secondary);
+}
+
+.markdownViewer a {
+  color: var(--me-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--me-transition);
+}
+
+.markdownViewer a:hover {
+  border-bottom-color: var(--me-primary);
+}
+
+.markdownViewer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--me-radius);
+  margin: 1rem 0;
+  box-shadow: var(--me-shadow);
+}
+
+.markdownViewer hr {
+  border: none;
+  height: 1px;
+  background-color: var(--me-border);
+  margin: 2rem 0;
+}
+
+/* Task Lists */
+.markdownViewer input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.markdownViewer .task-list-item {
+  list-style: none;
+  margin-left: -2rem;
+  padding-left: 2rem;
+}
+
+/* Code highlighting improvements */
+.markdownViewer .hljs {
+  background-color: var(--me-code-bg) !important;
+  color: var(--me-text-primary) !important;
+}
+
+/* Copy button for code blocks */
+.codeBlockContainer {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.copyButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--me-bg-tertiary);
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--me-text-secondary);
+  cursor: pointer;
+  transition: var(--me-transition);
+  opacity: 0;
+}
+
+.codeBlockContainer:hover .copyButton {
+  opacity: 1;
+}
+
+.copyButton:hover {
+  background-color: var(--me-bg-primary);
+  color: var(--me-text-primary);
+}
+
+.copyButton.copied {
+  background-color: var(--me-primary);
+  color: white;
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: var(--me-text-muted);
+}
+
+.loadingSpinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--me-border);
+  border-top: 2px solid var(--me-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.error {
+  padding: 2rem;
+  text-align: center;
+  color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: var(--me-radius-lg);
+  margin: 1rem 0;
+}
+
+/* Table wrapper for horizontal scrolling */
+.tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Empty state for markdown viewer */
+.emptyState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--me-text-muted);
+}
+
+.emptyState h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--me-text-secondary);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Frontmatter Header Styles */
+.frontmatterHeader {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: var(--me-surface);
+  border: 1px solid var(--me-border);
+  border-radius: 8px;
+  border-left: 4px solid var(--me-primary);
+}
+
+.frontmatterTitle {
+  margin: 0 0 0.5rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--me-text-primary) !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.frontmatterDescription {
+  margin: 0 0 1rem 0 !important;
+  font-size: 1.125rem;
+  color: var(--me-text-secondary) !important;
+  font-style: italic;
+}
+
+.frontmatterMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+}
+
+.frontmatterDate {
+  font-size: 0.875rem;
+  color: var(--me-text-secondary);
+  background: var(--me-background);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--me-border);
+}
+
+.frontmatterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.frontmatterTag {
+  font-size: 0.75rem;
+  color: var(--me-primary);
+  background: var(--me-primary-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--me-primary);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .markdownViewer {
+    font-size: 0.875rem;
+  }
+  
+  .markdownViewer h1 {
+    font-size: 1.875rem;
+  }
+  
+  .markdownViewer h2 {
+    font-size: 1.5rem;
+  }
+  
+  .markdownViewer h3 {
+    font-size: 1.25rem;
+  }
+  
+  .markdownViewer pre {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .markdownViewer table {
+    font-size: 0.8rem;
+  }
+  
+  .markdownViewer th,
+  .markdownViewer td {
+    padding: 0.5rem;
+  }
+}

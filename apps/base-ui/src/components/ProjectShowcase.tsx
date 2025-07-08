@@ -4,6 +4,7 @@
 // Then use it:
 import type { Project } from '@asafarim/paginated-project-grid';
 import { ProjectCard } from '@asafarim/project-card';
+import React from 'react';
 
 const projects = [
   {} as Project,

@@ -1,0 +1,139 @@
+.fileTree {
+  padding: 0.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.searchContainer {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--me-border);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius);
+  background-color: var(--me-bg-primary);
+  color: var(--me-text-primary);
+  font-size: 0.875rem;
+  transition: var(--me-transition);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--me-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.searchInput::placeholder {
+  color: var(--me-text-muted);
+}
+
+.treeNode {
+  margin: 0.125rem 0;
+}
+
+.nodeButton {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--me-radius);
+  color: var(--me-text-primary);
+  cursor: pointer;
+  transition: var(--me-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.nodeButton:hover {
+  background-color: var(--me-bg-tertiary);
+}
+
+.nodeButton.active {
+  background-color: var(--me-primary);
+  color: white;
+}
+
+.nodeButton.folder {
+  font-weight: 500;
+}
+
+.nodeIcon {
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.folderIcon {
+  color: #f59e0b;
+}
+
+.fileIcon {
+  color: var(--me-primary);
+}
+
+.fileName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.children {
+  margin-left: 1rem;
+  border-left: 1px solid var(--me-border);
+  padding-left: 0.5rem;
+}
+
+.expandIcon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+  color: var(--me-text-muted);
+}
+
+.expandIcon.expanded {
+  transform: rotate(90deg);
+}
+
+.emptyState {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--me-text-muted);
+  font-style: italic;
+}
+
+.noResults {
+  padding: 1rem;
+  text-align: center;
+  color: var(--me-text-muted);
+  font-size: 0.875rem;
+}
+
+/* File type specific icons */
+.nodeButton[data-file-type="md"] .fileIcon {
+  color: #10b981;
+}
+
+.nodeButton[data-file-type="txt"] .fileIcon {
+  color: var(--me-text-secondary);
+}
+
+.nodeButton[data-file-type="json"] .fileIcon {
+  color: #f59e0b;
+}
+
+.nodeButton[data-file-type="js"] .fileIcon,
+.nodeButton[data-file-type="jsx"] .fileIcon,
+.nodeButton[data-file-type="ts"] .fileIcon,
+.nodeButton[data-file-type="tsx"] .fileIcon {
+  color: #3b82f6;
+}

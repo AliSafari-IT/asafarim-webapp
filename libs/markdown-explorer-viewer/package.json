@@ -1,0 +1,54 @@
+{
+  "name": "@asafarim/markdown-explorer-viewer",
+  "version": "1.0.0",
+  "description": "A reusable React component for exploring and viewing markdown files with file tree navigation",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "markdown",
+    "viewer",
+    "explorer",
+    "file-tree",
+    "documentation"
+  ],
+  "author": "Ali Safari",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0"
+  },
+  "dependencies": {
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
+    "rehype-highlight": "^7.0.0",
+    "highlight.js": "^11.9.0",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-syntax-highlighter": "^15.5.11",
+    "rollup": "^4.9.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5"
+  }
+}

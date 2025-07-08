@@ -1,0 +1,20 @@
+{
+  "name": "docs-server",
+  "version": "1.0.0",
+  "description": "Simple server for serving markdown file data",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@asafarim/md-file-explorer": "workspace:^",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17"
+  }
+}

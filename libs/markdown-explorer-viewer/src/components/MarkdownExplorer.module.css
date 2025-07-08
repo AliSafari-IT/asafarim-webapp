@@ -1,0 +1,291 @@
+/* Common Variables */
+:root {
+  --me-primary: #2563eb;
+  --me-primary-hover: #1d4ed8;
+  --me-text-primary: #1f2937;
+  --me-text-secondary: #6b7280;
+  --me-text-muted: #9ca3af;
+  --me-bg-primary: #ffffff;
+  --me-bg-secondary: #f9fafb;
+  --me-bg-tertiary: #f3f4f6;
+  --me-border: #e5e7eb;
+  --me-border-hover: #d1d5db;
+  --me-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --me-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --me-radius: 0.375rem;
+  --me-radius-lg: 0.5rem;
+  --me-transition: all 0.15s ease-in-out;
+  --me-sidebar-width: 280px;
+  --me-code-bg: #f8fafc;
+  --me-code-border: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --me-text-primary: #f9fafb;
+  --me-text-secondary: #d1d5db;
+  --me-text-muted: #9ca3af;
+  --me-bg-primary: #111827;
+  --me-bg-secondary: #1f2937;
+  --me-bg-tertiary: #374151;
+  --me-border: #374151;
+  --me-border-hover: #4b5563;
+  --me-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --me-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --me-code-bg: #1e293b;
+  --me-code-border: #334155;
+}
+
+/* Main Container */
+.markdownExplorer {
+  display: flex;
+  height: 100vh;
+  background-color: var(--me-bg-primary);
+  color: var(--me-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.markdownExplorer.hideFileTree {
+  --me-sidebar-width: 0px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: var(--me-sidebar-width);
+  background-color: var(--me-bg-secondary);
+  border-right: 1px solid var(--me-border);
+  overflow: hidden;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 0;
+}
+
+.sidebarHeader {
+  padding: 1rem;
+  border-bottom: 1px solid var(--me-border);
+  background-color: var(--me-bg-tertiary);
+}
+
+.sidebarTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--me-text-primary);
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: var(--me-text-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--me-radius);
+  transition: var(--me-transition);
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.toggleButton:hover {
+  background-color: var(--me-bg-tertiary);
+  color: var(--me-text-primary);
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.contentHeader {
+  padding: 1rem;
+  border-bottom: 1px solid var(--me-border);
+  background-color: var(--me-bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contentArea {
+  flex: 1;
+  overflow: auto;
+  padding: 2rem;
+  background-color: var(--me-bg-primary);
+}
+
+/* File Viewer */
+.fileViewer {
+  padding: 2rem;
+}
+
+.fileViewer h3 {
+  margin: 0 0 1rem 0;
+  color: var(--me-text-primary);
+}
+
+.rawContent {
+  background-color: var(--me-code-bg);
+  border: 1px solid var(--me-code-border);
+  border-radius: var(--me-radius-lg);
+  padding: 1rem;
+  overflow: auto;
+  max-height: 400px;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+}
+
+/* Folder View */
+.folderView {
+  padding: 0;
+}
+
+.folderView h2 {
+  margin: 0 0 1.5rem 0;
+  color: var(--me-text-primary);
+  font-size: 1.5rem;
+}
+
+.fileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+.fileCard {
+  background: var(--me-bg-secondary);
+  border: 1px solid var(--me-border);
+  border-radius: var(--me-radius-lg);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--me-transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 120px;
+  text-decoration: none;
+  color: var(--me-text-primary);
+}
+
+.fileCard:hover {
+  background: var(--me-bg-tertiary);
+  border-color: var(--me-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--me-shadow-lg);
+}
+
+.folderCard {
+  background: linear-gradient(135deg, var(--me-bg-secondary) 0%, var(--me-bg-tertiary) 100%);
+}
+
+.fileCardIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.fileCardName {
+  font-weight: 500;
+  font-size: 0.875rem;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.fileCardType {
+  font-size: 0.75rem;
+  color: var(--me-text-muted);
+  background: var(--me-code-bg);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--me-radius);
+  border: 1px solid var(--me-code-border);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--me-text-muted);
+}
+
+.emptyState h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--me-text-secondary);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .markdownExplorer {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    border-right: none;
+    border-bottom: 1px solid var(--me-border);
+  }
+  
+  .sidebar.collapsed {
+    height: 0;
+    max-height: 0;
+  }
+  
+  .contentArea {
+    padding: 1rem;
+  }
+  
+  .fileGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .fileCard {
+    padding: 1rem 0.75rem;
+    min-height: 100px;
+  }
+  
+  .fileCardIcon {
+    font-size: 1.5rem;
+  }
+  
+  .fileCardName {
+    font-size: 0.8rem;
+  }
+}
+
+/* Animation */
+.fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
