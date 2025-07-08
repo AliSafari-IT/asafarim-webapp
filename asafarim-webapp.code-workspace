@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "apps"
+		},
+		{
+			"path": "libs"
+		},
+		{
+			"path": "packages"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "asafarim-webapp"
+	}
+}
