@@ -6,6 +6,11 @@
   margin-top: auto;
   position: relative;
   overflow: hidden;
+  right: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Width and margin-left will be set inline based on sidebar state */
 }
 
 .footer::before {
@@ -46,8 +51,7 @@
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0 2rem;
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 100%;
   gap: 2rem;
 }
 
@@ -203,9 +207,17 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    width: calc(100% - 60px) !important; /* Always account for collapsed sidebar width */
+    margin-left: 60px !important; /* Fixed margin for mobile */
+    right: 0;
+  }
+  
   .footerContent {
     padding: 0 1rem;
     gap: 1rem;
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+    text-align: center;
   }
   
   .links {
@@ -216,6 +228,10 @@
   
   .linkGroup {
     text-align: center;
+  }
+  
+  .copyright {
+    margin: 0 auto;
   }
 }
 

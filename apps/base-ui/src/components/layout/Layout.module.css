@@ -3,10 +3,16 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative; /* Added for positioning context */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+  padding: 0;
 }
 
 /* Light theme */
@@ -50,18 +56,32 @@
   flex: 1;
   min-height: 0;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 .sidebar {
-  flex-shrink: 0;
-  background-color: var(--sidebar-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+  background-color: var(--sidebar-bg, #1e293b);
   border-right: 1px solid var(--sidebar-border);
-  box-shadow: var(--shadow);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 50;
-  backdrop-filter: blur(8px);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  /* Ensure sidebar is always visible */
+  transform: translateX(0) !important;
+  visibility: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  opacity: 1 !important;
+  /* Ensure no gap to the edge of the screen */
+  right: auto;
 }
 
+/* We've removed mobile-specific classes as we're using a unified approach */
+  
 .main {
   flex: 1;
   display: flex;
@@ -70,16 +90,22 @@
   background-color: var(--bg-primary);
   position: relative;
   overflow: hidden;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
 }
 
 .main.fullWidth {
-  margin-left: 0;
+  margin-left: 0 !important;
+  width: 100% !important;
 }
+
+/* We use inline styles for withSidebar class instead of empty ruleset */
 
 .content {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  width: 100%;
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   position: relative;
 }
@@ -108,18 +134,36 @@
   }
   
   .sidebar {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    height: calc(100vh - 64px);
+    /* Sidebar is already positioned fixed, just ensure proper z-index */
     z-index: 1000;
     box-shadow: var(--shadow-lg);
     border-right: none;
-    border-top: 1px solid var(--sidebar-border);
+    display: block !important;
   }
   
-  .main {
-    width: 100%;
+  .mobileSidebar {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  
+  .hiddenMobileSidebar {
+    display: none !important;
+  }
+  
+  /* Adjust the toggle button position based on the sidebar state */
+  .mobileSidebarToggle {
+    transition: left 0.3s ease;
+  }
+  
+  .mobileSidebarToggle:global(.hidden-sidebar) {
+    left: 20px; /* Return to original position when sidebar is hidden */
+  }
+}
+
+/* Additional mobile styles */
+@media (max-width: 480px) {
+  .content {
+    padding: 0.75rem;
   }
 }
 

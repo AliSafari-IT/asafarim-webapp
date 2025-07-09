@@ -8,6 +8,10 @@
   backdrop-filter: blur(12px) saturate(180%);
   box-shadow: var(--shadow);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  right: 0;
+  left: 0;
+  width: 100%;
+  /* Width and margin-left will be set inline based on sidebar state */
 }
 
 .header.light {
@@ -42,8 +46,7 @@
   align-items: center;
   padding: 0 2rem;
   height: 64px;
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 100%;
   position: relative;
 }
 
@@ -68,9 +71,25 @@
   background-size: 200% 200%;
   animation: gradient-shift 3s ease infinite;
 }
+.logo {
+  width: 30px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary);
+}
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -108,7 +127,7 @@
 }
 
 .navButton::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 12px;
@@ -156,7 +175,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -172,6 +192,34 @@
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-left: 1rem;
+}
+
+/* Sidebar toggle button */
+.sidebarToggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+}
+
+.sidebarToggleButton:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarToggleButton:active {
+  transform: translateY(0);
 }
 
 .breadcrumbItem {
@@ -225,7 +273,7 @@
   .headerContent {
     padding: 0 1.5rem;
   }
-  
+
   .searchContainer {
     max-width: 300px;
     margin: 0 1rem;
@@ -233,46 +281,87 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    width: calc(100% - 60px) !important; /* Always account for collapsed sidebar width */
+    margin-left: 60px !important; /* Fixed margin for mobile */
+    right: 0;
+    left: 0;
+    position: sticky;
+  }
+
   .headerContent {
     padding: 0 1rem;
   }
-  
+
   .title {
     font-size: 1.25rem;
   }
-  
+
   .navButton {
     width: 40px;
     height: 40px;
     font-size: 1.1rem;
   }
-  
+
   .searchContainer {
     display: none;
   }
-  
+
   .breadcrumb {
+    display: flex;
+    margin-left: 0.5rem;
+  }
+  
+  /* Only show the toggle button on mobile, hide the rest of breadcrumbs */
+  .breadcrumbItem {
     display: none;
+  }
+  
+  .breadcrumbSeparator {
+    display: none;
+  }
+
+  /* Enhanced mobile header styles */
+  .header {
+    transition: margin-left 0.3s ease, width 0.3s ease !important;
+  }
+
+  /* Header style when sidebar is hidden */
+  .header.sidebarHidden {
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 }
 
 @media (max-width: 480px) {
+  .header {
+    width: calc(100% - 60px) !important; /* Always account for collapsed sidebar width */
+    margin-left: 60px !important; /* Fixed margin for mobile */
+    right: 0;
+  }
+
   .headerContent {
     padding: 0 0.75rem;
+    justify-content: space-between;
   }
-  
+
   .title {
     font-size: 1.1rem;
   }
-  
+
   .navigation {
     gap: 0.25rem;
   }
-  
+
   .navButton {
     width: 36px;
     height: 36px;
     font-size: 1rem;
+  }
+  
+  /* Hide non-essential elements on very small screens */
+  .titleSection {
+    flex: 1;
   }
 }
 
@@ -294,12 +383,14 @@
 
 /* Glassmorphism effect */
 .header::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
   backdrop-filter: blur(10px);
   z-index: -1;
 }

@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import styles from './Header.module.css';
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import styles from "./Header.module.css";
 
 interface HeaderProps {
-  title: string;
-  theme: 'light' | 'dark';
+  title?: string;
+  theme?: 'light' | 'dark';
+  brandImage?: string;
+  brandImageAlt?: string;
   onThemeToggle?: () => void;
-  onMenuToggle?: () => void;
   showSearch?: boolean;
+  style?: React.CSSProperties;
+  onFilesSidebarToggle?: () => void;
+  isFilesSidebarVisible?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  title,
-  theme,
+  title = 'ASafariM',
+  theme = 'light',
+  brandImage,
+  brandImageAlt,
   onThemeToggle,
-  onMenuToggle,
-  showSearch = true
+  showSearch = true,
+  style = {} as React.CSSProperties,
+  onFilesSidebarToggle,
+  isFilesSidebarVisible,
 }) => {
+
   const location = useLocation();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [notificationCount] = useState(3);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,69 +35,86 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleNotificationClick = () => {
-    console.log('Notifications clicked');
+    console.log("Notifications clicked");
   };
 
   const handleProfileClick = () => {
-    console.log('Profile clicked');
+    console.log("Profile clicked");
   };
 
   // Generate breadcrumbs from current path
   const generateBreadcrumbs = () => {
-    const pathSegments = location.pathname.split('/').filter(segment => segment);
-    const breadcrumbs = [{ label: 'Home', path: '/', icon: '🏠' }];
-    
-    let currentPath = '';
+    const pathSegments = location.pathname
+      .split("/")
+      .filter((segment) => segment);
+    const breadcrumbs = [{ label: "Home", path: "/", icon: "🏠" }];
+
+    let currentPath = "";
     pathSegments.forEach((segment) => {
       currentPath += `/${segment}`;
-      const capitalizedSegment = segment.charAt(0).toUpperCase() + segment.slice(1);
-      breadcrumbs.push({ 
-        label: capitalizedSegment, 
+      const capitalizedSegment =
+        segment.charAt(0).toUpperCase() + segment.slice(1);
+      breadcrumbs.push({
+        label: capitalizedSegment,
         path: currentPath,
-        icon: getIconForPath(segment)
+        icon: getIconForPath(segment),
       });
     });
-    
+
     return breadcrumbs;
   };
 
   const getIconForPath = (segment: string) => {
     const iconMap: { [key: string]: string } = {
-      projects: '📋',
-      components: '🧩',
-      about: '👤',
-      contact: '📧',
-      settings: '⚙️',
-      portfolio: '💼',
-      'web-apps': '🌐',
-      'mobile-apps': '📱',
-      theme: '🎨',
-      preferences: '⚙️'
+      projects: "📋",
+      components: "🧩",
+      about: "👤",
+      contact: "📧",
+      settings: "⚙️",
+      portfolio: "💼",
+      "web-apps": "🌐",
+      "mobile-apps": "📱",
+      theme: "🎨",
+      preferences: "⚙️",
     };
-    return iconMap[segment] || '📄';
+    return iconMap[segment] || "📄";
   };
 
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <header className={`${styles.header} ${styles[theme]} animate-fade-in`}>
+    <header className={`${styles.header} ${styles[theme || 'light']} animate-fade-in` } 
+           style={style || {}}>
       <div className={styles.headerContent}>
         <div className={styles.titleSection}>
-          {onMenuToggle && (
-            <button
-              className={styles.navButton}
-              onClick={onMenuToggle}
-              aria-label="Toggle menu"
-            >
-              ☰
-            </button>
-          )}
-          <h1 className={styles.title}>{title}</h1>
-          
+          <a href="/" className={styles.logoLink}>
+            {brandImage && (
+              <img
+                src={brandImage}
+                alt={brandImageAlt || "Brand Logo"}
+                className={`${styles.brandImage} ${styles.logo}`}
+                width={30}
+              />
+            )}
+            <h1 className={styles.title}>{title}</h1>
+          </a>
+
           <nav className={styles.breadcrumb}>
+            {onFilesSidebarToggle && (
+              <button 
+                className={styles.sidebarToggleButton}
+                onClick={onFilesSidebarToggle}
+                aria-label={isFilesSidebarVisible ? 'Collapse sidebar' : 'Expand sidebar'}
+                title={isFilesSidebarVisible ? 'Collapse sidebar' : 'Expand sidebar'}
+              >
+                {isFilesSidebarVisible ? '◀' : '▶'}
+              </button>
+            )}
             {breadcrumbs.map((crumb, index) => (
               <React.Fragment key={crumb.path}>
-                {index > 0 && <span className={styles.breadcrumbSeparator}>›</span>}
+                {index > 0 && (
+                  <span className={styles.breadcrumbSeparator}>›</span>
+                )}
                 <div className={styles.breadcrumbItem}>
                   <span>{crumb.icon}</span>
                   <span>{crumb.label}</span>
@@ -110,20 +136,24 @@ export const Header: React.FC<HeaderProps> = ({
             />
           </div>
         )}
-        
+
         <div className={styles.headerActions}>
           <nav className={styles.navigation}>
             {onThemeToggle && (
               <button
                 className={styles.navButton}
                 onClick={onThemeToggle}
-                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+                aria-label={`Switch to ${
+                  theme === "light" ? "dark" : "light"
+                } theme`}
+                title={`Switch to ${
+                  theme === "light" ? "dark" : "light"
+                } theme`}
               >
-                {theme === 'light' ? '🌙' : '☀️'}
+                {theme === "light" ? "🌙" : "☀️"}
               </button>
             )}
-            
+
             <button
               className={styles.navButton}
               onClick={handleNotificationClick}
@@ -135,7 +165,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className={styles.badge}>{notificationCount}</span>
               )}
             </button>
-            
+
             <button
               className={styles.navButton}
               onClick={handleProfileClick}

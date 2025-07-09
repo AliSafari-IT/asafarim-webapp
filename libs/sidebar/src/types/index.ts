@@ -15,7 +15,7 @@ export interface SidebarProps {
   items: SidebarItem[];
   isCollapsed?: boolean;
   onToggle?: (collapsed: boolean) => void;
-  width?: string;
+  sidebarWidth?: string;
   collapsedWidth?: string;
   className?: string;
   theme?: 'light' | 'dark';

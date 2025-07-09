@@ -2,7 +2,6 @@
 .sidebar {
   position: fixed;
   top: 0;
-  height: 100vh;
   background-color: #ffffff;
   border-right: 1px solid #e5e7eb;
   transition: all 0.3s ease-in-out;

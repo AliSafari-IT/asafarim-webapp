@@ -3,13 +3,18 @@ import styles from './Footer.module.css';
 
 interface FooterProps {
   theme: 'light' | 'dark';
+  style?: React.CSSProperties;
 }
 
-export const Footer: React.FC<FooterProps> = ({ theme }) => {
+export const Footer: React.FC<FooterProps> = ({ 
+  theme, 
+  style = {} as React.CSSProperties,
+}) => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className={`${styles.footer} ${styles[theme]}`}>
+    <footer className={`${styles.footer} ${styles[theme]}`} 
+            style={style}>
       <div className={styles.footerContent}>
         <div className={styles.copyright}>
           <span>©</span>

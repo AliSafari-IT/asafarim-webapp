@@ -5,10 +5,10 @@ import styles from './Sidebar.module.css';
 
 export const Sidebar: React.FC<SidebarProps> = ({
   items,
-  isCollapsed: controlledCollapsed,
+  isCollapsed,
   onToggle,
-  width = '280px',
-  collapsedWidth = '64px',
+  sidebarWidth = '280px',
+  collapsedWidth = '60px',
   className = '',
   theme = 'light',
   position = 'left',
@@ -18,10 +18,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   footer,
   onItemClick
 }) => {
-  const [internalCollapsed, setInternalCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  const isCollapsed = controlledCollapsed !== undefined ? controlledCollapsed : internalCollapsed;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -35,10 +32,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const handleToggle = () => {
     const newCollapsed = !isCollapsed;
-    
-    if (controlledCollapsed === undefined) {
-      setInternalCollapsed(newCollapsed);
-    }
     
     if (onToggle) {
       onToggle(newCollapsed);
@@ -65,7 +58,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ].filter(Boolean).join(' ');
 
   const sidebarStyle = {
-    width: isCollapsed ? collapsedWidth : width,
+    width: isCollapsed ? collapsedWidth : sidebarWidth,
     ...(position === 'right' && { right: 0 })
   };
 
@@ -102,7 +95,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <SidebarItem
               key={item.id}
               item={item}
-              isCollapsed={isCollapsed}
+              isCollapsed={isCollapsed || false}
               theme={theme}
               onItemClick={onItemClick}
             />
