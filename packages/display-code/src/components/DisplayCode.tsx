@@ -100,44 +100,74 @@ const tokenizeCode = (code: string, language: string): Token[] => {
       { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, type: 'string' },
       { pattern: /\b(\d+(\.\d+)?)\b/g, type: 'number' },
     ],
+    python: [
+      { pattern: /#.*/g, type: 'comment' },
+      { pattern: /"""[\s\S]*?"""|'''[\s\S]*?'''/g, type: 'comment' },
+      { pattern: /\b(def|class|if|elif|else|for|while|return|import|from|as|try|except|finally|with|lambda|None|True|False)\b/g, type: 'keyword' },
+      { pattern: /\b(self|print|len|range|int|str|list|dict|set|tuple)\b/g, type: 'builtin' },
+      { pattern: /(".*?"|'.*?')/g, type: 'string' },
+      { pattern: /\b(\d+(\.\d+)?)\b/g, type: 'number' },
+    ],
+    jsx: [
+      { pattern: /(\/\/.*|\/\*[\s\S]*?\*\/)/g, type: 'comment' },
+      { pattern: /\b(const|let|var|function|return|if|else|for|while|class|import|export|from|async|await)\b/g, type: 'keyword' },
+      { pattern: /\b(true|false|null|undefined|NaN|Infinity)\b/g, type: 'builtin' },
+      { pattern: /<\/?[a-zA-Z][a-zA-Z0-9]*(?:\s+[a-zA-Z][a-zA-Z0-9]*=".*?")*\s*\/?>/g, type: 'keyword' },
+      { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, type: 'string' },
+      { pattern: /\b(\d+(\.\d+)?)\b/g, type: 'number' },
+    ],
     // Add more languages as needed
   };
   
   // Default to javascript patterns if language not found
   const rules = patterns[language.toLowerCase()] || patterns.javascript;
   
-  // Start with the entire code as a single plain token
-  let tokens: Token[] = [{ type: 'plain', content: code }];
+  // Use the character-by-character tokenization approach for all languages
+  return tokenizeGeneric(code, rules);
+};
+
+// Generic tokenizer for all languages
+const tokenizeGeneric = (code: string, rules: Array<{ pattern: RegExp, type: string }>): Token[] => {
+  const tokens: Token[] = [];
+  let remainingCode = code;
   
-  // Apply each rule to further split tokens
-  rules.forEach(({ pattern, type }) => {
-    const newTokens: Token[] = [];
+  while (remainingCode.length > 0) {
+    let matchFound = false;
     
-    // Process each existing token
-    tokens.forEach(token => {
-      // Only process plain tokens
-      if (token.type !== 'plain') {
-        newTokens.push(token);
-        return;
+    // Try to match each pattern
+    for (const { pattern, type } of rules) {
+      // Reset the regex lastIndex to ensure we start from the beginning
+      pattern.lastIndex = 0;
+      
+      const match = pattern.exec(remainingCode);
+      if (match && match.index === 0) {
+        // Found a match at the start of the remaining code
+        tokens.push({ type, content: match[0] });
+        remainingCode = remainingCode.substring(match[0].length);
+        matchFound = true;
+        break;
+      }
+    }
+    
+    // If no pattern matched, take one character as plain text
+    if (!matchFound) {
+      // Find the next potential pattern match
+      let nextMatchIndex = remainingCode.length;
+      
+      for (const { pattern } of rules) {
+        pattern.lastIndex = 0;
+        const match = pattern.exec(remainingCode);
+        if (match && match.index > 0 && match.index < nextMatchIndex) {
+          nextMatchIndex = match.index;
+        }
       }
       
-      // Find all matches in this token
-      const parts = token.content.split(pattern);
-      const matches = token.content.match(pattern) || [];
-      
-      // Rebuild with alternating plain and highlighted parts
-      for (let i = 0; i < parts.length; i++) {
-        if (parts[i]) {
-          newTokens.push({ type: 'plain', content: parts[i] });
-        }
-        if (i < matches.length) {
-          newTokens.push({ type, content: matches[i] });
-        }
-      }
-    });
-    
-    tokens = newTokens;
-  });
+      // Take everything up to the next match (or one character if no match)
+      const plainText = remainingCode.substring(0, Math.max(1, nextMatchIndex));
+      tokens.push({ type: 'plain', content: plainText });
+      remainingCode = remainingCode.substring(plainText.length);
+    }
+  }
   
   return tokens;
 };
