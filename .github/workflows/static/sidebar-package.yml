@@ -70,8 +70,30 @@ jobs:
       # Create the custom directory structure for GitHub Pages
       - name: Prepare deployment directory
         run: |
+          # First ensure the demo is built with the correct base path
+          echo "Checking Vite config base path..."
+          cat packages/sidebar/demo/vite.config.ts
+          
+          # Create directory structure and copy files
           mkdir -p ./dist/my-packages/asafarim/sidebar
           cp -r packages/sidebar/demo/dist/* ./dist/my-packages/asafarim/sidebar/
+          
+          # Create an index.html at the root that redirects to the sidebar demo
+          echo '<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/my-packages/asafarim/sidebar/">
+  <title>Redirecting to Sidebar Demo</title>
+</head>
+<body>
+  <p>Redirecting to <a href="/my-packages/asafarim/sidebar/">Sidebar Demo</a>...</p>
+</body>
+</html>' > ./dist/index.html
+          
+          # List the contents to verify
+          ls -la ./dist
+          ls -la ./dist/my-packages/asafarim/sidebar
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
