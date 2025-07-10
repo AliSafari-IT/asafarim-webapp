@@ -6,16 +6,27 @@ export const languages: Record<SupportedLanguage, LanguageDefinition> = {
     extensions: ['.js', '.mjs'],
     keywords: ['const', 'let', 'var', 'function', 'class', 'if', 'else', 'for', 'while', 'return', 'import', 'export', 'default', 'async', 'await', 'try', 'catch', 'finally', 'throw', 'new', 'this', 'super', 'extends', 'static', 'public', 'private', 'protected'],
     rules: [
-      { pattern: /\/\*[\s\S]*?\*\//g, className: 'comment' },
+      // Comments (must come first)
       { pattern: /\/\/.*$/gm, className: 'comment' },
+      { pattern: /\/\*[\s\S]*?\*\//g, className: 'comment' },
+      // Keywords
+      { pattern: /\b(const|let|var|function|class|if|else|for|while|return|import|export|default|async|await|try|catch|finally|throw|new|this|super|extends|static|public|private|protected)\b/g, className: 'keyword' },
+      // Booleans and null
+      { pattern: /\b(true|false|null|undefined)\b/g, className: 'boolean' },
+      // Numbers
+      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
+      // Class names
+      { pattern: /\b[A-Z][a-zA-Z0-9]*\b/g, className: 'class-name' },
+      // Function names
+      { pattern: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/g, className: 'function' },
+      // Strings
       { pattern: /"(?:[^"\\]|\\.)*"/g, className: 'string' },
       { pattern: /'(?:[^'\\]|\\.)*'/g, className: 'string' },
       { pattern: /`(?:[^`\\]|\\.)*`/g, className: 'string' },
-      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
-      { pattern: /\b(true|false|null|undefined)\b/g, className: 'boolean' },
-      { pattern: /\b(const|let|var|function|class|if|else|for|while|return|import|export|default|async|await|try|catch|finally|throw|new|this|super|extends|static|public|private|protected)\b/g, className: 'keyword' },
-      { pattern: /\b[A-Z][a-zA-Z0-9]*\b/g, className: 'class-name' },
-      { pattern: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/g, className: 'function' },
+      // Operators
+      { pattern: /[+\-*/%=<>!&|^~?:]+/g, className: 'operator' },
+      // Punctuation
+      { pattern: /[\(\)\{\}\[\];,\.]/g, className: 'punctuation' }
     ]
   },
   typescript: {
@@ -23,16 +34,27 @@ export const languages: Record<SupportedLanguage, LanguageDefinition> = {
     extensions: ['.ts'],
     keywords: ['interface', 'type', 'enum', 'namespace', 'module', 'declare', 'readonly', 'keyof', 'typeof', 'const', 'let', 'var', 'function', 'class', 'if', 'else', 'for', 'while', 'return', 'import', 'export', 'default', 'async', 'await', 'try', 'catch', 'finally', 'throw', 'new', 'this', 'super', 'extends', 'static', 'public', 'private', 'protected'],
     rules: [
+      // Comments (must come first)
       { pattern: /\/\*[\s\S]*?\*\//g, className: 'comment' },
       { pattern: /\/\/.*$/gm, className: 'comment' },
+      // Keywords
+      { pattern: /\b(interface|type|enum|namespace|module|declare|readonly|keyof|typeof|const|let|var|function|class|if|else|for|while|return|import|export|default|async|await|try|catch|finally|throw|new|this|super|extends|static|public|private|protected)\b/g, className: 'keyword' },
+      // Booleans and null
+      { pattern: /\b(true|false|null|undefined)\b/g, className: 'boolean' },
+      // Numbers
+      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
+      // Class names
+      { pattern: /\b[A-Z][a-zA-Z0-9]*\b/g, className: 'class-name' },
+      // Function names
+      { pattern: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/g, className: 'function' },
+      // Strings
       { pattern: /"(?:[^"\\]|\\.)*"/g, className: 'string' },
       { pattern: /'(?:[^'\\]|\\.)*'/g, className: 'string' },
       { pattern: /`(?:[^`\\]|\\.)*`/g, className: 'string' },
-      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
-      { pattern: /\b(true|false|null|undefined)\b/g, className: 'boolean' },
-      { pattern: /\b(interface|type|enum|namespace|module|declare|readonly|keyof|typeof|const|let|var|function|class|if|else|for|while|return|import|export|default|async|await|try|catch|finally|throw|new|this|super|extends|static|public|private|protected)\b/g, className: 'keyword' },
-      { pattern: /\b[A-Z][a-zA-Z0-9]*\b/g, className: 'class-name' },
-      { pattern: /\b[a-zA-Z_][a-zA-Z0-9_]*(?=\s*\()/g, className: 'function' },
+      // Operators
+      { pattern: /[+\-*/%=<>!&|^~?:]+/g, className: 'operator' },
+      // Punctuation
+      { pattern: /[\(\)\{\}\[\];,\.]/g, className: 'punctuation' }
     ]
   },
   jsx: {
@@ -87,13 +109,21 @@ export const languages: Record<SupportedLanguage, LanguageDefinition> = {
     extensions: ['.css'],
     keywords: [],
     rules: [
+      // Comments
       { pattern: /\/\*[\s\S]*?\*\//g, className: 'comment' },
-      { pattern: /[.#]?[a-zA-Z][a-zA-Z0-9_-]*(?=\s*{)/g, className: 'selector' },
-      { pattern: /[a-zA-Z-]+(?=\s*:)/g, className: 'property' },
+      // Selectors
+      { pattern: /([.#]?[a-zA-Z][a-zA-Z0-9_-]*)(?=\s*{)/g, className: 'selector' },
+      // Properties
+      { pattern: /([a-zA-Z-]+)(?=\s*:)/g, className: 'property' },
+      // Colors
+      { pattern: /#[a-fA-F0-9]{3,6}\b/g, className: 'color' },
+      // Units
+      { pattern: /\b\d+(?:px|em|rem|%|vh|vw|pt|pc|in|cm|mm|ex|ch|lh|vmin|vmax)?\b/g, className: 'number' },
+      // Strings
       { pattern: /"[^"]*"/g, className: 'string' },
       { pattern: /'[^']*'/g, className: 'string' },
-      { pattern: /#[a-fA-F0-9]{3,6}\b/g, className: 'color' },
-      { pattern: /\b\d+(?:px|em|rem|%|vh|vw|pt|pc|in|cm|mm|ex|ch|lh|vmin|vmax)?\b/g, className: 'number' },
+      // Important punctuation
+      { pattern: /[{};:]/g, className: 'punctuation' }
     ]
   },
   json: {
@@ -101,10 +131,18 @@ export const languages: Record<SupportedLanguage, LanguageDefinition> = {
     extensions: ['.json'],
     keywords: [],
     rules: [
-      { pattern: /"[^"]*"(?=\s*:)/g, className: 'key' },
-      { pattern: /"[^"]*"/g, className: 'string' },
-      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
+      // Apply these rules in specific order
       { pattern: /\b(true|false|null)\b/g, className: 'boolean' },
+      { pattern: /\b\d+\.?\d*\b/g, className: 'number' },
+      // Match property names (must come before general strings)
+      { pattern: /("[^"]*")(?=\s*:)/g, className: 'key' },
+      // Match string values
+      { pattern: /:\s*("[^"]*")/g, className: 'string' },
+      // Match any remaining strings (for arrays, etc.)
+      { pattern: /"[^"]*"/g, className: 'string' },
+      // Match structural elements
+      { pattern: /[\{\}\[\]]/g, className: 'punctuation' },
+      { pattern: /,/g, className: 'punctuation' }
     ]
   },
   markdown: {
@@ -125,11 +163,23 @@ export const languages: Record<SupportedLanguage, LanguageDefinition> = {
     extensions: ['.sh', '.bash'],
     keywords: ['if', 'then', 'else', 'elif', 'fi', 'for', 'while', 'do', 'done', 'case', 'esac', 'function', 'return', 'local', 'export', 'unset', 'readonly', 'declare'],
     rules: [
+      // Comments
       { pattern: /#.*$/gm, className: 'comment' },
+      // Keywords
+      { pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|function|return|local|export|unset|readonly|declare)\b/g, className: 'keyword' },
+      // Variables
+      { pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g, className: 'variable' },
+      { pattern: /\$\{[a-zA-Z_][a-zA-Z0-9_]*\}/g, className: 'variable' },
+      // Strings
       { pattern: /"(?:[^"\\]|\\.)*"/g, className: 'string' },
       { pattern: /'[^']*'/g, className: 'string' },
-      { pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g, className: 'variable' },
-      { pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|function|return|local|export|unset|readonly|declare)\b/g, className: 'keyword' },
+      // Commands
+      { pattern: /^\s*([a-zA-Z0-9_\-\.]+)(?=\s|$)/gm, className: 'function' },
+      // Options
+      { pattern: /\s-[a-zA-Z]+\b/g, className: 'operator' },
+      { pattern: /\s--[a-zA-Z][a-zA-Z0-9_-]*\b/g, className: 'operator' },
+      // Punctuation
+      { pattern: /[\(\)\{\}\[\];|&><]/g, className: 'punctuation' }
     ]
   },
   python: {

@@ -8,8 +8,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "prepare": "npm run build"
+    "all": "pnpm i && pnpm run build",
+    "prepare": "npm run build",
+    "dev": "rollup -c -w"
   },
   "keywords": [
     "react",

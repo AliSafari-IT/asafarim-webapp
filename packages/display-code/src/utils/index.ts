@@ -11,17 +11,37 @@ export const highlightCode = (code: string, language: SupportedLanguage): string
     return escapeHtml(code);
   }
 
+  // First escape the entire code to ensure HTML tags are displayed as text
   let highlightedCode = escapeHtml(code);
 
-  // Apply syntax highlighting rules
+  // Apply syntax highlighting rules in order
   for (const rule of lang.rules) {
-    highlightedCode = highlightedCode.replace(rule.pattern, (match) => {
-      return `<span class="highlight-${rule.className}">${match}</span>`;
-    });
+    // Use a non-greedy regex replacement approach to avoid nested replacements
+    // This prevents the 'class=class=' issue
+    let lastHighlightedCode = '';
+    while (lastHighlightedCode !== highlightedCode) {
+      lastHighlightedCode = highlightedCode;
+      
+      // Find the next match that's not inside a span
+      const regex = new RegExp(
+        `(?<!<span[^>]*>)(?:${rule.pattern.source})(?![^<]*</span>)`, 
+        rule.pattern.flags
+      );
+      
+      const match = regex.exec(highlightedCode);
+      if (!match) break;
+      
+      // Replace just this match
+      const before = highlightedCode.substring(0, match.index);
+      const after = highlightedCode.substring(match.index + match[0].length);
+      highlightedCode = `${before}<span class="highlight-${rule.className}">${match[0]}</span>${after}`;
+    }
   }
 
   return highlightedCode;
 };
+
+
 
 export const escapeHtml = (text: string): string => {
   const div = document.createElement('div');

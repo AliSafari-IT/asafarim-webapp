@@ -13,6 +13,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "all": "pnpm i && pnpm run build",
+    "prepare": "npm run build",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build",
     "test": "jest"

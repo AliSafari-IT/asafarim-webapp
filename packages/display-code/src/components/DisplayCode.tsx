@@ -11,7 +11,7 @@ export const DisplayCode: React.FC<DisplayCodeProps> = ({
   showLineNumbers = false,
   showCopyButton = true,
   title,
-  maxHeight = '500px',
+  maxHeight = '600px',
   wrapLines = false,
   className = '',
   onCopy,

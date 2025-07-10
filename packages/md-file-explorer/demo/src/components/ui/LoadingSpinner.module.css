@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.spinner {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.spinner > div {
+  background-color: #667eea;
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.small > div {
+  width: 8px;
+  height: 8px;
+}
+
+.medium > div {
+  width: 12px;
+  height: 12px;
+}
+
+.large > div {
+  width: 16px;
+  height: 16px;
+}
+
+.bounce1 {
+  animation-delay: -0.32s;
+}
+
+.bounce2 {
+  animation-delay: -0.16s;
+}
+
+.bounce3 {
+  animation-delay: 0s;
+}
+
+.message {
+  color: #666;
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+  } 40% {
+    transform: scale(1.0);
+  }
+}

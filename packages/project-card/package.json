@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "all": "pnpm i && pnpm run build",
     "watch": "rollup -c -w",
     "prepare": "npm run build",
     "clean": "rm -rf dist",

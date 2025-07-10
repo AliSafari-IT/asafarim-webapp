@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/my-packages/asafarim/sidebar/',  // Match the path in the built HTML file
   server: {
-    port: 3030,
+    port: 3006,
     open: true
   },
   build: {
