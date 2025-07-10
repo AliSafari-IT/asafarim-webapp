@@ -1,0 +1,77 @@
+name: Deploy DisplayCode Demo to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+    paths:
+      - "packages/display-code/**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  # Build and deploy job
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build display-code package
+        run: cd packages/display-code && pnpm build
+
+      - name: Build display-code demo
+        run: cd packages/display-code/demo && pnpm build
+
+      # Create the deployment directory
+      - name: Prepare deployment directory
+        run: |
+          # Create directory structure
+          mkdir -p deploy/my-packages/asafarim/display-code
+          cp -r packages/display-code/demo/dist/* deploy/my-packages/asafarim/display-code/
+          
+          # Create a root index.html for redirection
+          cat > deploy/index.html << 'EOL'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0;url=/my-packages/asafarim/display-code/">
+            <title>Redirecting to ASafariM DisplayCode Demo</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="/my-packages/asafarim/display-code/">ASafariM DisplayCode Demo</a>...</p>
+          </body>
+          </html>
+          EOL
+          
+          # Verify final structure
+          echo "Final deployment structure:"
+          find ./deploy -type f | sort
+
+      # Deploy directly to gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: deploy
+          branch: gh-pages

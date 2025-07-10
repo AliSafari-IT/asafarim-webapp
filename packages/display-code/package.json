@@ -17,9 +17,8 @@
     "all": "pnpm i && pnpm run build",
     "prepare": "npm run build",
     "clean": "rm -rf dist",
-    "demo": "cd demo && npm install && npm run dev",
-    "demo:build": "cd demo && npm install && npm run build",
-    "demo:preview": "cd demo && npm install && npm run preview"
+    "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
+    "demo:preview": "cd demo && pnpm run preview"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",

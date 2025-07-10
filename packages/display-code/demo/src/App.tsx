@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// Use our professional DisplayCodeDemo component
 import { DisplayCode } from '@asafarim/display-code';
 
 const codeExamples = {
@@ -472,9 +473,14 @@ function App() {
     console.log('Code copied:', code.length, 'characters');
   };
 
+  
+
   return (
     <div className={`demo-container ${theme === 'dark' ? 'dark-theme' : ''}`}>
       <div className="demo-header">
+        <div className="logo-container">
+          <img src="./logo.svg" alt="Display Code Logo" className="demo-logo" />
+        </div>
         <h1>@asafarim/display-code</h1>
         <p>Beautiful syntax-highlighted code blocks for React applications</p>
         

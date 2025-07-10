@@ -7,7 +7,7 @@
     "dev": "turbo run dev",
     "all": "turbo run all",
     "dev:all": "turbo run dev --parallel",
-    "build": "turbo run build --filter=!markdown-explorer-viewer-demo",
+    "build": "turbo run build",
     "build:all": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test"

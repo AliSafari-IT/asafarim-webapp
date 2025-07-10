@@ -72,33 +72,23 @@ const getLanguageIcon = (language: string): string => {
   return icons[language.toLowerCase()] || '📄';
 };
 
-// Tokenize code for syntax highlighting
-interface Token {
-  type: string;
-  content: string;
-}
-
-const tokenizeCode = (code: string, language: string): Token[] => {
-  // Special handling for JSON
-  if (language.toLowerCase() === 'json') {
-    return tokenizeJson(code);
-  }
-  
+// Simple syntax highlighting
+const highlightCode = (code: string, language: string): string => {
   // Define patterns for different languages
-  const patterns: Record<string, Array<{ pattern: RegExp, type: string }>> = {
+  const patterns: Record<string, Array<{ pattern: RegExp, className: string }>> = {
     javascript: [
-      { pattern: /(\/\/.*|\/\*[\s\S]*?\*\/)/g, type: 'comment' },
-      { pattern: /\b(const|let|var|function|return|if|else|for|while|class|import|export|from|async|await)\b/g, type: 'keyword' },
-      { pattern: /\b(true|false|null|undefined|NaN|Infinity)\b/g, type: 'builtin' },
-      { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, type: 'string' },
-      { pattern: /\b(\d+(\.\d+)?)\b/g, type: 'number' },
+      { pattern: /(\/\/.*|\/\*[\s\S]*?\*\/)/g, className: 'comment' },
+      { pattern: /\b(const|let|var|function|return|if|else|for|while|class|import|export|from|async|await)\b/g, className: 'keyword' },
+      { pattern: /\b(true|false|null|undefined|NaN|Infinity)\b/g, className: 'builtin' },
+      { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, className: 'string' },
+      { pattern: /\b(\d+(\.\d+)?)\b/g, className: 'number' },
     ],
     typescript: [
-      { pattern: /(\/\/.*|\/\*[\s\S]*?\*\/)/g, type: 'comment' },
-      { pattern: /\b(const|let|var|function|return|if|else|for|while|class|interface|type|import|export|from|async|await)\b/g, type: 'keyword' },
-      { pattern: /\b(true|false|null|undefined|NaN|Infinity)\b/g, type: 'builtin' },
-      { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, type: 'string' },
-      { pattern: /\b(\d+(\.\d+)?)\b/g, type: 'number' },
+      { pattern: /(\/\/.*|\/\*[\s\S]*?\*\/)/g, className: 'comment' },
+      { pattern: /\b(const|let|var|function|return|if|else|for|while|class|interface|type|import|export|from|async|await)\b/g, className: 'keyword' },
+      { pattern: /\b(true|false|null|undefined|NaN|Infinity)\b/g, className: 'builtin' },
+      { pattern: /(".*?"|'.*?'|`[\s\S]*?`)/g, className: 'string' },
+      { pattern: /\b(\d+(\.\d+)?)\b/g, className: 'number' },
     ],
     // Add more languages as needed
   };
@@ -106,136 +96,17 @@ const tokenizeCode = (code: string, language: string): Token[] => {
   // Default to javascript patterns if language not found
   const rules = patterns[language.toLowerCase()] || patterns.javascript;
   
-  // Start with the entire code as a single plain token
-  let tokens: Token[] = [{ type: 'plain', content: code }];
+  let html = code
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
   
-  // Apply each rule to further split tokens
-  rules.forEach(({ pattern, type }) => {
-    const newTokens: Token[] = [];
-    
-    // Process each existing token
-    tokens.forEach(token => {
-      // Only process plain tokens
-      if (token.type !== 'plain') {
-        newTokens.push(token);
-        return;
-      }
-      
-      // Find all matches in this token
-      const parts = token.content.split(pattern);
-      const matches = token.content.match(pattern) || [];
-      
-      // Rebuild with alternating plain and highlighted parts
-      for (let i = 0; i < parts.length; i++) {
-        if (parts[i]) {
-          newTokens.push({ type: 'plain', content: parts[i] });
-        }
-        if (i < matches.length) {
-          newTokens.push({ type, content: matches[i] });
-        }
-      }
-    });
-    
-    tokens = newTokens;
+  // Apply highlighting
+  rules.forEach(({ pattern, className }) => {
+    html = html.replace(pattern, match => `<span class="${className}">${match}</span>`);
   });
   
-  return tokens;
-};
-
-// Special tokenizer for JSON to handle the specific structure
-const tokenizeJson = (code: string): Token[] => {
-  const tokens: Token[] = [];
-  let currentPos = 0;
-  
-  // Helper to add a token
-  const addToken = (end: number, type: string) => {
-    if (end > currentPos) {
-      tokens.push({
-        type,
-        content: code.substring(currentPos, end)
-      });
-      currentPos = end;
-    }
-  };
-  
-  // Process the JSON character by character
-  while (currentPos < code.length) {
-    const char = code[currentPos];
-    
-    // Handle whitespace
-    if (/\s/.test(char)) {
-      const match = code.substring(currentPos).match(/^\s+/);
-      if (match) {
-        addToken(currentPos + match[0].length, 'plain');
-        continue;
-      }
-    }
-    
-    // Handle strings (property names and values)
-    if (char === '"') {
-      // Find the end of the string
-      let endPos = currentPos + 1;
-      let escaped = false;
-      
-      while (endPos < code.length) {
-        if (code[endPos] === '"' && !escaped) {
-          break;
-        }
-        escaped = code[endPos] === '\\' && !escaped;
-        endPos++;
-      }
-      
-      if (endPos < code.length) {
-        endPos++; // Include the closing quote
-        
-        // Check if this is a property name (followed by colon)
-        let isPropertyName = false;
-        let colonPos = endPos;
-        
-        // Look ahead for a colon
-        while (colonPos < code.length && /\s/.test(code[colonPos])) {
-          colonPos++;
-        }
-        
-        if (colonPos < code.length && code[colonPos] === ':') {
-          isPropertyName = true;
-        }
-        
-        addToken(endPos, isPropertyName ? 'keyword' : 'string');
-        continue;
-      }
-    }
-    
-    // Handle numbers
-    if (/[\d-]/.test(char)) {
-      const match = code.substring(currentPos).match(/^-?\d+(\.\d+)?([eE][+-]?\d+)?/);
-      if (match) {
-        addToken(currentPos + match[0].length, 'number');
-        continue;
-      }
-    }
-    
-    // Handle true, false, null
-    if (/[tfn]/.test(char)) {
-      const literals = ['true', 'false', 'null'];
-      let found = false;
-      
-      for (const literal of literals) {
-        if (code.substring(currentPos, currentPos + literal.length) === literal) {
-          addToken(currentPos + literal.length, 'builtin');
-          found = true;
-          break;
-        }
-      }
-      
-      if (found) continue;
-    }
-    
-    // Handle other characters (braces, brackets, commas, colons)
-    addToken(currentPos + 1, 'plain');
-  }
-  
-  return tokens;
+  return html;
 };
 
 // Detect language from code
@@ -493,13 +364,10 @@ export const DisplayCode: React.FC<DisplayCodeProps> = ({
                   ...styles.line,
                   ...(line.highlighted ? styles.lineHighlight : {})
                 }}
-              >
-                {tokenizeCode(line.content || ' ', detectedLanguage).map((token, tokenIndex) => (
-                  <span key={tokenIndex} className={token.type !== 'plain' ? token.type : undefined}>
-                    {token.content}
-                  </span>
-                ))}
-              </div>
+                dangerouslySetInnerHTML={{
+                  __html: highlightCode(line.content || ' ', detectedLanguage)
+                }}
+              />
             ))}
           </code>
         </pre>

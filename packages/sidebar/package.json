@@ -10,6 +10,7 @@
     "build": "rollup -c",
     "all": "pnpm i && pnpm run build",
     "prepare": "npm run build",
+    "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
     "dev": "rollup -c -w"
   },
   "keywords": [

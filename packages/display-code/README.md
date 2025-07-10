@@ -11,6 +11,7 @@ npm run demo
 ```
 
 The demo showcases:
+
 - 🌈 Syntax highlighting for 15+ languages
 - 🌓 Light/Dark theme switching
 - 📋 Copy to clipboard functionality

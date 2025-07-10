@@ -14,6 +14,7 @@
     "all": "pnpm i && pnpm run build",
     "watch": "rollup -c -w",
     "prepare": "npm run build",
+    "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {

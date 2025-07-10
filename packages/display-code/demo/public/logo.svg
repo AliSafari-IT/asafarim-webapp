@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Background rectangle -->
+  <rect width="240" height="60" rx="8" fill="#2c3e50" />
+  
+  <!-- Code editor window -->
+  <rect x="15" y="10" width="150" height="40" rx="4" fill="#34495e" />
+  
+  <!-- Code lines -->
+  <line x1="25" y1="20" x2="70" y2="20" stroke="#3498db" stroke-width="2.5" />
+  <line x1="25" y1="30" x2="90" y2="30" stroke="#e74c3c" stroke-width="2.5" />
+  <line x1="25" y1="40" x2="60" y2="40" stroke="#2ecc71" stroke-width="2.5" />
+  
+  <!-- Line numbers -->
+  <text x="20" y="20" font-family="monospace" font-size="8" fill="#95a5a6">1</text>
+  <text x="20" y="30" font-family="monospace" font-size="8" fill="#95a5a6">2</text>
+  <text x="20" y="40" font-family="monospace" font-size="8" fill="#95a5a6">3</text>
+  
+  <!-- Brackets -->
+  <path d="M100 15L110 20L100 25" stroke="#f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <path d="M120 15L110 20L120 25" stroke="#f39c12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Text -->
+  <text x="175" y="30" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#ecf0f1">Display</text>
+  <text x="175" y="45" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#3498db">Code</text>
+  
+  <!-- Cursor -->
+  <rect x="60" y="38" width="2" height="10" fill="#ecf0f1">
+    <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+  </rect>
+</svg>

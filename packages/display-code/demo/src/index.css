@@ -25,6 +25,22 @@ body {
   margin-bottom: 3rem;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.demo-logo {
+  width: 240px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.demo-logo:hover {
+  transform: scale(1.05);
+}
+
 .demo-header h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -113,6 +129,10 @@ body {
 
 .dark-theme .demo-header h1 {
   color: #e2e8f0;
+}
+
+.dark-theme .demo-logo {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
 }
 
 .dark-theme .demo-header p {

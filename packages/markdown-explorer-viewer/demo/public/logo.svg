@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Background rectangle -->
+  <rect width="240" height="60" rx="8" fill="#2c3e50" />
+  
+  <!-- Markdown file icon -->
+  <rect x="15" y="10" width="40" height="40" rx="3" fill="#ecf0f1" />
+  <text x="25" y="35" font-family="monospace" font-size="24" font-weight="bold" fill="#2c3e50">MD</text>
+  
+  <!-- Explorer tree structure -->
+  <line x1="70" y1="15" x2="70" y2="45" stroke="#3498db" stroke-width="2" />
+  <line x1="70" y1="20" x2="85" y2="20" stroke="#3498db" stroke-width="2" />
+  <line x1="70" y1="30" x2="85" y2="30" stroke="#3498db" stroke-width="2" />
+  <line x1="70" y1="40" x2="85" y2="40" stroke="#3498db" stroke-width="2" />
+  
+  <!-- Folder icons -->
+  <rect x="85" y="15" width="10" height="10" rx="1" fill="#f39c12" />
+  <rect x="85" y="25" width="10" height="10" rx="1" fill="#f39c12" />
+  <rect x="85" y="35" width="10" height="10" rx="1" fill="#f39c12" />
+  
+  <!-- Viewer window -->
+  <rect x="110" y="10" width="55" height="40" rx="3" fill="#ecf0f1" />
+  
+  <!-- Markdown content representation -->
+  <line x1="115" y1="18" x2="160" y2="18" stroke="#2c3e50" stroke-width="2.5" />
+  <line x1="115" y1="25" x2="150" y2="25" stroke="#2c3e50" stroke-width="1.5" />
+  <line x1="115" y1="32" x2="155" y2="32" stroke="#2c3e50" stroke-width="1.5" />
+  <line x1="120" y1="39" x2="145" y2="39" stroke="#2c3e50" stroke-width="1.5" />
+  
+  <!-- Connection arrow -->
+  <path d="M100 30 L 110 30" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" />
+  <polygon points="108,27 113,30 108,33" fill="#e74c3c" />
+  
+  <!-- Text -->
+  <text x="175" y="25" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#ecf0f1">Markdown</text>
+  <text x="175" y="38" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#3498db">Explorer</text>
+  <text x="175" y="51" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#e74c3c">Viewer</text>
+</svg>
