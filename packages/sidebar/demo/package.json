@@ -20,5 +20,17 @@
     "@vitejs/plugin-react": "^4.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
+    "directory": "packages/sidebar/demo"
+  },
+  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/sidebar/demo",
+  "bugs": {
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
