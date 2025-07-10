@@ -5,28 +5,20 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'packages/sidebar/**'
+      - "packages/sidebar/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
-
-# Allow only one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   # Build and deploy job
   build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,27 +27,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
           version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
@@ -66,52 +43,35 @@ jobs:
       - name: Build sidebar demo
         run: cd packages/sidebar/demo && pnpm build
 
-      # Create the custom directory structure for GitHub Pages
+      # Create the deployment directory
       - name: Prepare deployment directory
         run: |
-          # Debug information
-          echo "Current directory structure:"
-          ls -la
-          echo "Sidebar demo build output:"
-          ls -la packages/sidebar/demo/dist
-          
-          # Create directory structure matching the base path in Vite config
-          mkdir -p ./dist/my-packages/asafarim/sidebar
-          cp -r packages/sidebar/demo/dist/* ./dist/my-packages/asafarim/sidebar/
+          # Create directory structure
+          mkdir -p deploy/my-packages/asafarim/sidebar
+          cp -r packages/sidebar/demo/dist/* deploy/my-packages/asafarim/sidebar/
           
           # Create a root index.html for redirection
-          cat > ./dist/index.html << 'EOL'
+          cat > deploy/index.html << 'EOL'
           <!DOCTYPE html>
           <html>
           <head>
             <meta charset="UTF-8">
             <meta http-equiv="refresh" content="0;url=/my-packages/asafarim/sidebar/">
-            <title>Redirecting to Sidebar Demo</title>
+            <title>Redirecting to ASafariM Sidebar Demo</title>
           </head>
           <body>
-            <p>Redirecting to <a href="/my-packages/asafarim/sidebar/">Sidebar Demo</a>...</p>
+            <p>Redirecting to <a href="/my-packages/asafarim/sidebar/">ASafariM Sidebar Demo</a>...</p>
           </body>
           </html>
           EOL
           
           # Verify final structure
           echo "Final deployment structure:"
-          find ./dist -type f | sort
+          find ./deploy -type f | sort
 
-      # Setup Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      # Upload artifact with a unique name
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-          name: github-pages-sidebar-demo  # Use a unique artifact name
-
-      # Deploy to GitHub Pages
+      # Deploy directly to gh-pages branch
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          artifact_name: github-pages-sidebar-demo  # Use the same unique artifact name
+          folder: deploy
+          branch: gh-pages
