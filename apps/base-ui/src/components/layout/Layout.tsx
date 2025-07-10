@@ -30,12 +30,15 @@ export const Layout: React.FC<LayoutProps> = ({
   const navigate = useNavigate();
   const isMobileView = window.innerWidth <= 768;
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(isMobileView);
+  const [position, setPosition] = useState<'left' | 'right'>('left');
+
   const sidebarWidth = '260px';
   const collapsedWidth = isSidebarCollapsed ? '60px' : sidebarWidth;
   const sidebarStyle = {
-    marginLeft: collapsedWidth,
+    marginLeft: position === 'left' ? collapsedWidth : 0,
+    marginRight: position === 'right' ? collapsedWidth : 0,
     width: `calc(100% - ${collapsedWidth})`,
-    transition: 'margin-left 0.3s ease, width 0.3s ease'
+    transition: 'margin-left 0.3s ease, margin-right 0.3s ease, width 0.3s ease'
   };
   // Default to expanded sidebar on desktop, collapsed on mobile
 
@@ -79,19 +82,44 @@ export const Layout: React.FC<LayoutProps> = ({
 
   const finalSidebarItems = sidebarItems.length > 0 ? sidebarItems : [];
   // Sidebar items are determined by props or defaults
+  // sidebar footer
+  const footer = <div className={styles.sidebarFooter}>
+    <div className={styles.footerContent}>
+      {!isSidebarCollapsed ? <p>© 2025 ASafariM</p> : null}
+    </div>
+    {!isMobileView ? (
+      <button 
+        onClick={() => setPosition(position === 'left' ? 'right' : 'left')}
+        aria-label={position === 'left' ? 'Move sidebar to right' : 'Move sidebar to left'}
+        type="button"
+        className={styles.sidebarPositionToggle}
+        title={position === 'left' ? 'Move sidebar to right' : 'Move sidebar to left'}
+      >
+        {position === 'left' ? '❯' : '❮'}
+      </button>
+    ) : null}
+  </div>;
+
+  // Logo
+  const logo = <a href="/" className={styles.logoLink}>
+  {brandImage && (
+    <img
+      src={brandImage}
+      alt={brandImageAlt || "Brand Logo"}
+      className={`${styles.brandImage} ${styles.logo}`}
+      width={30}
+    />
+  )}
+  <h3 className={styles.title}>{title}</h3>
+</a>;
 
   return (
     <div className={`${styles.layout} ${styles[theme]} animate-fade-scale`} style={{ width: '100%', overflow: 'hidden', margin: 0, padding: 0 }}>
       <Header 
-        title={title}
         theme={theme}
-        brandImage={brandImage}
-        brandImageAlt={brandImageAlt}
         onThemeToggle={onThemeToggle}
         showSearch={true}
         style={sidebarStyle}
-        onFilesSidebarToggle={() => handleSidebarToggle(!isSidebarCollapsed)}
-        isFilesSidebarVisible={!isSidebarCollapsed}
       />
       
       <div className={styles.body}>
@@ -106,8 +134,10 @@ export const Layout: React.FC<LayoutProps> = ({
           onItemClick={handleSidebarItemClick}
           sidebarWidth={sidebarWidth}
           collapsedWidth={collapsedWidth}
-          position="left"
+          position={position}
           overlay={false}
+          footer={footer}
+          logo={logo}
         />
         
         <main 

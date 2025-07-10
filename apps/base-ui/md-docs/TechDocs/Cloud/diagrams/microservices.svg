@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Microservices Architecture</text>
+  
+  <!-- Client Application -->
+  <rect x="300" y="80" width="200" height="60" rx="10" ry="10" fill="#61dafb20" stroke="#61dafb" stroke-width="2" />
+  <text x="400" y="115" font-family="Arial" font-size="16" text-anchor="middle">React TypeScript SPA</text>
+  
+  <!-- API Gateway -->
+  <rect x="300" y="170" width="200" height="60" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <text x="400" y="205" font-family="Arial" font-size="16" text-anchor="middle">API Gateway</text>
+  
+  <!-- Microservices -->
+  <rect x="100" y="280" width="150" height="120" rx="10" ry="10" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="175" y="310" font-family="Arial" font-size="16" text-anchor="middle">.NET Core</text>
+  <text x="175" y="335" font-family="Arial" font-size="14" text-anchor="middle">Projects API</text>
+  <text x="175" y="355" font-family="Arial" font-size="12" text-anchor="middle">Projects.Api</text>
+  <text x="175" y="375" font-family="Arial" font-size="12" text-anchor="middle">Projects.Domain</text>
+  
+  <rect x="325" y="280" width="150" height="120" rx="10" ry="10" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="400" y="310" font-family="Arial" font-size="16" text-anchor="middle">.NET Core</text>
+  <text x="400" y="335" font-family="Arial" font-size="14" text-anchor="middle">Users API</text>
+  <text x="400" y="355" font-family="Arial" font-size="12" text-anchor="middle">Users.Api</text>
+  <text x="400" y="375" font-family="Arial" font-size="12" text-anchor="middle">Users.Domain</text>
+  
+  <rect x="550" y="280" width="150" height="120" rx="10" ry="10" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="625" y="310" font-family="Arial" font-size="16" text-anchor="middle">.NET Core</text>
+  <text x="625" y="335" font-family="Arial" font-size="14" text-anchor="middle">Notifications API</text>
+  <text x="625" y="355" font-family="Arial" font-size="12" text-anchor="middle">Notifications.Api</text>
+  <text x="625" y="375" font-family="Arial" font-size="12" text-anchor="middle">Notifications.Domain</text>
+  
+  <!-- Databases -->
+  <rect x="100" y="450" width="150" height="80" rx="10" ry="10" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <text x="175" y="485" font-family="Arial" font-size="14" text-anchor="middle">Projects DB</text>
+  <text x="175" y="505" font-family="Arial" font-size="12" text-anchor="middle">MySQL</text>
+  
+  <rect x="325" y="450" width="150" height="80" rx="10" ry="10" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <text x="400" y="485" font-family="Arial" font-size="14" text-anchor="middle">Users DB</text>
+  <text x="400" y="505" font-family="Arial" font-size="12" text-anchor="middle">MySQL</text>
+  
+  <rect x="550" y="450" width="150" height="80" rx="10" ry="10" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <text x="625" y="485" font-family="Arial" font-size="14" text-anchor="middle">Notifications DB</text>
+  <text x="625" y="505" font-family="Arial" font-size="12" text-anchor="middle">MySQL</text>
+  
+  <!-- Connections -->
+  <!-- Client to API Gateway -->
+  <line x1="400" y1="140" x2="400" y2="170" stroke="#666666" stroke-width="2" />
+  <polygon points="395,165 400,175 405,165" fill="#666666" />
+  
+  <!-- API Gateway to Microservices -->
+  <line x1="400" y1="230" x2="400" y2="260" stroke="#666666" stroke-width="2" />
+  <polygon points="395,255 400,265 405,255" fill="#666666" />
+  
+  <line x1="300" y1="200" x2="175" y2="280" stroke="#666666" stroke-width="2" />
+  <polygon points="177,273 170,285 183,282" fill="#666666" />
+  
+  <line x1="500" y1="200" x2="625" y2="280" stroke="#666666" stroke-width="2" />
+  <polygon points="617,273 630,285 623,273" fill="#666666" />
+  
+  <!-- Microservices to Databases -->
+  <line x1="175" y1="400" x2="175" y2="450" stroke="#666666" stroke-width="2" />
+  <polygon points="170,445 175,455 180,445" fill="#666666" />
+  
+  <line x1="400" y1="400" x2="400" y2="450" stroke="#666666" stroke-width="2" />
+  <polygon points="395,445 400,455 405,445" fill="#666666" />
+  
+  <line x1="625" y1="400" x2="625" y2="450" stroke="#666666" stroke-width="2" />
+  <polygon points="620,445 625,455 630,445" fill="#666666" />
+  
+  <!-- Service-to-Service Communication -->
+  <path d="M 250 340 C 275 340, 300 340, 325 340" stroke="#666666" stroke-width="2" fill="none" />
+  <polygon points="320,335 330,340 320,345" fill="#666666" />
+  
+  <path d="M 475 340 C 500 340, 525 340, 550 340" stroke="#666666" stroke-width="2" fill="none" />
+  <polygon points="545,335 555,340 545,345" fill="#666666" />
+  
+  <!-- Legend -->
+  <rect x="600" y="80" width="150" height="140" rx="5" ry="5" fill="#ffffff" stroke="#666666" stroke-width="1" />
+  <text x="675" y="100" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Legend</text>
+  
+  <rect x="610" y="110" width="20" height="20" fill="#61dafb20" stroke="#61dafb" stroke-width="2" />
+  <text x="640" y="125" font-family="Arial" font-size="12" text-anchor="start">Frontend</text>
+  
+  <rect x="610" y="140" width="20" height="20" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <text x="640" y="155" font-family="Arial" font-size="12" text-anchor="start">Gateway</text>
+  
+  <rect x="610" y="170" width="20" height="20" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="640" y="185" font-family="Arial" font-size="12" text-anchor="start">Microservice</text>
+  
+  <rect x="610" y="200" width="20" height="20" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <text x="640" y="215" font-family="Arial" font-size="12" text-anchor="start">Database</text>
+</svg>

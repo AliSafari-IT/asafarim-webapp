@@ -563,4 +563,11 @@ pids
 *.user
 *.userosscache
 *.sln.docstates
+
+# Turbo
 .turbo
+.turbo.lock
+.turbo-cache
+
+# packages
+!packages/*

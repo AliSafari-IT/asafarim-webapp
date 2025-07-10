@@ -1,0 +1,29 @@
+.app-container {
+  display: flex;
+  height: 100%;
+  position: relative;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+}

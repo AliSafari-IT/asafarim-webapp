@@ -3,29 +3,18 @@ import { useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
-  title?: string;
-  theme?: 'light' | 'dark';
-  brandImage?: string;
-  brandImageAlt?: string;
+  theme?: "light" | "dark";
   onThemeToggle?: () => void;
   showSearch?: boolean;
   style?: React.CSSProperties;
-  onFilesSidebarToggle?: () => void;
-  isFilesSidebarVisible?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  title = 'ASafariM',
-  theme = 'light',
-  brandImage,
-  brandImageAlt,
+  theme = "light",
   onThemeToggle,
   showSearch = true,
   style = {} as React.CSSProperties,
-  onFilesSidebarToggle,
-  isFilesSidebarVisible,
 }) => {
-
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [notificationCount] = useState(3);
@@ -83,33 +72,13 @@ export const Header: React.FC<HeaderProps> = ({
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <header className={`${styles.header} ${styles[theme || 'light']} animate-fade-in` } 
-           style={style || {}}>
+    <header
+      className={`${styles.header} ${styles[theme || "light"]} animate-fade-in`}
+      style={style || {}}
+    >
       <div className={styles.headerContent}>
         <div className={styles.titleSection}>
-          <a href="/" className={styles.logoLink}>
-            {brandImage && (
-              <img
-                src={brandImage}
-                alt={brandImageAlt || "Brand Logo"}
-                className={`${styles.brandImage} ${styles.logo}`}
-                width={30}
-              />
-            )}
-            <h1 className={styles.title}>{title}</h1>
-          </a>
-
           <nav className={styles.breadcrumb}>
-            {onFilesSidebarToggle && (
-              <button 
-                className={styles.sidebarToggleButton}
-                onClick={onFilesSidebarToggle}
-                aria-label={isFilesSidebarVisible ? 'Collapse sidebar' : 'Expand sidebar'}
-                title={isFilesSidebarVisible ? 'Collapse sidebar' : 'Expand sidebar'}
-              >
-                {isFilesSidebarVisible ? '◀' : '▶'}
-              </button>
-            )}
             {breadcrumbs.map((crumb, index) => (
               <React.Fragment key={crumb.path}>
                 {index > 0 && (

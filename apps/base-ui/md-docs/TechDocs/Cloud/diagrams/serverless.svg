@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Serverless Architecture</text>
+  
+  <!-- Client Application -->
+  <rect x="300" y="80" width="200" height="60" rx="10" ry="10" fill="#61dafb20" stroke="#61dafb" stroke-width="2" />
+  <text x="400" y="115" font-family="Arial" font-size="16" text-anchor="middle">React TypeScript SPA</text>
+  
+  <!-- Static Hosting -->
+  <rect x="300" y="150" width="200" height="40" rx="5" ry="5" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <text x="400" y="175" font-family="Arial" font-size="14" text-anchor="middle">Static Web Hosting</text>
+  
+  <!-- API Gateway -->
+  <rect x="300" y="220" width="200" height="60" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <text x="400" y="255" font-family="Arial" font-size="16" text-anchor="middle">API Gateway</text>
+  
+  <!-- Function Apps -->
+  <rect x="50" y="320" width="700" height="180" rx="10" ry="10" fill="#f0f8ff" stroke="#0078d4" stroke-width="2" />
+  <text x="400" y="345" font-family="Arial" font-size="18" text-anchor="middle">Serverless Functions (.NET Core)</text>
+  
+  <!-- Individual Functions -->
+  <rect x="75" y="370" width="150" height="100" rx="5" ry="5" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="150" y="400" font-family="Arial" font-size="14" text-anchor="middle">GetProjects</text>
+  <text x="150" y="420" font-family="Arial" font-size="12" text-anchor="middle">HTTP Trigger</text>
+  <text x="150" y="440" font-family="Arial" font-size="12" text-anchor="middle">Azure Function</text>
+  
+  <rect x="250" y="370" width="150" height="100" rx="5" ry="5" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="325" y="400" font-family="Arial" font-size="14" text-anchor="middle">CreateProject</text>
+  <text x="325" y="420" font-family="Arial" font-size="12" text-anchor="middle">HTTP Trigger</text>
+  <text x="325" y="440" font-family="Arial" font-size="12" text-anchor="middle">Azure Function</text>
+  
+  <rect x="425" y="370" width="150" height="100" rx="5" ry="5" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="500" y="400" font-family="Arial" font-size="14" text-anchor="middle">ProcessQueue</text>
+  <text x="500" y="420" font-family="Arial" font-size="12" text-anchor="middle">Queue Trigger</text>
+  <text x="500" y="440" font-family="Arial" font-size="12" text-anchor="middle">Azure Function</text>
+  
+  <rect x="600" y="370" width="150" height="100" rx="5" ry="5" fill="#00a88f20" stroke="#00a88f" stroke-width="2" />
+  <text x="675" y="400" font-family="Arial" font-size="14" text-anchor="middle">SendNotification</text>
+  <text x="675" y="420" font-family="Arial" font-size="12" text-anchor="middle">Event Trigger</text>
+  <text x="675" y="440" font-family="Arial" font-size="12" text-anchor="middle">Azure Function</text>
+  
+  <!-- Cloud Services -->
+  <rect x="50" y="520" width="700" height="60" rx="10" ry="10" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <text x="400" y="545" font-family="Arial" font-size="16" text-anchor="middle">Managed Cloud Services</text>
+  
+  <!-- Database -->
+  <rect x="75" y="530" width="150" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="1" />
+  <text x="150" y="555" font-family="Arial" font-size="14" text-anchor="middle">Database</text>
+  
+  <!-- Storage -->
+  <rect x="250" y="530" width="150" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="1" />
+  <text x="325" y="555" font-family="Arial" font-size="14" text-anchor="middle">Blob Storage</text>
+  
+  <!-- Queue -->
+  <rect x="425" y="530" width="150" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="1" />
+  <text x="500" y="555" font-family="Arial" font-size="14" text-anchor="middle">Message Queue</text>
+  
+  <!-- Event Grid -->
+  <rect x="600" y="530" width="150" height="40" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="1" />
+  <text x="675" y="555" font-family="Arial" font-size="14" text-anchor="middle">Event Grid</text>
+  
+  <!-- Connections -->
+  <!-- Client to Static Hosting -->
+  <line x1="400" y1="140" x2="400" y2="150" stroke="#666666" stroke-width="2" />
+  <polygon points="395,145 400,155 405,145" fill="#666666" />
+  
+  <!-- Static Hosting to API Gateway -->
+  <line x1="400" y1="190" x2="400" y2="220" stroke="#666666" stroke-width="2" />
+  <polygon points="395,215 400,225 405,215" fill="#666666" />
+  
+  <!-- API Gateway to Functions -->
+  <line x1="400" y1="280" x2="400" y2="320" stroke="#666666" stroke-width="2" />
+  <polygon points="395,315 400,325 405,315" fill="#666666" />
+  
+  <!-- Functions to Cloud Services -->
+  <line x1="150" y1="470" x2="150" y2="530" stroke="#666666" stroke-width="2" />
+  <polygon points="145,525 150,535 155,525" fill="#666666" />
+  
+  <line x1="325" y1="470" x2="325" y2="530" stroke="#666666" stroke-width="2" />
+  <polygon points="320,525 325,535 330,525" fill="#666666" />
+  
+  <line x1="500" y1="470" x2="500" y2="530" stroke="#666666" stroke-width="2" />
+  <polygon points="495,525 500,535 505,525" fill="#666666" />
+  
+  <line x1="675" y1="470" x2="675" y2="530" stroke="#666666" stroke-width="2" />
+  <polygon points="670,525 675,535 680,525" fill="#666666" />
+  
+  <!-- Function to Function Communication -->
+  <path d="M 325 420 C 375 420, 425 420, 475 420" stroke="#666666" stroke-width="1" stroke-dasharray="5,5" fill="none" />
+  <polygon points="470,415 480,420 470,425" fill="#666666" />
+  
+  <path d="M 500 420 C 550 420, 600 420, 650 420" stroke="#666666" stroke-width="1" stroke-dasharray="5,5" fill="none" />
+  <polygon points="645,415 655,420 645,425" fill="#666666" />
+</svg>

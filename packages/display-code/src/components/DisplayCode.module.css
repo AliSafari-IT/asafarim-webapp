@@ -1,0 +1,377 @@
+.container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.containerDark {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.headerDark {
+  background: #2d3748;
+  border-bottom: 1px solid #4a5568;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleDark {
+  color: #e2e8f0;
+}
+
+.languageLabel {
+  font-size: 0.75rem;
+  background: #e9ecef;
+  color: #6c757d;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.languageLabelDark {
+  background: #4a5568;
+  color: #a0aec0;
+}
+
+.copyButton {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.copyButton:hover {
+  background: #0052a3;
+}
+
+.copyButton:active {
+  transform: translateY(1px);
+}
+
+.copyButtonDark {
+  background: #4299e1;
+}
+
+.copyButtonDark:hover {
+  background: #3182ce;
+}
+
+.copySuccess {
+  background: #10b981;
+}
+
+.copySuccess:hover {
+  background: #059669;
+}
+
+.codeWrapper {
+  position: relative;
+  overflow: auto;
+  background: #ffffff;
+  max-height: 500px;
+}
+
+.codeWrapperDark {
+  background: #1a202c;
+}
+
+.codeWrapperCustomHeight {
+  overflow: auto;
+}
+
+.codeBlock {
+  padding: 1rem;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #1a202c;
+  background: transparent;
+  white-space: pre;
+  counter-reset: line-number;
+}
+
+.codeBlockDark {
+  color: #e2e8f0;
+}
+
+.codeBlockSmall {
+  font-size: 0.8125rem;
+}
+
+.codeBlockLarge {
+  font-size: 1rem;
+}
+
+.codeBlockWrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.lineNumbers {
+  counter-reset: line-number;
+}
+
+.lineNumbers .line {
+  counter-increment: line-number;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.lineNumbers .line::before {
+  content: counter(line-number);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  text-align: right;
+  color: #6c757d;
+  font-size: 0.8125rem;
+  user-select: none;
+  padding-right: 0.5rem;
+}
+
+.lineNumbersDark .line::before {
+  color: #a0aec0;
+}
+
+.line {
+  display: block;
+  width: 100%;
+}
+
+.lineHighlight {
+  background: rgba(255, 255, 0, 0.1);
+  border-left: 3px solid #ffd700;
+  padding-left: calc(1rem - 3px);
+}
+
+.lineHighlightDark {
+  background: rgba(255, 255, 0, 0.05);
+  border-left: 3px solid #ecc94b;
+}
+
+/* Syntax highlighting styles */
+.codeBlock :global(.highlight-comment) {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.codeBlockDark :global(.highlight-comment) {
+  color: #a0aec0;
+}
+
+.codeBlock :global(.highlight-string) {
+  color: #d63384;
+}
+
+.codeBlockDark :global(.highlight-string) {
+  color: #f687b3;
+}
+
+.codeBlock :global(.highlight-number) {
+  color: #e83e8c;
+}
+
+.codeBlockDark :global(.highlight-number) {
+  color: #f093fb;
+}
+
+.codeBlock :global(.highlight-boolean) {
+  color: #6f42c1;
+}
+
+.codeBlockDark :global(.highlight-boolean) {
+  color: #b794f6;
+}
+
+.codeBlock :global(.highlight-keyword) {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.codeBlockDark :global(.highlight-keyword) {
+  color: #63b3ed;
+}
+
+.codeBlock :global(.highlight-function) {
+  color: #dc3545;
+}
+
+.codeBlockDark :global(.highlight-function) {
+  color: #fc8181;
+}
+
+.codeBlock :global(.highlight-class-name) {
+  color: #fd7e14;
+}
+
+.codeBlockDark :global(.highlight-class-name) {
+  color: #f6ad55;
+}
+
+.codeBlock :global(.highlight-tag) {
+  color: #198754;
+}
+
+.codeBlockDark :global(.highlight-tag) {
+  color: #68d391;
+}
+
+.codeBlock :global(.highlight-key) {
+  color: #0d6efd;
+}
+
+.codeBlockDark :global(.highlight-key) {
+  color: #63b3ed;
+}
+
+.codeBlock :global(.highlight-property) {
+  color: #6f42c1;
+}
+
+.codeBlockDark :global(.highlight-property) {
+  color: #b794f6;
+}
+
+.codeBlock :global(.highlight-selector) {
+  color: #198754;
+}
+
+.codeBlockDark :global(.highlight-selector) {
+  color: #68d391;
+}
+
+.codeBlock :global(.highlight-color) {
+  color: #e83e8c;
+}
+
+.codeBlockDark :global(.highlight-color) {
+  color: #f093fb;
+}
+
+.codeBlock :global(.highlight-variable) {
+  color: #fd7e14;
+}
+
+.codeBlockDark :global(.highlight-variable) {
+  color: #f6ad55;
+}
+
+.codeBlock :global(.highlight-header) {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.codeBlockDark :global(.highlight-header) {
+  color: #63b3ed;
+}
+
+.codeBlock :global(.highlight-bold) {
+  font-weight: 600;
+}
+
+.codeBlock :global(.highlight-italic) {
+  font-style: italic;
+}
+
+.codeBlock :global(.highlight-code) {
+  background: #f8f9fa;
+  padding: 0.125rem 0.25rem;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.codeBlockDark :global(.highlight-code) {
+  background: #2d3748;
+}
+
+.codeBlock :global(.highlight-code-block) {
+  background: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.codeBlockDark :global(.highlight-code-block) {
+  background: #2d3748;
+}
+
+.codeBlock :global(.highlight-link) {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.codeBlockDark :global(.highlight-link) {
+  color: #63b3ed;
+}
+
+.codeBlock :global(.highlight-processing-instruction) {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.codeBlockDark :global(.highlight-processing-instruction) {
+  color: #a0aec0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    margin: 0.5rem 0;
+  }
+  
+  .header {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .codeBlock {
+    padding: 0.75rem;
+    font-size: 0.8125rem;
+  }
+  
+  .lineNumbers .line {
+    padding-left: 2.5rem;
+  }
+  
+  .lineNumbers .line::before {
+    width: 2rem;
+  }
+  
+  .title {
+    font-size: 0.8125rem;
+  }
+  
+  .copyButton {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+}

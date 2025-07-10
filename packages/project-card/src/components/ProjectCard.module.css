@@ -1,0 +1,272 @@
+.card {
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cardDark {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #ffffff;
+}
+
+.cardDark:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.featured {
+  border: 2px solid #0066cc;
+  background: linear-gradient(135deg, #f6f9fc 0%, #eef6ff 100%);
+}
+
+.featuredDark {
+  border: 2px solid #4da6ff;
+  background: linear-gradient(135deg, #1a2332 0%, #2a3f5f 100%);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.imagePlaceholderDark {
+  background: linear-gradient(135deg, #333 0%, #444 100%);
+  color: #ccc;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.titleDark {
+  color: #ffffff;
+}
+
+.description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.descriptionDark {
+  color: #ccc;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.techTag {
+  background: #f1f3f4;
+  color: #333;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.techTagDark {
+  background: #333;
+  color: #fff;
+}
+
+.techIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.linkDemo {
+  background: #0066cc;
+  color: white;
+}
+
+.linkDemo:hover {
+  background: #0052a3;
+}
+
+.linkRepo {
+  background: #f1f3f4;
+  color: #333;
+  border: 1px solid #d1d5db;
+}
+
+.linkRepo:hover {
+  background: #e5e7eb;
+}
+
+.linkRepoDark {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.linkRepoDark:hover {
+  background: #444;
+}
+
+.linkCustom {
+  background: #6b7280;
+  color: white;
+}
+
+.linkCustom:hover {
+  background: #4b5563;
+}
+
+.status {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusActive {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusActiveD ark {
+  background: #166534;
+  color: #dcfce7;
+}
+
+.statusArchived {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.statusArchivedDark {
+  background: #374151;
+  color: #9ca3af;
+}
+
+.statusInProgress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusInProgressDark {
+  background: #92400e;
+  color: #fef3c7;
+}
+
+.lastUpdated {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.5rem;
+}
+
+.lastUpdatedDark {
+  color: #6b7280;
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loadingPlaceholder {
+  background: #f3f4f6;
+  border-radius: 4px;
+  height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.loadingPlaceholderDark {
+  background: #374151;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .links {
+    flex-direction: column;
+  }
+  
+  .link {
+    justify-content: center;
+  }
+}

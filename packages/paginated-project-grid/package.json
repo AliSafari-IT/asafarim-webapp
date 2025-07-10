@@ -1,0 +1,59 @@
+{
+  "name": "@asafarim/paginated-project-grid",
+  "version": "1.0.0",
+  "description": "A responsive React component for displaying paginated project cards with built-in search functionality",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
+    "prepare": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {
+    "@asafarim/project-card": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "rollup": "^3.29.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
+    "directory": "packages/paginated-project-grid"
+  },
+  "keywords": [
+    "asafarim",
+    "react",
+    "project",
+    "grid",
+    "pagination",
+    "search",
+    "component",
+    "typescript",
+    "responsive"
+  ],
+  "author": "Ali Safari",
+  "license": "MIT",
+  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/paginated-project-grid",
+  "bugs": {
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
