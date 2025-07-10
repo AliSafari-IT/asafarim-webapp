@@ -36,5 +36,17 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
+    "directory": "packages/sidebar"
+  },
+  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/sidebar",
+  "bugs": {
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
