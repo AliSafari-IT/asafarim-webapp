@@ -107,6 +107,7 @@ const App: React.FC = () => {
   };
 
   const handleItemClick = (item: any) => {
+    setIsCollapsed(false);
     setSelectedItem(item.label);
     console.log(`Item clicked: ${item.label}`);
   };

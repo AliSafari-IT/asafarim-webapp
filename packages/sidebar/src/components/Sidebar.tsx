@@ -59,7 +59,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const sidebarStyle = {
     width: isCollapsed ? collapsedWidth : sidebarWidth,
-    ...(position === 'right' ? { left: 'auto', right: isCollapsed ? 60 : 0 } : { left: isCollapsed ? 60 : 0, right: 'auto' })
+    ...(position === 'right' ? 
+      { left: 'auto', right: isCollapsed ? (isMobile ? collapsedWidth : 0 ) : 0 } : 
+      { left: isCollapsed ? (isMobile ? collapsedWidth : 0 ) : 0, right: 'auto' })
   };
 
   return (
