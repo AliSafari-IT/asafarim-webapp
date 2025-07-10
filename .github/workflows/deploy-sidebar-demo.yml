@@ -54,21 +54,56 @@ jobs:
       # Create the deployment directory
       - name: Prepare deployment directory
         run: |
+          # Get repository name for proper base path
+          REPO_NAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+          echo "Repository name: $REPO_NAME"
+          
           # Create directory structure
-          mkdir -p deploy/my-packages/asafarim/sidebar
-          cp -r packages/sidebar/demo/dist/* deploy/my-packages/asafarim/sidebar/
+          mkdir -p deploy/packages/sidebar
+          cp -r packages/sidebar/demo/dist/* deploy/packages/sidebar/
+          
+          # Fix asset paths in HTML files to include repository name
+          find deploy/packages/sidebar -name "*.html" -exec sed -i "s|href=\"/assets/|href=\"/$REPO_NAME/packages/sidebar/assets/|g" {} \;
+          find deploy/packages/sidebar -name "*.html" -exec sed -i "s|src=\"/assets/|src=\"/$REPO_NAME/packages/sidebar/assets/|g" {} \;
           
           # Create a root index.html for redirection
-          cat > deploy/index.html << 'EOL'
+          cat > deploy/index.html << EOL
           <!DOCTYPE html>
           <html>
           <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0;url=/my-packages/asafarim/sidebar/">
+            <meta http-equiv="refresh" content="0;url=/$REPO_NAME/packages/sidebar/">
             <title>Redirecting to ASafariM Sidebar Demo</title>
           </head>
           <body>
-            <p>Redirecting to <a href="/my-packages/asafarim/sidebar/">ASafariM Sidebar Demo</a>...</p>
+            <p>Redirecting to <a href="/$REPO_NAME/packages/sidebar/">ASafariM Sidebar Demo</a>...</p>
+          </body>
+          </html>
+          EOL
+          
+          # Create a packages index page
+          mkdir -p deploy/packages
+          cat > deploy/packages/index.html << EOL
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <title>ASafariM Packages</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+              h1 { color: #333; }
+              ul { list-style-type: none; padding: 0; }
+              li { margin: 10px 0; }
+              a { color: #0366d6; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+            </style>
+          </head>
+          <body>
+            <h1>ASafariM Packages</h1>
+            <ul>
+              <li><a href="/$REPO_NAME/packages/display-code/">DisplayCode Component Demo</a></li>
+              <li><a href="/$REPO_NAME/packages/sidebar/">Sidebar Component Demo</a></li>
+            </ul>
           </body>
           </html>
           EOL
