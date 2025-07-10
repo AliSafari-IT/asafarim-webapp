@@ -353,17 +353,18 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .sidebar {
+  .sidebar:not(.expanded) {
     transform: translateX(-100%);
   }
   
-  .sidebar.right {
+  .sidebar.right:not(.expanded) {
     transform: translateX(100%);
   }
   
   .sidebar.expanded {
     transform: translateX(0);
-    width: 280px;
+    width: 280px !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 }
 

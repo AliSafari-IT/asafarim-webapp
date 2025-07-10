@@ -54,18 +54,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const overlayClasses = [
     styles.overlay,
-    overlay && !isCollapsed ? styles.visible : ''
+    (overlay && isMobile && !isCollapsed) ? styles.visible : ''
   ].filter(Boolean).join(' ');
 
   const sidebarStyle = {
     width: isCollapsed ? collapsedWidth : sidebarWidth,
-    ...(position === 'right' ? { left: 'auto', right: 0 } : { left: 0, right: 'auto' })
+    ...(position === 'right' ? { left: 'auto', right: isCollapsed ? 60 : 0 } : { left: isCollapsed ? 60 : 0, right: 'auto' })
   };
 
   return (
     <>
       {overlay && isMobile && !isCollapsed && (
-        <div className={`${styles.overlay} ${styles.visible}`} onClick={handleOverlayClick}></div>
+        <div className={overlayClasses} onClick={handleOverlayClick}></div>
       )}
       <aside className={sidebarClasses} style={sidebarStyle} data-theme={theme}>
         {showToggleButton && (

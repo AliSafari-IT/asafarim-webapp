@@ -95,7 +95,7 @@ const App: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [position, setPosition] = useState<'left' | 'right'>('left');
-  const [overlay, setOverlay] = useState(false);
+  const [overlay, setOverlay] = useState(true);
   const [showToggleButton, setShowToggleButton] = useState(true);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [sidebarWidth, setSidebarWidth] = useState('250px');
