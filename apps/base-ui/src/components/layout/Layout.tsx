@@ -59,7 +59,7 @@ export const Layout: React.FC<LayoutProps> = ({
     
     // Clean up
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [isMobileView]);
   
   // No need for overlay effect since we're using a unified approach that pushes content
 

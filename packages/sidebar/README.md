@@ -11,13 +11,23 @@ A flexible and customizable collapsible sidebar component for React applications
 - 🔧 **Flexible** - Highly customizable with multiple configuration options
 - 🌲 **Nested Items** - Support for multi-level navigation hierarchies
 - 🎪 **Icons & Badges** - Rich visual elements for better UX
-- 📍 **Positioning** - Left or right sidebar positioning
+- 📍 **Positioning** - Left or right sidebar positioning with dynamic toggle
+- 🔘 **Optimized Toggle Button** - Strategically positioned toggle button at the top of the sidebar
 
 ## Installation
 
 ```bash
 npm install @asafarim/sidebar
+# or
+yarn add @asafarim/sidebar
+# or
+pnpm add @asafarim/sidebar
 ```
+
+## Version History
+
+- **1.1.0** - Repositioned toggle button, added support for dynamic sidebar positioning
+- **1.0.1** - Initial stable release
 
 ## Basic Usage
 
@@ -79,15 +89,15 @@ function App() {
 | `items` | `SidebarItem[]` | **Required** | Array of navigation items |
 | `isCollapsed` | `boolean` | `undefined` | Controlled collapsed state |
 | `onToggle` | `(collapsed: boolean) => void` | `undefined` | Callback when toggle state changes |
-| `width` | `string` | `'280px'` | Width when expanded |
-| `collapsedWidth` | `string` | `'64px'` | Width when collapsed |
+| `sidebarWidth` | `string` | `'280px'` | Width when expanded |
+| `collapsedWidth` | `string` | `'60px'` | Width when collapsed |
 | `className` | `string` | `''` | Additional CSS class |
 | `theme` | `'light' \| 'dark'` | `'light'` | Color theme |
 | `position` | `'left' \| 'right'` | `'left'` | Sidebar position |
 | `overlay` | `boolean` | `false` | Show overlay on mobile |
 | `showToggleButton` | `boolean` | `true` | Show collapse/expand button |
 | `logo` | `ReactNode` | `undefined` | Logo/brand element |
-| `footer` | `ReactNode` | `undefined` | Footer content |
+| `footer` | `ReactNode` | `undefined` | Footer content for the sidebar |
 | `onItemClick` | `(item: SidebarItem) => void` | `undefined` | Item click handler |
 
 ### SidebarItem
@@ -147,6 +157,55 @@ function App() {
 />
 ```
 
+### Dynamic Sidebar Position with Custom Footer
+
+```tsx
+function App() {
+  const [position, setPosition] = useState<'left' | 'right'>('left');
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  
+  // Custom footer with position toggle button
+  const footer = (
+    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 1rem' }}>
+      {!isCollapsed && <p>© 2025 My App</p>}
+      <button 
+        onClick={() => setPosition(position === 'left' ? 'right' : 'left')}
+        aria-label={position === 'left' ? 'Move sidebar to right' : 'Move sidebar to left'}
+        style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+      >
+        {position === 'left' ? '❯' : '❮'}
+      </button>
+    </div>
+  );
+  
+  return (
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <Sidebar
+        items={items}
+        isCollapsed={isCollapsed}
+        onToggle={setIsCollapsed}
+        position={position}
+        showToggleButton={true}
+        sidebarWidth="260px"
+        collapsedWidth="60px"
+        theme="dark"
+        footer={footer}
+        logo={<span>My App</span>}
+      />
+      <main style={{
+        marginLeft: position === 'left' ? (isCollapsed ? '60px' : '260px') : 0,
+        marginRight: position === 'right' ? (isCollapsed ? '60px' : '260px') : 0,
+        width: `calc(100% - ${isCollapsed ? '60px' : '260px'})`,
+        transition: 'margin-left 0.3s ease, margin-right 0.3s ease, width 0.3s ease'
+      }}>
+        <h1>Main Content</h1>
+        <p>Your application content goes here.</p>
+      </main>
+    </div>
+  );
+}
+```
+
 ### Complex Navigation Structure
 
 ```tsx
@@ -189,6 +248,24 @@ const complexItems: SidebarItem[] = [
 ];
 ```
 
+## Toggle Button Positioning
+
+In version 1.1.0, the sidebar toggle button has been repositioned to the top of the icon column for better usability. This provides a more intuitive user experience and follows modern UI patterns.
+
+The toggle button is now:
+
+- Positioned at the top-left corner of the sidebar (or top-right when position is set to 'right')
+- Styled to match the sidebar theme
+- Easily accessible regardless of sidebar content
+
+This positioning makes it more accessible and visible to users, improving the overall navigation experience.
+
+## Sidebar Position Toggle
+
+The sidebar now supports dynamic position toggling between left and right sides of the screen. This can be implemented using a custom footer with a toggle button as shown in the examples above.
+
+When implementing this feature, remember to adjust your main content margins accordingly to maintain proper layout.
+
 ## Styling
 
 The component uses CSS modules for styling. You can override styles by providing a custom `className` prop or by targeting the CSS classes directly.
@@ -229,6 +306,14 @@ The sidebar component is built with accessibility in mind:
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
+
+## Changelog for Version 1.1.0
+
+- Repositioned toggle button to the top of the sidebar icon column
+- Added support for dynamic sidebar positioning (left/right)
+- Improved styling for toggle button and sidebar components
+- Updated prop names for better clarity (`width` → `sidebarWidth`)
+- Enhanced documentation with new examples
 
 ## License
 
