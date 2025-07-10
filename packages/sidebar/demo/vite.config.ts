@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',  // Deploy to root path to verify GitHub Pages is working
+  base: '/my-packages/asafarim/sidebar/',  // Match the path in the built HTML file
   server: {
     port: 3030,
     open: true
