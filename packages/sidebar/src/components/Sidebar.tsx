@@ -47,7 +47,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const sidebarClasses = [
     styles.sidebar,
     styles[position],
-    styles[theme],
+    theme === 'dark' ? styles.dark : '',
     isCollapsed ? styles.collapsed : styles.expanded,
     className
   ].filter(Boolean).join(' ');
@@ -64,9 +64,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {overlay && <div className={overlayClasses} onClick={handleOverlayClick} />}
-      
-      <aside className={sidebarClasses} style={sidebarStyle}>
+      {overlay && isMobile && !isCollapsed && (
+        <div className={`${styles.overlay} ${styles.visible}`} onClick={handleOverlayClick}></div>
+      )}
+      <aside className={sidebarClasses} style={sidebarStyle} data-theme={theme}>
         {showToggleButton && (
           <button
             className={styles.toggleButton}
@@ -100,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           ))}
         </nav>
 
-        {footer && (
+        {footer && ( !isCollapsed &&
           <div className={styles.footer}>
             {footer}
           </div>
