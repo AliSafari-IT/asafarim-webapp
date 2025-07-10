@@ -4,20 +4,27 @@ A React component for displaying syntax-highlighted code blocks with copy functi
 
 ## 🚀 Demo
 
-Experience the full power of the DisplayCode component with our interactive demo:
+![DisplayCode Demo Screenshot](demo/public/DisplayCode_Demo-and-Usage-Examples.png)
+
+Experience the full power of the DisplayCode component with our [interactive demo](https://alisafari-it.github.io/asafarim-webapp/packages/display-code/).
+
+To run the demo locally:
 
 ```bash
-npm run demo
+pnpm run demo
 ```
+
+For more details about the demo, check out the [Demo README](demo/README.md).
 
 The demo showcases:
 
-- 🌈 Syntax highlighting for 15+ languages
-- 🌓 Light/Dark theme switching
+- 🌈 Syntax highlighting for multiple languages (JavaScript, TypeScript, JSON, Python, JSX, and more)
+- 🌓 Light/Dark/Auto theme switching
 - 📋 Copy to clipboard functionality
 - 🔢 Line numbers
 - 🎨 Customizable styling
 - 📱 Responsive design
+- ✨ Line highlighting
 
 ## Installation
 
