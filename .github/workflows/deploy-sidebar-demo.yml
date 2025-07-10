@@ -69,8 +69,34 @@ jobs:
       # Create the custom directory structure for GitHub Pages
       - name: Prepare deployment directory
         run: |
+          # Debug information
+          echo "Current directory structure:"
+          ls -la
+          echo "Sidebar demo build output:"
+          ls -la packages/sidebar/demo/dist
+          
+          # Create directory structure
           mkdir -p ./dist/my-packages/asafarim/sidebar
           cp -r packages/sidebar/demo/dist/* ./dist/my-packages/asafarim/sidebar/
+          
+          # Create a root index.html for redirection
+          cat > ./dist/index.html << 'EOL'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0;url=/my-packages/asafarim/sidebar/">
+            <title>Redirecting to Sidebar Demo</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="/my-packages/asafarim/sidebar/">Sidebar Demo</a>...</p>
+          </body>
+          </html>
+          EOL
+          
+          # Verify final structure
+          echo "Final deployment structure:"
+          find ./dist -type f | sort
 
       # Setup Pages
       - name: Setup Pages
