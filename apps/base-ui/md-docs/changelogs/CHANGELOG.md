@@ -2,10 +2,11 @@
 title: "CHANGELOG"
 description: "All notable changes to the `base-ui` app will be documented in this file."
 date: "2025-07-11"
-tags: ["documentation", "CHANGELOG", "react", "typescript", "configuration"]
+tags: ["CHANGELOG", "react", "typescript", "documentation", "configuration"]
 ---
 
-# Changelog
+
+# Overview
 
 All notable changes to the `base-ui` app will be documented in this file.
 
@@ -18,6 +19,5 @@ All notable changes to the `base-ui` app will be documented in this file.
 - Basic ESLint configuration for type-aware linting.
 - Documentation for expanding ESLint configuration and using React-specific plugins.
 
----
 
 > This changelog follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/).
