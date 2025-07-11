@@ -8,7 +8,12 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     base: isProd ? '/markdown-explorer-viewer/' : '/',  // Match the path in the built HTML file
     server: {
-    port: 3002
+      port: 3003,
+      open: true
+    },
+    build: {
+      outDir: 'dist',
+      sourcemap: true
+    }
   }
-}
 })

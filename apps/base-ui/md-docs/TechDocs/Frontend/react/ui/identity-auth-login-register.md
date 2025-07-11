@@ -1,9 +1,10 @@
 # Using Microsoft Identity for Register and Login in React TypeScript with ASP.NET Core
 
-Date: 2024-09-11 
+Date: 2024-09-11
 Updated: 2024-12-15 20:04:00
 
 ## Overview
+
 This document guides you through implementing a Register and Login feature using Microsoft Identity in a React TypeScript frontend with an ASP.NET Core backend. The guide covers backend and frontend configurations, required code, and testing the implementation.
 
 ---
@@ -11,13 +12,16 @@ This document guides you through implementing a Register and Login feature using
 ## Backend: ASP.NET Core
 
 ### Step 1: Set Up ASP.NET Core Project
+
 1. **Create a new project:**
+
    ```bash
    dotnet new webapi -n IdentityAuthApp
    cd IdentityAuthApp
    ```
 
 2. **Add Microsoft Identity packages:**
+
    ```bash
    dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
    dotnet add package Microsoft.AspNetCore.Identity.UI
@@ -25,6 +29,7 @@ This document guides you through implementing a Register and Login feature using
    ```
 
 3. **Create a database connection:** Update `appsettings.json` with your database connection string:
+
    ```json
    "ConnectionStrings": {
      "DefaultConnection": "Server=localhost;Database=IdentityAuthDb;User=yourUser;Password=yourPassword;"
@@ -32,6 +37,7 @@ This document guides you through implementing a Register and Login feature using
    ```
 
 ### Step 2: Configure Identity in `Program.cs`
+
 ```csharp
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -66,7 +72,9 @@ app.Run();
 ```
 
 ### Step 3: Create the `ApplicationDbContext`
+
 Create a new folder `Data` and add `ApplicationDbContext.cs`:
+
 ```csharp
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -84,7 +92,9 @@ namespace IdentityAuthApp.Data
 ```
 
 ### Step 4: Add Migration and Update Database
+
 Run the following commands to create the database schema:
+
 ```bash
 dotnet ef migrations add InitialCreate
 
@@ -93,6 +103,7 @@ dotnet ef database update
 ```
 
 ### Step 5: Create API Endpoints for Authentication
+
 Add a `Controllers` folder and create an `AuthController.cs` file:
 
 ```csharp
@@ -158,18 +169,22 @@ namespace IdentityAuthApp.Controllers
 ## Frontend: React TypeScript
 
 ### Step 1: Set Up React Project
+
 1. **Create a new React app:**
+
    ```bash
    npx create-react-app identity-auth-client --template typescript
    cd identity-auth-client
    ```
 
 2. **Install Axios for API calls:**
+
    ```bash
    yarn add axios
    ```
 
 ### Step 2: Create Authentication Services
+
 In the `src` folder, create a file `authService.ts`:
 
 ```typescript
@@ -191,6 +206,7 @@ export const login = async (email: string, password: string) => {
 ### Step 3: Create Login and Register Pages
 
 #### Register.tsx
+
 ```tsx
 import React, { useState } from 'react';
 import { register } from '../authService';
@@ -232,6 +248,7 @@ export default Register;
 ```
 
 #### Login.tsx
+
 ```tsx
 import React, { useState } from 'react';
 import { login } from '../authService';
@@ -273,12 +290,15 @@ export default Login;
 ```
 
 ### Step 4: Add Routing
+
 Install React Router:
+
 ```bash
 yarn add react-router-dom
 ```
 
 Update `src/App.tsx`:
+
 ```tsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -302,12 +322,15 @@ export default App;
 ---
 
 ## Testing
+
 1. **Run the backend:**
+
    ```bash
    dotnet run
    ```
 
 2. **Run the frontend:**
+
    ```bash
    yarn start
    ```
@@ -319,5 +342,5 @@ export default App;
 ---
 
 ## Conclusion
-By following these steps, you have implemented user registration and login using Microsoft Identity in a fullstack React TypeScript and ASP.NET Core application. Ensure you secure your APIs with proper authentication and authorization for production use.
 
+By following these steps, you have implemented user registration and login using Microsoft Identity in a fullstack React TypeScript and ASP.NET Core application. Ensure you secure your APIs with proper authentication and authorization for production use.

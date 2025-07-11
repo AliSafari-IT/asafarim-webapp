@@ -39,9 +39,9 @@ const ContactPage: React.FC = () => {
             <h3>Contact Information</h3>
             <div style={{ lineHeight: '2', marginTop: '1rem' }}>
               <p><strong>📧 Email:</strong> contact@asafarim.com</p>
-              <p><strong>🌐 Website:</strong> www.asafarim.com</p>
-              <p><strong>💼 LinkedIn:</strong> linkedin.com/company/asafarim</p>
-              <p><strong>🐙 GitHub:</strong> github.com/AliSafari-IT</p>
+              <p><strong>🌐 Website:</strong> <a href="https://www.asafarim.com" target="_blank">www.asafarim.com</a></p>
+              <p><strong>💼 LinkedIn:</strong> <a href="https://linkedin.com/in/ali-safari-m" target="_blank">LinkedIn</a></p>
+              <p><strong>🐙 GitHub:</strong> <a href="https://github.com/AliSafari-IT" target="_blank">GitHub</a></p>
             </div>
           </div>
 

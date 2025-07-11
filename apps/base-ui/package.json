@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"cd ../docs-server && pnpm start\" \"vite\"",
+    "predev": "npx kill-port 3000 3001",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "all": "pnpm i && pnpm run build",
@@ -16,6 +17,7 @@
     "@asafarim/sidebar": "workspace:^",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
     "react-router-dom": "^6.8.0"
   },
   "devDependencies": {

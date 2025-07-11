@@ -24,7 +24,7 @@ export default defineConfig({
     exclude: ['fsevents', 'chokidar']
   },
   server: {
-    port: 3003,
+    port: 3004,
     open: true
   },
   build: {

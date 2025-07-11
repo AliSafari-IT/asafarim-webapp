@@ -1,27 +1,16 @@
 ---
-title: Cloud Computing for React TS .NET Core Fullstack Applications
-description: A comprehensive guide to cloud computing concepts, services, and best practices for React TypeScript and .NET Core fullstack applications
+title: "Cloud Computing for React TS .NET Core Fullstack Applications"
+description: "A comprehensive guide to cloud computing concepts, services, and best practices for React TypeScript and .NET Core fullstack applications"
 slug: /techdocs/cloud/cloud-computing
 ---
 
-import CloudArchitectureDiagram from './diagrams/cloud-architecture.svg';
-import MicroservicesDiagram from './diagrams/microservices.svg';
-import CloudDeploymentDiagram from './diagrams/cloud-deployment.svg';
-import ContainerizationDiagram from './diagrams/containerization.svg';
-import ServerlessDiagram from './diagrams/serverless.svg';
+# Introduction
 
-# Cloud Computing for React TS .NET Core Fullstack Applications
-
-## Introduction
-
-Cloud computing has revolutionized how modern web applications are built, deployed, and scaled. For fullstack applications using React TypeScript on the frontend and .NET Core on the backend, cloud platforms provide a robust infrastructure that enhances development workflows, improves scalability, and reduces operational overhead.
+Cloud computing has revolutionized how modern web applications are built, deployed, and scaled. For fullstack applications using React TypeScript and .NET Core, cloud platforms provide a robust infrastructure that enhances development workflows, improves scalability, and reduces operational overhead.
 
 This document explores the key concepts, services, and best practices for leveraging cloud computing in React TS and .NET Core fullstack applications.
 
-<div className="cloud-architecture-diagram">
-  <CloudArchitectureDiagram className="diagram-large" />
-  <p className="diagram-caption">Fig 1: High-level cloud architecture for React TS .NET Core applications</p>
-</div>
+![Fig 1: High-level cloud architecture for React TS .NET Core applications](/diagrams/cloud-architecture.svg)
 
 ## Table of Contents
 
@@ -250,10 +239,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Containerization has become a standard approach for deploying applications in the cloud, providing consistency across environments and efficient resource utilization.
 
-<div className="containerization-diagram">
-  <ContainerizationDiagram className="diagram-large" />
-  <p className="diagram-caption">Fig 2: Containerization architecture for React TS .NET Core applications</p>
-</div>
+![Fig 2: Containerization architecture for React TS .NET Core applications](/diagrams/containerization.svg)
 
 ### Docker for Application Containerization
 
@@ -320,10 +306,7 @@ volumes:
 
 Serverless computing allows developers to build and run applications without managing servers, paying only for the compute time consumed.
 
-<div className="serverless-diagram">
-  <ServerlessDiagram className="diagram-large" />
-  <p className="diagram-caption">Fig 3: Serverless architecture for React TS .NET Core applications</p>
-</div>
+![Fig 3: Serverless architecture for React TS .NET Core applications](/diagrams/serverless.svg)
 
 ### Serverless Options for .NET Core
 
@@ -359,10 +342,7 @@ public static async Task<IActionResult> Run(
 
 Continuous Integration and Continuous Deployment (CI/CD) pipelines automate the build, test, and deployment processes for cloud applications.
 
-<div className="cloud-deployment-diagram">
-  <CloudDeploymentDiagram className="diagram-large" />
-  <p className="diagram-caption">Fig 4: CI/CD pipeline for cloud deployment</p>
-</div>
+![Fig 4: CI/CD pipeline for cloud deployment](/diagrams/cloud-deployment.svg)
 
 ### CI/CD Services
 
@@ -432,10 +412,7 @@ jobs:
 
 Microservices architecture decomposes applications into small, independent services that communicate over a network, enabling teams to develop, deploy, and scale services independently.
 
-<div className="microservices-diagram">
-  <MicroservicesDiagram className="diagram-large" />
-  <p className="diagram-caption">Fig 5: Microservices architecture for React TS .NET Core applications</p>
-</div>
+![Fig 5: Microservices architecture for React TS .NET Core applications](/diagrams/microservices.svg)
 
 ### Benefits for React TS .NET Core Applications
 

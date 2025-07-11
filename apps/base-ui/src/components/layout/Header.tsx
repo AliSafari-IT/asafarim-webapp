@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 interface HeaderProps {
@@ -84,10 +84,19 @@ export const Header: React.FC<HeaderProps> = ({
                 {index > 0 && (
                   <span className={styles.breadcrumbSeparator}>›</span>
                 )}
-                <div className={styles.breadcrumbItem}>
+                <Link 
+                  to={crumb.path} 
+                  className={styles.breadcrumbItem}
+                  onClick={(e) => {
+                    // Prevent default only for the current page to avoid unnecessary navigation
+                    if (crumb.path === location.pathname) {
+                      e.preventDefault();
+                    }
+                  }}
+                >
                   <span>{crumb.icon}</span>
                   <span>{crumb.label}</span>
-                </div>
+                </Link>
               </React.Fragment>
             ))}
           </nav>

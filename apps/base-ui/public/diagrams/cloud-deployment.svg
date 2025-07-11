@@ -1,73 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="800" height="600"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>CI/CD Pipeline for Cloud Deployment</title>
+
   <!-- Background -->
   <rect width="800" height="600" fill="#f8f9fa" />
-  
+
   <!-- Title -->
-  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold">CI/CD Pipeline for Cloud Deployment</text>
-  
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold">
+    CI/CD Pipeline for Cloud Deployment
+  </text>
+
   <!-- Source Control -->
-  <rect x="50" y="100" width="150" height="80" rx="10" ry="10" fill="#ffffff" stroke="#333333" stroke-width="2" />
+  <rect x="50" y="100" width="150" height="80" rx="10" ry="10" fill="#ffffff" stroke="#333333" stroke-width="2"/>
   <text x="125" y="135" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Source Control</text>
   <text x="125" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">GitHub</text>
-  
+
   <!-- CI/CD Pipeline -->
-  <rect x="250" y="100" width="500" height="80" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <rect x="250" y="100" width="500" height="80" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
   <text x="500" y="135" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">CI/CD Pipeline</text>
   <text x="500" y="155" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">GitHub Actions / Azure DevOps</text>
-  
+
   <!-- Build Process -->
-  <rect x="50" y="230" width="700" height="120" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <rect x="50" y="230" width="700" height="120" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
   <text x="400" y="255" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Build Process</text>
-  
+
   <!-- Frontend Build -->
-  <rect x="75" y="280" width="200" height="50" rx="5" ry="5" fill="#e6f7ff" stroke="#61dafb" stroke-width="2" />
+  <rect x="75" y="280" width="200" height="50" rx="5" ry="5" fill="#e6f7ff" stroke="#61dafb" stroke-width="2"/>
   <text x="175" y="310" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Frontend Build (React TS)</text>
-  
+
   <!-- Backend Build -->
-  <rect x="300" y="280" width="200" height="50" rx="5" ry="5" fill="#e6fff7" stroke="#00a88f" stroke-width="2" />
+  <rect x="300" y="280" width="200" height="50" rx="5" ry="5" fill="#e6fff7" stroke="#00a88f" stroke-width="2"/>
   <text x="400" y="310" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Backend Build (.NET Core)</text>
-  
+
   <!-- Tests -->
-  <rect x="525" y="280" width="200" height="50" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
-  <text x="625" y="310" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Tests & Quality Gates</text>
-  
+  <rect x="525" y="280" width="200" height="50" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="2"/>
+  <text x="625" y="310" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Tests &amp; Quality Gates</text>
+
   <!-- Deployment Targets -->
-  <rect x="50" y="400" width="700" height="150" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2" />
+  <rect x="50" y="400" width="700" height="150" rx="10" ry="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
   <text x="400" y="425" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Deployment Targets</text>
-  
+
   <!-- Frontend Deployment -->
-  <rect x="75" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#61dafb" stroke-width="2" />
+  <rect x="75" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#61dafb" stroke-width="2"/>
   <text x="175" y="475" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Frontend</text>
   <text x="175" y="495" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Azure Static Web Apps</text>
   <text x="175" y="515" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">or AWS Amplify</text>
-  
+
   <!-- Backend Deployment -->
-  <rect x="300" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#00a88f" stroke-width="2" />
+  <rect x="300" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#00a88f" stroke-width="2"/>
   <text x="400" y="475" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Backend</text>
   <text x="400" y="495" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Azure App Service</text>
   <text x="400" y="515" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">or AWS Elastic Beanstalk</text>
-  
+
   <!-- Database Deployment -->
-  <rect x="525" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="2" />
+  <rect x="525" y="450" width="200" height="80" rx="5" ry="5" fill="#ffffff" stroke="#ffb900" stroke-width="2"/>
   <text x="625" y="475" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Database</text>
   <text x="625" y="495" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Azure Database for MySQL</text>
   <text x="625" y="515" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">or Amazon RDS</text>
-  
+
   <!-- Connections -->
   <!-- Source Control to CI/CD -->
-  <line x1="200" y1="140" x2="250" y2="140" stroke="#666666" stroke-width="2" />
-  <polygon points="245,135 255,140 245,145" fill="#666666" />
-  
+  <line x1="200" y1="140" x2="250" y2="140" stroke="#666666" stroke-width="2"/>
+  <polygon points="245,135 255,140 245,145" fill="#666666"/>
+
   <!-- CI/CD to Build Process -->
-  <line x1="400" y1="180" x2="400" y2="230" stroke="#666666" stroke-width="2" />
-  <polygon points="395,225 400,235 405,225" fill="#666666" />
-  
+  <line x1="500" y1="180" x2="400" y2="230" stroke="#666666" stroke-width="2"/>
+  <polygon points="410,224 400,235 400,222" fill="#666666"/>
+
   <!-- Build Process to Deployment Targets -->
-  <line x1="400" y1="350" x2="400" y2="400" stroke="#666666" stroke-width="2" />
-  <polygon points="395,395 400,405 405,395" fill="#666666" />
-  
+  <line x1="400" y1="350" x2="400" y2="400" stroke="#666666" stroke-width="2"/>
+  <polygon points="395,395 400,405 405,395" fill="#666666"/>
+
   <!-- Workflow Steps -->
   <text x="50" y="580" font-family="Arial, sans-serif" font-size="16" text-anchor="start" font-weight="bold">Workflow:</text>
-  <text x="125" y="580" font-family="Arial, sans-serif" font-size="14" text-anchor="start">1. Code Push → 2. Trigger Pipeline → 3. Build & Test → 4. Deploy to Cloud</text>
+  <text x="125" y="580" font-family="Arial, sans-serif" font-size="14" text-anchor="start">
+    1. Code Push → 2. Trigger Pipeline → 3. Build &amp; Test → 4. Deploy to Cloud
+  </text>
 </svg>

@@ -61,23 +61,7 @@
 }
 
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100vh;
-  z-index: 1000;
-  background-color: var(--sidebar-bg, #1e293b);
-  border-right: 1px solid var(--sidebar-border);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: width 0.3s ease;
-  /* Ensure sidebar is always visible */
-  transform: translateX(0) !important;
-  visibility: visible !important;
-  display: flex !important;
-  flex-direction: column !important;
-  opacity: 1 !important;
-  /* Ensure no gap to the edge of the screen */
-  right: auto;
 }
 
 /* We've removed mobile-specific classes as we're using a unified approach */

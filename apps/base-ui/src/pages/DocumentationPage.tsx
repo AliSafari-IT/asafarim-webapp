@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { MarkdownExplorer, type FileNode } from '@asafarim/markdown-explorer-viewer';
 import { createMdDocsFileTree, getFileContent } from '../utils/dynamicMdDocsUtils';
 import { useTheme } from '../context';
+import DocLink from '../components/documentation/DocLink';
 
 const DocumentationOverview: React.FC = () => {
   return (
@@ -28,8 +29,9 @@ const DocumentationOverview: React.FC = () => {
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             Track all changes, updates, and improvements to the project.
           </p>
-          <a 
-            href="/docs/changelogs" 
+          <DocLink 
+            to="/changelogs" 
+            className="" 
             style={{ 
               color: 'var(--primary)', 
               textDecoration: 'none',
@@ -37,7 +39,7 @@ const DocumentationOverview: React.FC = () => {
             }}
           >
             View Changelogs →
-          </a>
+          </DocLink>
         </div>
         
         <div style={{ 
@@ -51,8 +53,9 @@ const DocumentationOverview: React.FC = () => {
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             Detailed documentation for all reusable packages and components.
           </p>
-          <a 
-            href="/docs/my-packages" 
+          <DocLink 
+            to="/CurrentProjects/packages" 
+            className="" 
             style={{ 
               color: 'var(--primary)', 
               textDecoration: 'none',
@@ -60,7 +63,7 @@ const DocumentationOverview: React.FC = () => {
             }}
           >
             Browse Packages →
-          </a>
+          </DocLink>
         </div>
         
         <div style={{ 
@@ -74,8 +77,9 @@ const DocumentationOverview: React.FC = () => {
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
             Browse all documentation with an interactive file tree explorer.
           </p>
-          <a 
-            href="/docs/explorer" 
+          <DocLink 
+            to="/explorer" 
+            className="" 
             style={{ 
               color: 'var(--primary)', 
               textDecoration: 'none',
@@ -83,7 +87,7 @@ const DocumentationOverview: React.FC = () => {
             }}
           >
             Open Explorer →
-          </a>
+          </DocLink>
         </div>
       </div>
 
@@ -95,7 +99,7 @@ const DocumentationOverview: React.FC = () => {
       }}>
         <h2>Quick Links</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
-          <a href="/docs/changelogs/CHANGELOG.md" style={{ 
+          <DocLink to="/changelogs/CHANGELOG.md" style={{ 
             color: 'var(--primary)', 
             textDecoration: 'none',
             padding: '0.5rem',
@@ -106,8 +110,8 @@ const DocumentationOverview: React.FC = () => {
             transition: 'var(--transition)'
           }}>
             📋 Main Changelog
-          </a>
-          <a href="/docs/my-packages/project-card.md" style={{ 
+          </DocLink>
+          <DocLink to="/CurrentProjects" style={{ 
             color: 'var(--primary)', 
             textDecoration: 'none',
             padding: '0.5rem',
@@ -118,8 +122,8 @@ const DocumentationOverview: React.FC = () => {
             transition: 'var(--transition)'
           }}>
             🎴 Project Card Docs
-          </a>
-          <a href="/docs/my-packages/paginated-project-grid.md" style={{ 
+          </DocLink>
+          <DocLink to="/CurrentProjects/packages/asafarim/paginated-project-grid.md" style={{ 
             color: 'var(--primary)', 
             textDecoration: 'none',
             padding: '0.5rem',
@@ -129,9 +133,9 @@ const DocumentationOverview: React.FC = () => {
             display: 'block',
             transition: 'var(--transition)'
           }}>
-            📊 Grid Component
-          </a>
-          <a href="/docs/my-packages/display-code.md" style={{ 
+            📊 Paginated Project Grid Component
+          </DocLink>
+          <DocLink to="/TechDocs/Cloud/cloud-computing.md" style={{ 
             color: 'var(--primary)', 
             textDecoration: 'none',
             padding: '0.5rem',
@@ -141,8 +145,8 @@ const DocumentationOverview: React.FC = () => {
             display: 'block',
             transition: 'var(--transition)'
           }}>
-            💻 Display Code
-          </a>
+            💻 Cloud Computing
+          </DocLink>
         </div>
       </section>
     </div>
