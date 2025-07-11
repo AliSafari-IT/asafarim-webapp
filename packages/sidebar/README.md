@@ -362,6 +362,10 @@ The sidebar component is built with accessibility in mind:
 
 ## Changelog
 
+### Version 1.1.4
+
+- Added demo folder
+
 ### Version 1.1.3
 
 - Added support for React component icons (e.g., from react-icons library)
