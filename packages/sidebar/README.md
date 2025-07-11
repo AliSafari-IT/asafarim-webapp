@@ -26,6 +26,7 @@ pnpm add @asafarim/sidebar
 
 ## Version History
 
+- **1.1.3** - Added support for React component icons
 - **1.1.0** - Repositioned toggle button, added support for dynamic sidebar positioning
 - **1.0.1** - Initial stable release
 
@@ -106,7 +107,7 @@ function App() {
 |----------|------|----------|-------------|
 | `id` | `string` | ✅ | Unique identifier |
 | `label` | `string` | ✅ | Display text |
-| `icon` | `string` | ❌ | Icon (emoji or text) |
+| `icon` | `string \| ReactNode` | ❌ | Icon (emoji, text, or React component) |
 | `url` | `string` | ❌ | Navigation URL |
 | `onClick` | `() => void` | ❌ | Click handler |
 | `children` | `SidebarItem[]` | ❌ | Nested items |
@@ -114,6 +115,58 @@ function App() {
 | `disabled` | `boolean` | ❌ | Disabled state |
 
 ## Examples
+
+### Using React Icons
+
+```tsx
+import { Sidebar } from '@asafarim/sidebar';
+import type { SidebarItem } from '@asafarim/sidebar';
+import { FiHome, FiFolder, FiSettings, FiUsers } from 'react-icons/fi';
+
+const sidebarItemsWithReactIcons: SidebarItem[] = [
+  {
+    id: 'dashboard',
+    label: 'Dashboard',
+    icon: <FiHome aria-hidden="true" />,
+    onClick: () => console.log('Dashboard clicked')
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    icon: <FiFolder aria-hidden="true" />,
+    children: [
+      {
+        id: 'my-projects',
+        label: 'My Projects',
+        icon: <FiFolder aria-hidden="true" />
+      },
+      {
+        id: 'shared-projects',
+        label: 'Shared Projects',
+        icon: <FiUsers aria-hidden="true" />,
+        badge: 3
+      }
+    ]
+  },
+  {
+    id: 'settings',
+    label: 'Settings',
+    icon: <FiSettings aria-hidden="true" />,
+    url: '/settings'
+  }
+];
+
+function App() {
+  return (
+    <Sidebar
+      items={sidebarItemsWithReactIcons}
+      logo={<span>My App</span>}
+      theme="dark"
+      onItemClick={(item) => console.log('Clicked:', item.label)}
+    />
+  );
+}
+```
 
 ### Controlled Sidebar
 
@@ -307,7 +360,15 @@ The sidebar component is built with accessibility in mind:
 - Safari (latest)
 - Edge (latest)
 
-## Changelog for Version 1.1.0
+## Changelog
+
+### Version 1.1.3
+
+- Added support for React component icons (e.g., from react-icons library)
+- Updated type definitions to accept both string and ReactNode for icons
+- Enhanced documentation with React icons examples
+
+### Version 1.1.0
 
 - Repositioned toggle button to the top of the sidebar icon column
 - Added support for dynamic sidebar positioning (left/right)

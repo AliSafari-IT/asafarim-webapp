@@ -1,16 +1,17 @@
 {
-  "name": "@asafarim/sidebar-demo",
-  "version": "1.1.0",
+  "name": "sidebar-demo",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npx kill-port 3006 && vite",
     "build": "tsc && vite build",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@asafarim/sidebar": "file:..",
+    "@asafarim/shared": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1"

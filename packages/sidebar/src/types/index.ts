@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 export interface SidebarItem {
   id: string;
   label: string;
-  icon?: string;
+  icon?: string | ReactNode;
   url?: string;
   onClick?: () => void;
   children?: SidebarItem[];

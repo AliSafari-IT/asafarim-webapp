@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 // Use our professional DisplayCodeDemo component
-import { DisplayCode } from '@asafarim/display-code';
-import PackageLinks from './components/PackageLinks';
+import { DisplayCode } from "@asafarim/display-code";
+import { PackageLinks } from "@asafarim/shared";
 
 const codeExamples = {
   javascript: `// JavaScript Example
@@ -454,42 +454,59 @@ main() {
 }
 
 # Run main function
-main "\$@"`
+main "\$@"`,
 };
 
 function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [selectedLanguage, setSelectedLanguage] = useState('javascript');
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [selectedLanguage, setSelectedLanguage] = useState("javascript");
   const [showLineNumbers, setShowLineNumbers] = useState(true);
   const [showCopyButton, setShowCopyButton] = useState(true);
-  const [fontSize, setFontSize] = useState<'small' | 'medium' | 'large'>('medium');
+  const [fontSize, setFontSize] = useState<"small" | "medium" | "large">(
+    "medium"
+  );
   const [wrapLines, setWrapLines] = useState(false);
-  const [maxHeight, setMaxHeight] = useState('400px');
+  const [maxHeight, setMaxHeight] = useState("400px");
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+  // Toggle between light and dark theme
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+
+  // Check for saved theme preference
+  const savedTheme =
+    localStorage.getItem("theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+  document.documentElement.setAttribute("data-theme", savedTheme);
 
   const handleCopy = (code: string) => {
-    console.log('Code copied:', code.length, 'characters');
+    console.log("Code copied:", code.length, "characters");
   };
 
-  
-
   return (
-    <div className={`demo-container ${theme === 'dark' ? 'dark-theme' : ''}`}>
+    <div className={`demo-container ${theme === "dark" ? "dark-theme" : ""}`}>
       <div className="demo-header">
         <div className="logo-container">
           <img src="./logo.svg" alt="Display Code Logo" className="demo-logo" />
         </div>
         <h1>@asafarim/display-code</h1>
         <p>Beautiful syntax-highlighted code blocks for React applications</p>
-        
-        <PackageLinks />
-        
+
+        <PackageLinks
+          packageName="@asafarim/display-code"
+          githubPath="packages/display-code"
+          demoPath="packages/display-code"
+        />
+
         <div className="theme-toggle">
           <button onClick={toggleTheme}>
-            Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
+            Switch to {theme === "light" ? "Dark" : "Light"} Theme
           </button>
         </div>
       </div>
@@ -499,7 +516,9 @@ function App() {
         <div className="features-list">
           <div className="feature-item">
             <h3>🌈 Syntax Highlighting</h3>
-            <p>Support for 15+ programming languages with proper tokenization</p>
+            <p>
+              Support for 15+ programming languages with proper tokenization
+            </p>
           </div>
           <div className="feature-item">
             <h3>🌓 Theme Support</h3>
@@ -527,36 +546,40 @@ function App() {
       <div className="demo-section">
         <h2>🎮 Interactive Demo</h2>
         <p>Try different settings to see how the component behaves:</p>
-        
+
         <div className="controls">
           <div className="control-group">
             <label>Language:</label>
-            <select 
-              value={selectedLanguage} 
+            <select
+              value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
-              {Object.keys(codeExamples).map(lang => (
-                <option key={lang} value={lang}>{lang}</option>
+              {Object.keys(codeExamples).map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
               ))}
             </select>
           </div>
-          
+
           <div className="control-group">
             <label>Font Size:</label>
-            <select 
-              value={fontSize} 
-              onChange={(e) => setFontSize(e.target.value as 'small' | 'medium' | 'large')}
+            <select
+              value={fontSize}
+              onChange={(e) =>
+                setFontSize(e.target.value as "small" | "medium" | "large")
+              }
             >
               <option value="small">Small</option>
               <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select>
           </div>
-          
+
           <div className="control-group">
             <label>Max Height:</label>
-            <select 
-              value={maxHeight} 
+            <select
+              value={maxHeight}
               onChange={(e) => setMaxHeight(e.target.value)}
             >
               <option value="200px">200px</option>
@@ -565,34 +588,34 @@ function App() {
               <option value="none">No limit</option>
             </select>
           </div>
-          
+
           <div className="control-group">
             <label>
-              <input 
-                type="checkbox" 
-                checked={showLineNumbers} 
+              <input
+                type="checkbox"
+                checked={showLineNumbers}
                 onChange={(e) => setShowLineNumbers(e.target.checked)}
               />
               Line Numbers
             </label>
           </div>
-          
+
           <div className="control-group">
             <label>
-              <input 
-                type="checkbox" 
-                checked={showCopyButton} 
+              <input
+                type="checkbox"
+                checked={showCopyButton}
                 onChange={(e) => setShowCopyButton(e.target.checked)}
               />
               Copy Button
             </label>
           </div>
-          
+
           <div className="control-group">
             <label>
-              <input 
-                type="checkbox" 
-                checked={wrapLines} 
+              <input
+                type="checkbox"
+                checked={wrapLines}
                 onChange={(e) => setWrapLines(e.target.checked)}
               />
               Wrap Lines
@@ -604,20 +627,25 @@ function App() {
           code={codeExamples[selectedLanguage as keyof typeof codeExamples]}
           language={selectedLanguage as any}
           theme={theme}
-          title={`${selectedLanguage.charAt(0).toUpperCase() + selectedLanguage.slice(1)} Example`}
+          title={`${
+            selectedLanguage.charAt(0).toUpperCase() + selectedLanguage.slice(1)
+          } Example`}
           showLineNumbers={showLineNumbers}
           showCopyButton={showCopyButton}
           fontSize={fontSize}
           wrapLines={wrapLines}
-          maxHeight={maxHeight === 'none' ? undefined : maxHeight}
+          maxHeight={maxHeight === "none" ? undefined : maxHeight}
           onCopy={handleCopy}
         />
       </div>
 
       <div className="demo-section">
         <h2>🌐 Language Support</h2>
-        <p>The component supports syntax highlighting for multiple programming languages:</p>
-        
+        <p>
+          The component supports syntax highlighting for multiple programming
+          languages:
+        </p>
+
         <div className="language-showcase">
           <DisplayCode
             code={`// Basic usage example
@@ -635,7 +663,7 @@ import { DisplayCode } from '@asafarim/display-code';
             showLineNumbers={true}
             fontSize="small"
           />
-          
+
           <DisplayCode
             code={`/* CSS with custom properties */
 :root {
@@ -664,7 +692,7 @@ import { DisplayCode } from '@asafarim/display-code';
 
       <div className="demo-section">
         <h2>⚙️ Advanced Features</h2>
-        
+
         <div className="demo-grid">
           <div>
             <h3>Line Highlighting</h3>
@@ -681,7 +709,7 @@ import { DisplayCode } from '@asafarim/display-code';
               title="Highlighted Lines Demo"
             />
           </div>
-          
+
           <div>
             <h3>Custom Starting Line Number</h3>
             <DisplayCode
@@ -705,7 +733,7 @@ def process_data(data):
 
       <div className="demo-section">
         <h2>📦 Installation & Usage</h2>
-        
+
         <DisplayCode
           code={`# Install the package
 npm install @asafarim/display-code
@@ -720,7 +748,7 @@ pnpm add @asafarim/display-code`}
           title="Installation"
           showCopyButton={true}
         />
-        
+
         <DisplayCode
           code={`import { DisplayCode } from '@asafarim/display-code';
 
@@ -751,8 +779,13 @@ function greet(name) {
         />
       </div>
 
-      <div style={{ textAlign: 'center', margin: '4rem 0 2rem' }}>
-        <p style={{ fontSize: '1.1rem', color: theme === 'dark' ? '#a0aec0' : '#4a5568' }}>
+      <div style={{ textAlign: "center", margin: "4rem 0 2rem" }}>
+        <p
+          style={{
+            fontSize: "1.1rem",
+            color: theme === "dark" ? "#a0aec0" : "#4a5568",
+          }}
+        >
           Built with ❤️ by Ali Safari
         </p>
       </div>

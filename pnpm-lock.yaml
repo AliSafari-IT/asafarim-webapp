@@ -98,6 +98,46 @@ importers:
         specifier: ^4.17.21
         version: 4.17.23
 
+  libs/shared:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^25.0.0
+        version: 25.0.8(rollup@3.29.5)
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.0.2
+        version: 15.3.1(rollup@3.29.5)
+      '@rollup/plugin-typescript':
+        specifier: ^11.1.1
+        version: 11.1.6(rollup@3.29.5)(tslib@2.8.1)(typescript@5.8.3)
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.3.23
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.3.7(@types/react@18.3.23)
+      rollup:
+        specifier: ^3.21.7
+        version: 3.29.5
+      rollup-plugin-dts:
+        specifier: ^5.3.0
+        version: 5.3.1(rollup@3.29.5)(typescript@5.8.3)
+      rollup-plugin-peer-deps-external:
+        specifier: ^2.2.4
+        version: 2.2.4(rollup@3.29.5)
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.6)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.8.3
+
   packages/display-code:
     dependencies:
       react:
@@ -134,6 +174,9 @@ importers:
       '@asafarim/display-code':
         specifier: ^1.0.1
         version: 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@asafarim/shared':
+        specifier: workspace:*
+        version: link:../../../libs/shared
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -489,6 +532,9 @@ importers:
 
   packages/sidebar/demo:
     dependencies:
+      '@asafarim/shared':
+        specifier: workspace:*
+        version: link:../../../libs/shared
       '@asafarim/sidebar':
         specifier: file:..
         version: link:..
@@ -3098,12 +3144,24 @@ packages:
     resolution: {integrity: sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==}
     hasBin: true
 
+  rollup-plugin-dts@5.3.1:
+    resolution: {integrity: sha512-gusMi+Z4gY/JaEQeXnB0RUdU82h1kF0WYzCWgVmV4p3hWXqelaKuCvcJawfeg+EKn2T1Ie+YWF2OiN1/L8bTVg==}
+    engines: {node: '>=v14.21.3'}
+    peerDependencies:
+      rollup: ^3.0
+      typescript: ^4.1 || ^5.0
+
   rollup-plugin-dts@6.2.1:
     resolution: {integrity: sha512-sR3CxYUl7i2CHa0O7bA45mCrgADyAQ0tVtGSqi3yvH28M+eg1+g5d7kQ9hLvEz5dorK3XVsH5L2jwHLQf72DzA==}
     engines: {node: '>=16'}
     peerDependencies:
       rollup: ^3.29.4 || ^4
       typescript: ^4.5 || ^5.0
+
+  rollup-plugin-peer-deps-external@2.2.4:
+    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
+    peerDependencies:
+      rollup: '*'
 
   rollup-plugin-postcss@4.0.2:
     resolution: {integrity: sha512-05EaY6zvZdmvPUDi3uCcAQoESDcYnv8ogJJQRp6V5kZ6J6P7uAVJlrTZcaaA20wTH527YTnKfkAoPxWI/jPp4w==}
@@ -6402,6 +6460,14 @@ snapshots:
     dependencies:
       glob: 10.4.5
 
+  rollup-plugin-dts@5.3.1(rollup@3.29.5)(typescript@5.8.3):
+    dependencies:
+      magic-string: 0.30.17
+      rollup: 3.29.5
+      typescript: 5.8.3
+    optionalDependencies:
+      '@babel/code-frame': 7.27.1
+
   rollup-plugin-dts@6.2.1(rollup@3.29.5)(typescript@5.8.3):
     dependencies:
       magic-string: 0.30.17
@@ -6409,6 +6475,10 @@ snapshots:
       typescript: 5.8.3
     optionalDependencies:
       '@babel/code-frame': 7.27.1
+
+  rollup-plugin-peer-deps-external@2.2.4(rollup@3.29.5):
+    dependencies:
+      rollup: 3.29.5
 
   rollup-plugin-postcss@4.0.2(postcss@8.5.6):
     dependencies:
