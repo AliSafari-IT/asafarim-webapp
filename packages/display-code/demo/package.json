@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "Demo for the @asafarim/display-code component",
   "scripts": {
-    "dev": "vite",
+    "dev": "npx kill-port 3002 && vite",
     "build": "vite build",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview"
@@ -12,7 +13,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@asafarim/display-code": "file:.."
+    "@asafarim/display-code": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
@@ -20,5 +21,15 @@
     "@vitejs/plugin-react": "^4.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "homepage": "https://alisafari-it.github.io/asafarim-webapp/packages/display-code/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp",
+    "directory": "packages/display-code"
+  },
+  "links": {
+    "npm": "https://www.npmjs.com/package/@asafarim/display-code",
+    "github": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/display-code"
   }
 }

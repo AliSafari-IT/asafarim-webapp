@@ -21,7 +21,7 @@ export default defineConfig({
     port: 3002,
     open: true
   },
-  base: './',
+  base: process.env.NODE_ENV === 'production' ? '/asafarim-webapp/packages/display-code/' : './',
   build: {
     assetsInlineLimit: 0, // Ensure all assets are processed as files
     commonjsOptions: {
