@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // Use our professional DisplayCodeDemo component
 import { DisplayCode } from '@asafarim/display-code';
+import PackageLinks from './components/PackageLinks';
 
 const codeExamples = {
   javascript: `// JavaScript Example
@@ -483,6 +484,8 @@ function App() {
         </div>
         <h1>@asafarim/display-code</h1>
         <p>Beautiful syntax-highlighted code blocks for React applications</p>
+        
+        <PackageLinks />
         
         <div className="theme-toggle">
           <button onClick={toggleTheme}>
