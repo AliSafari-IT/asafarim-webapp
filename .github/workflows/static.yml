@@ -5,6 +5,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+    paths:
+      - "packages/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,32 +24,158 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Build and deploy job
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build display-code package
+        run: cd packages/display-code && pnpm build
+
+      - name: Build display-code demo
+        run: cd packages/display-code/demo && pnpm build
+
+      - name: Build sidebar package
+        run: cd packages/sidebar && pnpm build
+
+      - name: Build sidebar demo
+        run: cd packages/sidebar/demo && pnpm build
+
+      # Create the deployment directory
+      - name: Prepare deployment directory
+        run: |
+          # Get repository name for proper base path
+          REPO_NAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+          echo "Repository name: $REPO_NAME"
+          
+          # Create directory structure
+          mkdir -p deploy/packages/display-code
+          cp -r packages/display-code/demo/dist/* deploy/packages/display-code/
+          
+          # Fix asset paths in HTML files to include repository name
+          find deploy/packages/display-code -name "*.html" -exec sed -i "s|href=\"/assets/|href=\"/$REPO_NAME/packages/display-code/assets/|g" {} \;
+          find deploy/packages/display-code -name "*.html" -exec sed -i "s|src=\"/assets/|src=\"/$REPO_NAME/packages/display-code/assets/|g" {} \;
+          
+          mkdir -p deploy/packages/sidebar
+          cp -r packages/sidebar/demo/dist/* deploy/packages/sidebar/
+          
+          # Fix asset paths in HTML files to include repository name
+          find deploy/packages/sidebar -name "*.html" -exec sed -i "s|href=\"/assets/|href=\"/$REPO_NAME/packages/sidebar/assets/|g" {} \;
+          find deploy/packages/sidebar -name "*.html" -exec sed -i "s|src=\"/assets/|src=\"/$REPO_NAME/packages/sidebar/assets/|g" {} \;
+          
+          # Create a root index.html for redirection
+          cat > deploy/index.html << EOL
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0;url=/$REPO_NAME/packages/sidebar/">
+            <title>Redirecting to ASafariM Sidebar Demo</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="/$REPO_NAME/packages/sidebar/">ASafariM Sidebar Demo</a>...</p>
+          </body>
+          </html>
+          EOL
+          
+          # Create a packages index page
+          mkdir -p deploy/packages
+          cat > deploy/packages/index.html << EOL
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <title>ASafariM Packages</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+              h1 { color: #333; }
+              ul { list-style-type: none; padding: 0; }
+              li { margin: 10px 0; }
+              a { color: #0366d6; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+            </style>
+          </head>
+          <body>
+            <h1>ASafariM Packages</h1>
+            <ul>
+              <li><a href="/$REPO_NAME/packages/display-code/">DisplayCode Component Demo</a></li>
+              <li><a href="/$REPO_NAME/packages/sidebar/">Sidebar Component Demo</a></li>
+            </ul>
+          </body>
+          </html>
+          EOL
+          
+          # Verify final structure
+          echo "Final deployment structure:"
+          find ./deploy -type f | sort
+
+      # Deploy directly to gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: deploy
+          branch: gh-pages
+
   # Single deploy job since we're just deploying
-  deploy:
+  deploy-display-code:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment-display-code.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+      - name: Upload artifact display-code
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload deploy folder (contains the built files) to GitHub Pages in packages/display-code/demo/deploy folder
           path: 'packages/display-code/demo/deploy'
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages display-code
         id: deployment-display-code
         uses: actions/deploy-pages@v4
 
-      - name: Upload artifact
+  # Single deploy job since we're just deploying
+  deploy-sidebar:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment-sidebar.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact sidebar
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload deploy folder (contains the built files) to GitHub Pages in packages/sidebar/demo/deploy folder
           path: 'packages/sidebar/demo/deploy'
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages sidebar
         id: deployment-sidebar
         uses: actions/deploy-pages@v4
       
