@@ -36,8 +36,18 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload deploy folder
-          path: 'deploy'
+          # Upload deploy folder (contains the built files) to GitHub Pages in packages/display-code/demo/deploy folder
+          path: 'packages/display-code/demo/deploy'
       - name: Deploy to GitHub Pages
-        id: deployment
+        id: deployment-display-code
         uses: actions/deploy-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload deploy folder (contains the built files) to GitHub Pages in packages/sidebar/demo/deploy folder
+          path: 'packages/sidebar/demo/deploy'
+      - name: Deploy to GitHub Pages
+        id: deployment-sidebar
+        uses: actions/deploy-pages@v4
+      
