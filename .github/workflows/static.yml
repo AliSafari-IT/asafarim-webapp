@@ -13,7 +13,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -24,7 +24,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build and deploy job
+  # Single build and deploy job
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
@@ -92,11 +92,11 @@ jobs:
           <html>
           <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0;url=/$REPO_NAME/packages/sidebar/">
-            <title>Redirecting to ASafariM Sidebar Demo</title>
+            <meta http-equiv="refresh" content="0;url=/$REPO_NAME/packages/">
+            <title>Redirecting to ASafariM Packages</title>
           </head>
           <body>
-            <p>Redirecting to <a href="/$REPO_NAME/packages/sidebar/">ASafariM Sidebar Demo</a>...</p>
+            <p>Redirecting to <a href="/$REPO_NAME/packages/">ASafariM Packages</a>...</p>
           </body>
           </html>
           EOL
@@ -138,44 +138,3 @@ jobs:
         with:
           folder: deploy
           branch: gh-pages
-
-  # Single deploy job since we're just deploying
-  deploy-display-code:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment-display-code.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact display-code
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload deploy folder (contains the built files) to GitHub Pages in packages/display-code/demo/deploy folder
-          path: 'packages/display-code/demo/deploy'
-      - name: Deploy to GitHub Pages display-code
-        id: deployment-display-code
-        uses: actions/deploy-pages@v4
-
-  # Single deploy job since we're just deploying
-  deploy-sidebar:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment-sidebar.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact sidebar
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload deploy folder (contains the built files) to GitHub Pages in packages/sidebar/demo/deploy folder
-          path: 'packages/sidebar/demo/deploy'
-      - name: Deploy to GitHub Pages sidebar
-        id: deployment-sidebar
-        uses: actions/deploy-pages@v4
-      
