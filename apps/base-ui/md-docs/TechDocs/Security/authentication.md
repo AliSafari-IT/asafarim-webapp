@@ -1,3 +1,10 @@
+---
+title: "Authentication"
+description: "Date: 2024-07-31"
+date: "2025-07-11"
+tags: ["documentation", "authentication"]
+---
+
 # Authentication
 
 Date: 2024-07-31

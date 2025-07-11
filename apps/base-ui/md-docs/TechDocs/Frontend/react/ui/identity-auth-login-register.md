@@ -1,7 +1,9 @@
-# Using Microsoft Identity for Register and Login in React TypeScript with ASP.NET Core
-
-Date: 2024-09-11
-Updated: 2024-12-15 20:04:00
+---
+title: "Identity Auth Login Register"
+description: "Date: 2024-09-11"
+date: "2025-07-11"
+tags: ["documentation", "identity", "auth", "login", "register", "react", "typescript", "api", "guide", "configuration"]
+---
 
 ## Overview
 

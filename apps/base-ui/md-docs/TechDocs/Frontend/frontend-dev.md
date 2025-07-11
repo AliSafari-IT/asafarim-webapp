@@ -1,3 +1,10 @@
+---
+title: "Frontend Dev"
+description: "Date: 2024-12-31"
+date: "2025-07-11"
+tags: ["documentation", "frontend", "dev", "react", "javascript"]
+---
+
 # Frontend Development
 
 Date: 2024-12-31

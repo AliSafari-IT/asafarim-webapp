@@ -1,3 +1,10 @@
+---
+title: "Privacy Policy"
+description: "_Last Updated: **2025-02-14**_"
+date: "2025-07-11"
+tags: ["documentation", "privacy", "policy", "reference"]
+---
+
 # Privacy Policy
 
 _Last Updated: **2025-02-14**_

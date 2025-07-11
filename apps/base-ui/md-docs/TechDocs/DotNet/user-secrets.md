@@ -1,3 +1,10 @@
+---
+title: "User Secrets"
+description: "Date: 2024-09-11"
+date: "2025-07-11"
+tags: ["documentation", "user", "secrets", "api", "configuration"]
+---
+
 # User Secrets
 
 Date: 2024-09-11 

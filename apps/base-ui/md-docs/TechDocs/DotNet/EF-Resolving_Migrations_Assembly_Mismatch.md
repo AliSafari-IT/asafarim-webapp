@@ -1,3 +1,10 @@
+---
+title: "EF Resolving Migrations Assembly Mismatch"
+description: "Date: 2023-08-31"
+date: "2025-07-11"
+tags: ["documentation", "Resolving", "Migrations", "Assembly", "Mismatch", "reference", "example", "configuration"]
+---
+
 # Resolving Migrations Assembly Mismatch in .NET Core with EF
 
 Date: 2023-08-31

@@ -1,3 +1,10 @@
+---
+title: "Project Task Manager App Features List"
+description: "Date: 22 Nov 2024"
+date: "2025-07-11"
+tags: ["documentation", "project", "task", "manager", "app", "Features", "List", "reference"]
+---
+
 # Features List of ASafariM.Project/Task Manager App
 
 Date: 22 Nov 2024

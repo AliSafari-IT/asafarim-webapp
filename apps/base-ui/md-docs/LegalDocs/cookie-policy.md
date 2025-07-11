@@ -1,3 +1,10 @@
+---
+title: "Cookie Policy"
+description: "A cookie is a small text file that a website stores on your computer or mobile device when you visit the site."
+date: "2025-07-11"
+tags: ["documentation", "cookie", "policy", "reference"]
+---
+
 # Cookies policy
 
 ## What are cookies?

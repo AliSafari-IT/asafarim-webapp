@@ -1,3 +1,10 @@
+---
+title: "Implementing Data Driven Ui"
+description: "Date: 2024-12-31"
+date: "2025-07-11"
+tags: ["documentation", "implementing", "data", "driven", "react", "api", "component"]
+---
+
 # Implementing Data-Driven UI
 
 Date: 2024-12-31

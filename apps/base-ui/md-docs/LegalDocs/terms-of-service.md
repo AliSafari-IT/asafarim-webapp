@@ -1,3 +1,10 @@
+---
+title: "Terms Of Service"
+description: "_Last Updated: **2025-02-14**_"
+date: "2025-07-11"
+tags: ["documentation", "terms", "service", "tutorial"]
+---
+
 # Terms of Service
 
 _Last Updated: **2025-02-14**_

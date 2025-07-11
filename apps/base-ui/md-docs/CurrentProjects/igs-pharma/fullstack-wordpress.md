@@ -1,9 +1,16 @@
-# IGS-Pharma WordPress Fullstack Project
+---
+title: "Fullstack WordPress Project"
+description: "Description of WordPress project"
+date: "2025-07-11"
+tags: ["wordpress", "php", "fullstack"]
+---
 
 ## Project Overview
+
 [IGS-Pharma](https://igs-pharma.com/) is a comprehensive fullstack WordPress application developed for a pharmaceutical company. The site serves as both an informational platform and a business operations tool with custom functionality beyond standard WordPress capabilities.
 
 ## Technical Stack
+
 - **Frontend**: WordPress theme with custom CSS, JavaScript, and responsive design
 - **Backend**: WordPress core, PHP 8.0+
 - **Database**: MySQL
@@ -15,6 +22,7 @@
   - Advanced security implementations
 
 ## Key Features
+
 - **Responsive Design**: Fully optimized for all devices and screen sizes
 - **Custom Content Types**: Product catalog with pharmaceutical specifications
 - **User Authentication**: Secure login system for different user roles (doctors, pharmacists, administrators)
@@ -24,6 +32,7 @@
 - **Compliance Features**: GDPR compliance, accessibility standards, and pharmaceutical regulations
 
 ## Development Challenges
+
 - Implementing secure handling of sensitive medical information
 - Creating custom database schemas for pharmaceutical product relationships
 - Optimizing performance while maintaining complex functionality
@@ -31,19 +40,23 @@
 - Developing a custom approval workflow for prescription products
 
 ## Results & Metrics
+
 - 40% increase in online inquiries after launch
 - 25% improvement in page load speed compared to previous site
 - Successful integration with inventory management system
 - Streamlined product updating process saving 10+ hours per week
 
 ## Future Enhancements
+
 - Integration with electronic prescription systems
 - Advanced analytics dashboard for product performance
 - Customer relationship management features
 - Mobile application with synchronized data
 
 ## Technical Implementation Details
+
 The project required extensive customization of WordPress core functionality through:
+
 - Custom plugin development
 - Theme modifications with child themes
 - Database optimization for pharmaceutical catalog
@@ -51,6 +64,7 @@ The project required extensive customization of WordPress core functionality thr
 - Advanced caching mechanisms for performance
 
 ## Project Timeline
+
 - **Discovery & Planning**: 2 weeks
 - **Design & Prototyping**: 3 weeks
 - **Development**: 8 weeks

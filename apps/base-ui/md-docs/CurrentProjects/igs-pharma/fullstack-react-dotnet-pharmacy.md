@@ -1,11 +1,18 @@
-# IGS Pharma - Fullstack React & .NET Pharmacy System
+---
+title: "IGS Pharma - Fullstack React & .NET Pharmacy System"
+description: "Comprehensive pharmacy management system with React frontend and .NET Core backend"
+date: "2025-07-11"
+tags: ["react", "dotnet", "pharmacy", "fullstack"]
+---
 
 ## Project Overview
+
 IGS Pharma is a comprehensive pharmacy management system with a modern React frontend and a .NET Core backend. The application follows clean architecture principles and provides a user-friendly interface for browsing and purchasing pharmaceutical products.
 
 ## Architecture
 
 ### Frontend
+
 - **React 18+** with functional components and hooks
 - **TypeScript** for type safety and better developer experience
 - **Redux Toolkit** for state management
@@ -14,6 +21,7 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 - **Vite** for optimized build process
 
 ### Backend
+
 - **.NET 7** Web API with clean architecture principles
 - **Entity Framework Core** for ORM and database operations
 - **ASP.NET Core Identity** for authentication and authorization
@@ -22,6 +30,7 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 - **FluentValidation** for request validation
 
 ### Database
+
 - **SQL Server** for relational data storage
 - **Azure Blob Storage** for document and image storage
 - **Redis** for caching frequently accessed data
@@ -29,24 +38,28 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 ## Core Features
 
 ### Inventory Management
+
 - Comprehensive product catalog with detailed pharmaceutical information
 - Automated stock level monitoring and replenishment
 - Barcode scanning integration for quick stock updates
 - Batch tracking with expiration date management
 
 ### Prescription Processing
+
 - Digital prescription workflow from receipt to fulfillment
 - Drug interaction checking and dosage verification
 - Insurance coverage verification
 - Automated pricing calculations
 
 ### Customer Portal
+
 - Patient medication history and refill requests
 - Secure messaging with pharmacy staff
 - Appointment scheduling for consultations
 - Prescription status tracking
 
 ### Administrative Dashboard
+
 - Real-time sales and inventory analytics
 - Staff performance monitoring
 - Financial reporting and forecasting
@@ -54,13 +67,15 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 
 ## Technical Highlights
 
-### API Design
+### API Design  
+
 - RESTful API following best practices
 - Comprehensive Swagger documentation
 - Rate limiting and request throttling
 - Versioned endpoints for backward compatibility
 
 ### Security Implementation
+
 - JWT authentication with refresh tokens
 - Role-based access control (RBAC)
 - Data encryption for sensitive information
@@ -68,18 +83,21 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 - Comprehensive audit logging
 
 ### Performance Optimization
+
 - Lazy loading of components and routes
 - Server-side pagination for large datasets
 - Efficient caching strategies
 - Optimized database queries with proper indexing
 
 ### DevOps Pipeline
+
 - CI/CD with GitHub Actions
 - Containerization with Docker
 - Infrastructure as Code using Terraform
 - Automated testing with Jest and xUnit
 
 ## Future Roadmap
+
 - Integration with e-prescription systems
 - Machine learning for demand forecasting
 - Mobile application for customers and staff
@@ -87,4 +105,5 @@ IGS Pharma is a comprehensive pharmacy management system with a modern React fro
 - Integration with medical devices for patient monitoring
 
 ## Repository
+
 [GitHub: AliSafari-IT/IGS](https://github.com/AliSafari-IT/IGS)

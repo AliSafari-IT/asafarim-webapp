@@ -7,6 +7,7 @@ import type { SidebarItemType } from "@asafarim/sidebar";
  */
 export const normalizeDocPath = (path: string): string => {
   if (!path) return '/docs';
+  if (path.startsWith('/projects')) return path;
   return path.startsWith('/docs') ? path : `/docs/${path.replace(/^\//, '')}`;
 };
 

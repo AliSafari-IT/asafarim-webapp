@@ -1,3 +1,10 @@
+---
+title: "CHANGELOG"
+description: "All notable changes to the `base-ui` app will be documented in this file."
+date: "2025-07-11"
+tags: ["documentation", "CHANGELOG", "react", "typescript", "configuration"]
+---
+
 # Changelog
 
 All notable changes to the `base-ui` app will be documented in this file.

@@ -1,3 +1,10 @@
+---
+title: "Intro To Tensorflow"
+description: "Date: 2023-09-31"
+date: "2025-07-11"
+tags: ["documentation", "intro", "tensorflow", "api"]
+---
+
 # Introduction to TensorFlow
 
 Date: 2023-09-31

@@ -1,3 +1,10 @@
+---
+title: "Getting Started"
+description: "Date Created: 2023-08-31"
+date: "2025-07-11"
+tags: ["documentation", "getting", "started", "configuration"]
+---
+
 # Entity Framework Core Getting Started
 
 Date Created: 2023-08-31

@@ -1,3 +1,10 @@
+---
+title: "Ci Cd Pipelines"
+description: "Date: 2024-11-30"
+date: "2025-07-11"
+tags: ["documentation", "pipelines"]
+---
+
 # CI/CD Pipelines
 
 Date: 2024-11-30

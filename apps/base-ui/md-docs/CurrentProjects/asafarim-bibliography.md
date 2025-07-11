@@ -1,3 +1,10 @@
+---
+title: "Asafarim Bibliography"
+description: "ASafariM Bibliography is a comprehensive web application designed for academic reference management and citation generation. The platform offers resea"
+date: "2025-07-11"
+tags: ["documentation", "asafarim", "bibliography", "react", "typescript", "api", "component", "reference"]
+---
+
 # ASafariM Bibliography: Academic Reference Management Platform
 
 ## Project Overview

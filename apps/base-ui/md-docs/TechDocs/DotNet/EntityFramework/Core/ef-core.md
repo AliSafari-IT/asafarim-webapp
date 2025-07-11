@@ -1,3 +1,10 @@
+---
+title: "Ef Core"
+description: "Date Created: 2023-09-31"
+date: "2025-07-11"
+tags: ["documentation", "core", "configuration"]
+---
+
 # Entity Framework Core 
 
 Date Created: 2023-09-31

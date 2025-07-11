@@ -1,3 +1,10 @@
+---
+title: "Implementing Data Driven Ui With React And D3js"
+description: "Date: 2024-12-31"
+date: "2025-07-11"
+tags: ["documentation", "implementing", "data", "driven", "with", "react", "and", "d3js", "typescript", "component"]
+---
+
 # Use React typescript and D3.js to create a Data-Driven UI
 
 Date: 2024-12-31

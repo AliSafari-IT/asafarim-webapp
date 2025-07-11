@@ -1,3 +1,10 @@
+---
+title: "20241215 Creating Treeview Sidebar"
+description: "Date: 2024-12-15"
+date: "2025-07-11"
+tags: ["documentation", "20241215", "creating", "treeview", "sidebar", "react", "typescript", "component", "guide", "configuration"]
+---
+
 # Creating a TreeView Sidebar from Markdown Files
 
 Date: 2024-12-15 

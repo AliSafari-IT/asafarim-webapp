@@ -1,3 +1,10 @@
+---
+title: "D3js React Ui"
+description: "Date: 2024-12-31"
+date: "2025-07-11"
+tags: ["documentation", "d3js", "react", "typescript", "component", "example"]
+---
+
 # Use React typescript and D3.js to create a Data-Driven UI
 
 Date: 2024-12-31

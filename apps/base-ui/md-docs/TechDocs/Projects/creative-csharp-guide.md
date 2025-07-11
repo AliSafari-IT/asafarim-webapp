@@ -1,3 +1,10 @@
+---
+title: "Creative Csharp Guide"
+description: "Date Created: 2022-07-30Z16:00:00"
+date: "2025-07-11"
+tags: ["documentation", "creative", "csharp", "guide", "api", "tutorial"]
+---
+
 # Learning C# with ASP.NET Core - A Creative Guide
 
 Date Created: 2022-07-30Z16:00:00

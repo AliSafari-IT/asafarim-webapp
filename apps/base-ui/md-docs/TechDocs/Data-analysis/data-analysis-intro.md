@@ -1,3 +1,10 @@
+---
+title: "Data Analysis Intro"
+description: "Date: 2024-12-31"
+date: "2025-07-11"
+tags: ["documentation", "data", "analysis", "intro"]
+---
+
 # Data Analysis
 
 Date: 2024-12-31

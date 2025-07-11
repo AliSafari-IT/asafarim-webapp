@@ -1,3 +1,10 @@
+---
+title: "AI Commit Generator"
+description: "Date: 2025-03-10"
+date: "2025-07-11"
+tags: ["documentation", "Commit", "Generator", "api", "component", "guide", "reference", "example", "configuration"]
+---
+
 # AI Commit Generator
 
 Date: 2025-03-10

@@ -1,3 +1,10 @@
+---
+title: "Package Overview"
+description: "Date: 2024-11-21"
+date: "2025-07-11"
+tags: ["documentation", "package", "overview", "example"]
+---
+
 # Pandas Package Overview
 
 Date: 2024-11-21

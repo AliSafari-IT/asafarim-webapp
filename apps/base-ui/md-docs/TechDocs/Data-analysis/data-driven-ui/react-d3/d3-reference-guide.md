@@ -1,3 +1,10 @@
+---
+title: "D3 Reference Guide"
+description: "Date: 2025-01-05"
+date: "2025-07-11"
+tags: ["documentation", "reference", "guide"]
+---
+
 # D3 Cheat Sheet
 
 Date: 2025-01-05

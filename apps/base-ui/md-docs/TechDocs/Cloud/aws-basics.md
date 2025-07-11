@@ -1,3 +1,10 @@
+---
+title: "Aws Basics"
+description: "Date: 2025-01-03"
+date: "2025-07-11"
+tags: ["documentation", "aws", "basics"]
+---
+
 # AWS Basics
 
 Date: 2025-01-03

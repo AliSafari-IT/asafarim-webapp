@@ -571,3 +571,6 @@ pids
 
 # packages
 !packages/*
+!apps/base-ui/*
+!apps/base-ui/md-docs/*
+

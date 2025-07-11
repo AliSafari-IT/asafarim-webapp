@@ -1,3 +1,10 @@
+---
+title: "Legal Disclaimer"
+description: "_Last Updated: **2025-02-14**_"
+date: "2025-07-11"
+tags: ["documentation", "legal", "disclaimer", "tutorial", "example"]
+---
+
 # Disclaimer
 
 _Last Updated: **2025-02-14**_
