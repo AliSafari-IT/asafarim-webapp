@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { createSampleFileTree } from './sampleData';
 import { MarkdownExplorer } from '../../src/components/MarkdownExplorer';
 import { CustomFolderRenderer } from './CustomFolderRenderer';
 import { handleDirectNavigation, findNodeByPath } from './utils/urlHandler';
@@ -11,7 +10,28 @@ import './folder-content.css';
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [initialRoute, setInitialRoute] = useState<string>('/');
-  const fileTree = createSampleFileTree();
+  const [fileTree, setFileTree] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Simulate fetching file tree from an API or static source
+    const fetchFileTree = async () => {
+      try {
+        // Replace with actual API call or static data
+        const response = await fetch('/api/file-tree'); // Example endpoint
+        const data = await response.json();
+        setFileTree(data);
+      } catch (err) {
+        console.error('Failed to fetch file tree:', err);
+        setError('Failed to load file tree');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFileTree();
+  }, []);
 
   // Handle direct navigation to markdown files
   useEffect(() => {

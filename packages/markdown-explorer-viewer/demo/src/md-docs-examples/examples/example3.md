@@ -1,1 +1,0 @@
-# Example 3\n\nThis is example 3 for scrolling test.
