@@ -48,6 +48,11 @@ export interface MarkdownExplorerProps {
   markdownComponents?: Record<string, React.ComponentType<any>>;
   /** Custom content fetcher for files that don't have content pre-loaded */
   contentFetcher?: (filePath: string) => Promise<string>;
+  /** Custom renderer for folder content */
+  renderFolderContent?: (props: { 
+    currentNode: FileNode; 
+    onNodeClick: (node: FileNode) => void;
+  }) => ReactNode;
 }
 
 export interface FileTreeProps {

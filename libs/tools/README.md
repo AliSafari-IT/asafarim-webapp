@@ -21,7 +21,7 @@ A collection of tools for working with markdown files in the ASafariM webapp, wi
 
 ```bash
 # Navigate to the tools directory
-cd D:\repos\asafarim-webapp\libs\tools
+cd ./libs/tools
 
 # Install dependencies
 pnpm install
@@ -53,13 +53,13 @@ The tool provides a powerful command line interface with various options:
 
 ```bash
 # Basic usage with a single file
-npx ts-node add-frontmatter.ts D:\repos\asafarim-webapp\apps\base-ui\md-docs\example.md
+npx ts-node add-frontmatter.ts ./docs/example.md
 
 # Process a directory (recursive by default)
-npx ts-node add-frontmatter.ts D:\repos\asafarim-webapp\apps\base-ui\md-docs\CurrentProjects
+npx ts-node add-frontmatter.ts ./docs/CurrentProjects
 
 # Non-recursive directory processing
-npx ts-node add-frontmatter.ts D:\repos\asafarim-webapp\apps\base-ui\md-docs --no-recursive
+npx ts-node add-frontmatter.ts ./docs/CurrentProjects --no-recursive
 
 # Specify a custom title
 npx ts-node add-frontmatter.ts path/to/file.md --title "Custom Document Title"
@@ -95,6 +95,7 @@ npx ts-node add-frontmatter.ts
 ```
 
 This will prompt you for:
+
 - File or directory path
 - Title (optional)
 - Description (optional)
@@ -104,7 +105,8 @@ This will prompt you for:
 - Whether to process directories recursively
 
 Example interactive session:
-```
+
+```bash
 === Add Front Matter - Interactive Mode ===
 
 Enter file or directory path: D:\repos\asafarim-webapp\apps\base-ui\md-docs\CurrentProjects\igs-pharma
@@ -136,11 +138,13 @@ npx ts-node add-frontmatter.ts --web
 ```
 
 This will:
+
 1. Start a local web server (default port: 3030)
 2. Open your default browser to the interface
 3. Allow you to configure and process files through a graphical interface
 
 The web interface features:
+
 - File/directory path input with browse button
 - Options for recursive processing
 - Front matter customization (title, description, date, tags)

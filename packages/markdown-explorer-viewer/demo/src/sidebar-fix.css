@@ -1,0 +1,35 @@
+/* Direct sidebar scrolling fix */
+.sidebar {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.sidebarContent {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+/* Target FileTree directly */
+.fileTree {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 180px) !important;
+}
+
+/* Make sure the search container stays at the top */
+.searchContainer {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: inherit !important;
+}
+
+/* Ensure the main container has proper height */
+.markdownExplorer {
+  height: 100% !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+}

@@ -1,0 +1,42 @@
+/* Force sidebar scrolling with high specificity selectors */
+.app .demo-explorer [class*="sidebar"] {
+  height: 100% !important;
+  max-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.app .demo-explorer [class*="sidebarContent"] {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  height: calc(100% - 60px) !important; /* Subtract header height */
+  min-height: 0 !important;
+}
+
+/* Target FileTree directly with high specificity */
+.app .demo-explorer [class*="fileTree"] {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 180px) !important;
+  height: auto !important;
+}
+
+/* Ensure the markdownExplorer has proper height */
+.app .demo-explorer {
+  height: 100% !important;
+  min-height: calc(100vh - 120px) !important; /* Subtract header/footer height */
+  overflow: hidden !important;
+}
+
+/* Debug borders to visualize layout issues */
+.app .demo-explorer [class*="sidebar"] {
+  border: 2px solid red !important;
+}
+
+.app .demo-explorer [class*="sidebarContent"] {
+  border: 2px solid blue !important;
+}
+
+.app .demo-explorer [class*="fileTree"] {
+  border: 2px solid green !important;
+}

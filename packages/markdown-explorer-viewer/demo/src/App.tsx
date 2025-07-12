@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { MarkdownExplorer } from '../../src/components/MarkdownExplorer';
 import { createSampleFileTree } from './sampleData';
+import { MarkdownExplorer } from '../../src/components/MarkdownExplorer';
 import './App.css';
+import './sidebar-scroll.css';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');

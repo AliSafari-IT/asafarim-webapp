@@ -1,6 +1,6 @@
 {
   "name": "@asafarim/markdown-explorer-viewer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A reusable React component for exploring and viewing markdown files with file tree navigation",
   "type": "module",
   "main": "dist/index.js",
@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "demo",
     "README.md"
   ],
   "scripts": {
@@ -53,5 +54,12 @@
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.3.3",
     "rimraf": "^5.0.5"
+  },
+  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/markdown-explorer-viewer",
+  "bugs": {
+    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

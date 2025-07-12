@@ -104,13 +104,14 @@ export const FileTree: React.FC<FileTreeProps> = ({
   return (
     <div className={`${styles.fileTree} ${className}`}>
       {enableSearch && (
-        <div className={styles.searchContainer}>
+        <div className={styles.searchContainer} style={{ position: 'sticky', top: 0, zIndex: 10, backgroundColor: 'inherit' }}>
           <input
             type="text"
             className={styles.searchInput}
             placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label="Search files"
           />
         </div>
       )}

@@ -1,0 +1,61 @@
+/* Sidebar scrolling fix */
+
+/* Make sure the main container has proper dimensions */
+.app-main {
+  height: calc(100vh - 120px) !important; /* Subtract header/footer height */
+  overflow: hidden !important;
+}
+
+/* Style the sidebar to be scrollable */
+.demo-explorer [class*="sidebar"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* Create a scrollable container for the sidebar content */
+.demo-explorer [class*="sidebarContent"] {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  height: calc(100% - 60px) !important; /* Subtract header height */
+}
+
+/* Ensure FileTree is scrollable */
+.demo-explorer [class*="fileTree"] {
+  overflow-y: auto !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Make search container sticky */
+.demo-explorer [class*="searchContainer"] {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: inherit !important;
+}
+
+/* Make sure the main content area is scrollable */
+.demo-explorer [class*="mainContent"] {
+  overflow: auto !important;
+}
+
+/* Custom scrollbar for WebKit browsers */
+.demo-explorer [class*="sidebarContent"]::-webkit-scrollbar {
+  width: 6px;
+}
+
+.demo-explorer [class*="sidebarContent"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.demo-explorer [class*="sidebarContent"]::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.demo-explorer [class*="sidebarContent"]::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}

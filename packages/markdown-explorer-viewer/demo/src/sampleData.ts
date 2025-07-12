@@ -1,7 +1,7 @@
 import { parseFileTree } from '../../src/utils/fileUtils';
 
 // Sample markdown files for the demo
-export const sampleFiles = {
+export const sampleFiles: Record<string, string> = {
   '/README.md': `# Markdown Explorer Viewer Demo
 
 Welcome to the **Markdown Explorer Viewer** demo! This interactive demonstration showcases the powerful features of our markdown viewing and navigation component.
@@ -1569,6 +1569,19 @@ If you encounter any issues or have questions:
 
 Thank you for using Markdown Explorer Viewer! 🚀`
 };
+
+// Add many more sample files to test scrolling
+for (let i = 1; i <= 20; i++) {
+  sampleFiles[`/docs/item${i}.md`] = `# Item ${i}\n\nThis is test item ${i} for scrolling test.`;
+}
+
+// Add another folder with many files
+sampleFiles['/examples/basic.md'] = `# Basic Example\n\nThis is a basic example.`;
+sampleFiles['/examples/advanced.md'] = `# Advanced Example\n\nThis is an advanced example.`;
+
+for (let i = 1; i <= 15; i++) {
+  sampleFiles[`/examples/example${i}.md`] = `# Example ${i}\n\nThis is example ${i} for scrolling test.`;
+}
 
 export const createSampleFileTree = () => {
   return parseFileTree(sampleFiles);
