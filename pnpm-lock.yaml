@@ -140,7 +140,7 @@ importers:
         version: 2.2.4(rollup@3.29.5)
       rollup-plugin-postcss:
         specifier: ^4.0.2
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
@@ -190,7 +190,7 @@ importers:
         version: 3.29.5
       rollup-plugin-postcss:
         specifier: ^4.0.2
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       rollup-plugin-terser:
         specifier: ^7.0.2
         version: 7.0.2(rollup@3.29.5)
@@ -224,13 +224,13 @@ importers:
         version: 18.3.7(@types/react@18.3.23)
       '@vitejs/plugin-react':
         specifier: ^4.0.3
-        version: 4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
       vite:
         specifier: ^4.4.5
-        version: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+        version: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
 
   packages/markdown-explorer-viewer:
     dependencies:
@@ -285,7 +285,7 @@ importers:
         version: 4.44.2
       rollup-plugin-postcss:
         specifier: ^4.0.2
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       typescript:
         specifier: ^5.3.3
         version: 5.8.3
@@ -305,6 +305,9 @@ importers:
         specifier: ^6.8.0
         version: 6.30.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@types/node':
+        specifier: ^24.0.13
+        version: 24.0.13
       '@types/react':
         specifier: ^18.2.0
         version: 18.3.23
@@ -313,13 +316,16 @@ importers:
         version: 18.3.7(@types/react@18.3.23)
       '@vitejs/plugin-react':
         specifier: ^4.0.3
-        version: 4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))
+      esbuild-register:
+        specifier: ^3.6.0
+        version: 3.6.0(esbuild@0.25.6)
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
       vite:
         specifier: ^4.4.5
-        version: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+        version: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
 
   packages/md-file-explorer:
     dependencies:
@@ -387,13 +393,13 @@ importers:
         version: 18.3.7(@types/react@18.3.23)
       '@vitejs/plugin-react':
         specifier: ^4.2.1
-        version: 4.6.0(vite@5.4.19(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@5.4.19(@types/node@24.0.13)(terser@5.43.1))
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
       vite:
         specifier: ^5.0.8
-        version: 5.4.19(@types/node@20.19.5)(terser@5.43.1)
+        version: 5.4.19(@types/node@24.0.13)(terser@5.43.1)
 
   packages/paginated-project-grid:
     dependencies:
@@ -418,7 +424,7 @@ importers:
         version: 3.29.5
       rollup-plugin-postcss:
         specifier: ^4.0.2
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       rollup-plugin-terser:
         specifier: ^7.0.2
         version: 7.0.2(rollup@3.29.5)
@@ -458,13 +464,13 @@ importers:
         version: 6.21.0(eslint@9.30.1)(typescript@5.8.3)
       '@vitejs/plugin-react':
         specifier: ^4.0.3
-        version: 4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
       vite:
         specifier: ^4.4.5
-        version: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+        version: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
 
   packages/project-card:
     dependencies:
@@ -486,7 +492,7 @@ importers:
         version: 3.29.5
       rollup-plugin-postcss:
         specifier: ^4.0.2
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       rollup-plugin-terser:
         specifier: ^7.0.2
         version: 7.0.2(rollup@3.29.5)
@@ -520,13 +526,13 @@ importers:
         version: 18.3.7(@types/react@18.3.23)
       '@vitejs/plugin-react':
         specifier: ^4.0.3
-        version: 4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
       vite:
         specifier: ^4.4.5
-        version: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+        version: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
 
   packages/sidebar:
     dependencies:
@@ -557,7 +563,7 @@ importers:
         version: 4.44.2
       rollup-plugin-postcss:
         specifier: ^4.0.0
-        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+        version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       typescript:
         specifier: ^5.0.0
         version: 5.8.3
@@ -588,13 +594,13 @@ importers:
         version: 18.3.7(@types/react@18.3.23)
       '@vitejs/plugin-react':
         specifier: ^4.0.3
-        version: 4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))
+        version: 4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
       vite:
         specifier: ^4.4.5
-        version: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+        version: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
 
 packages:
 
@@ -1456,6 +1462,9 @@ packages:
   '@types/node@20.19.5':
     resolution: {integrity: sha512-M4CtoNkoQrYOD7O80KM7DjGdzwMvoXZ12SGUbxc0X1AK6gfBKjkJswW/B4MyTPMIuU0sodukEgj8CzIJKEAQXQ==}
 
+  '@types/node@24.0.13':
+    resolution: {integrity: sha512-Qm9OYVOFHFYg3wJoTSrz80hoec5Lia/dPp84do3X7dZvLikQvM1YpmvTBEdIr/e+U8HTkFjLHLnl78K/qjf+jQ==}
+
   '@types/prop-types@15.7.15':
     resolution: {integrity: sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==}
 
@@ -2021,6 +2030,11 @@ packages:
   es-object-atoms@1.1.1:
     resolution: {integrity: sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==}
     engines: {node: '>= 0.4'}
+
+  esbuild-register@3.6.0:
+    resolution: {integrity: sha512-H2/S7Pm8a9CL1uhp9OvjwrBh5Pvx0H8qVOxNu8Wed9Y7qv56MPtq+GGM8RJpq6glYJn9Wspr8uw7l55uyinNeg==}
+    peerDependencies:
+      esbuild: '>=0.12 <1'
 
   esbuild@0.18.20:
     resolution: {integrity: sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==}
@@ -3692,6 +3706,9 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
@@ -4598,6 +4615,10 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/node@24.0.13':
+    dependencies:
+      undici-types: 7.8.0
+
   '@types/prop-types@15.7.15': {}
 
   '@types/qs@6.14.0': {}
@@ -4827,7 +4848,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-react@4.6.0(vite@4.5.14(@types/node@20.19.5)(terser@5.43.1))':
+  '@vitejs/plugin-react@4.6.0(vite@4.5.14(@types/node@24.0.13)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.0)
@@ -4835,11 +4856,11 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.19
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 4.5.14(@types/node@20.19.5)(terser@5.43.1)
+      vite: 4.5.14(@types/node@24.0.13)(terser@5.43.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-react@4.6.0(vite@5.4.19(@types/node@20.19.5)(terser@5.43.1))':
+  '@vitejs/plugin-react@4.6.0(vite@5.4.19(@types/node@24.0.13)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.0)
@@ -4847,7 +4868,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.19
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 5.4.19(@types/node@20.19.5)(terser@5.43.1)
+      vite: 5.4.19(@types/node@24.0.13)(terser@5.43.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -5256,6 +5277,13 @@ snapshots:
   es-object-atoms@1.1.1:
     dependencies:
       es-errors: 1.3.0
+
+  esbuild-register@3.6.0(esbuild@0.25.6):
+    dependencies:
+      debug: 4.4.1
+      esbuild: 0.25.6
+    transitivePeerDependencies:
+      - supports-color
 
   esbuild@0.18.20:
     optionalDependencies:
@@ -6542,13 +6570,13 @@ snapshots:
     dependencies:
       postcss: 8.5.6
 
-  postcss-load-config@3.1.4(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3)):
+  postcss-load-config@3.1.4(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 1.10.2
     optionalDependencies:
       postcss: 8.5.6
-      ts-node: 10.9.2(@types/node@20.19.5)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@24.0.13)(typescript@5.8.3)
 
   postcss-merge-longhand@5.1.7(postcss@8.5.6):
     dependencies:
@@ -6899,7 +6927,7 @@ snapshots:
     dependencies:
       rollup: 3.29.5
 
-  rollup-plugin-postcss@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3)):
+  rollup-plugin-postcss@4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3)):
     dependencies:
       chalk: 4.1.2
       concat-with-sourcemaps: 1.1.0
@@ -6908,7 +6936,7 @@ snapshots:
       p-queue: 6.6.2
       pify: 5.0.0
       postcss: 8.5.6
-      postcss-load-config: 3.1.4(postcss@8.5.6)(ts-node@10.9.2(@types/node@20.19.5)(typescript@5.8.3))
+      postcss-load-config: 3.1.4(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
       postcss-modules: 4.3.1(postcss@8.5.6)
       promise.series: 0.2.0
       resolve: 1.22.10
@@ -7218,6 +7246,25 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
+  ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3):
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.11
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 24.0.13
+      acorn: 8.15.0
+      acorn-walk: 8.3.4
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 5.8.3
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    optional: true
+
   tslib@2.8.1: {}
 
   turbo-darwin-64@2.5.4:
@@ -7269,6 +7316,8 @@ snapshots:
   typescript@5.8.3: {}
 
   undici-types@6.21.0: {}
+
+  undici-types@7.8.0: {}
 
   unified@11.0.5:
     dependencies:
@@ -7342,23 +7391,23 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@4.5.14(@types/node@20.19.5)(terser@5.43.1):
+  vite@4.5.14(@types/node@24.0.13)(terser@5.43.1):
     dependencies:
       esbuild: 0.18.20
       postcss: 8.5.6
       rollup: 3.29.5
     optionalDependencies:
-      '@types/node': 20.19.5
+      '@types/node': 24.0.13
       fsevents: 2.3.3
       terser: 5.43.1
 
-  vite@5.4.19(@types/node@20.19.5)(terser@5.43.1):
+  vite@5.4.19(@types/node@24.0.13)(terser@5.43.1):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.5.6
       rollup: 4.44.2
     optionalDependencies:
-      '@types/node': 20.19.5
+      '@types/node': 24.0.13
       fsevents: 2.3.3
       terser: 5.43.1
 

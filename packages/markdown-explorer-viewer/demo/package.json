@@ -1,14 +1,16 @@
 {
   "name": "markdown-explorer-viewer-demo",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "predev": "npx kill-port 3003",
     "build": "tsc && vite build",
     "all": "pnpm i && pnpm run build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export-data": "node exportSampleData.js",
+    "create-md-files": "node createMarkdownFiles.js"
   },
   "dependencies": {
     "@asafarim/markdown-explorer-viewer": "file:../",
@@ -17,9 +19,11 @@
     "react-router-dom": "^6.8.0"
   },
   "devDependencies": {
+    "@types/node": "^24.0.13",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "esbuild-register": "^3.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

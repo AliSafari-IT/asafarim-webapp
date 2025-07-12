@@ -47,6 +47,15 @@
   font-weight: 600;
   color: var(--me-text-primary);
 }
+
+/* App controls */
+.app-controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.source-toggle,
 .theme-toggle {
   background: none;
   border: 2px solid var(--me-border);
