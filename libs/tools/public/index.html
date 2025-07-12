@@ -3,158 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Front Matter</title>
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script src="/app.js"></script>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1 {
-      color: #2c3e50;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 10px;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    input[type="checkbox"] {
-      margin-right: 5px;
-    }
-    button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-    .results {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background-color: #f9f9f9;
-    }
-    .error {
-      color: #e74c3c;
-    }
-    .success {
-      color: #27ae60;
-    }
-    .file-list {
-      max-height: 300px;
-      overflow-y: auto;
-      border: 1px solid #eee;
-      padding: 10px;
-      margin-top: 10px;
-    }
-    .file-item {
-      padding: 5px;
-      border-bottom: 1px solid #eee;
-    }
-    .file-item:last-child {
-      border-bottom: none;
-    }
-    .added {
-      color: #27ae60;
-    }
-    .skipped {
-      color: #f39c12;
-    }
-    .error {
-      color: #e74c3c;
-    }
-  </style>
+  <title>Markdown Converter Tool</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Add Front Matter to Markdown Files</h1>
-  
-  <form id="processForm">
-    <div class="form-group">
-      <label for="path">File or Directory Path:</label>
-      <input type="text" id="path" placeholder="Enter path to file or directory">
-      <button type="button" id="browse">Browse...</button>
-    </div>
+  <div class="container">
+    <header>
+      <h1>Markdown Converter Tool</h1>
+      <p>Extract markdown files from TypeScript sample data</p>
+    </header>
     
-    <div class="form-group">
-      <label for="recursive">
-        <input type="checkbox" id="recursive" checked>
-        Process directories recursively
-      </label>
-    </div>
+    <main>
+      <div class="form-container">
+        <form id="converterForm">
+          <div class="form-group">
+            <label for="inputPath">Input TypeScript File:</label>
+            <div class="input-with-button">
+              <input type="text" id="inputPath" name="inputPath" placeholder="Path to TypeScript file" required>
+              <button type="button" id="browseFiles" class="secondary-button">Browse</button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="outputPath">Output Directory:</label>
+            <input type="text" id="outputPath" name="outputPath" placeholder="Path to output directory" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="variableName">Variable Name:</label>
+            <input type="text" id="variableName" name="variableName" placeholder="Variable containing sample data" value="sampleFiles">
+          </div>
+          
+          <div class="form-group">
+            <label for="prefix">Path Prefix to Remove:</label>
+            <input type="text" id="prefix" name="prefix" placeholder="Optional prefix to remove from file paths">
+          </div>
+          
+          <div class="form-group checkbox">
+            <input type="checkbox" id="createDirs" name="createDirs" checked>
+            <label for="createDirs">Create Directories for Nested Paths</label>
+          </div>
+          
+          <div class="button-group">
+            <button type="submit" class="primary-button">Convert Files</button>
+            <button type="reset" class="secondary-button">Reset</button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="file-list-container hidden" id="fileListContainer">
+        <h3>Available TypeScript Files</h3>
+        <div class="file-list" id="fileList"></div>
+      </div>
+      
+      <div class="results-container hidden" id="resultsContainer">
+        <h3>Results</h3>
+        <div id="results"></div>
+      </div>
+    </main>
     
-    <div class="form-group">
-      <label for="title">Title (leave empty for auto-generation):</label>
-      <input type="text" id="title" placeholder="Front matter title">
-    </div>
-    
-    <div class="form-group">
-      <label for="description">Description (leave empty for auto-generation):</label>
-      <textarea id="description" rows="2" placeholder="Front matter description"></textarea>
-    </div>
-    
-    <div class="form-group">
-      <label for="date">Date (leave empty for today's date):</label>
-      <input type="text" id="date" placeholder="YYYY-MM-DD">
-    </div>
-    
-    <div class="form-group">
-      <label for="tags">Tags (comma-separated, leave empty for auto-generation):</label>
-      <input type="text" id="tags" placeholder="tag1, tag2, tag3">
-    </div>
-    
-    <div class="form-group">
-      <label>
-        <input type="checkbox" id="includeDate" checked>
-        Include date in front matter
-      </label>
-    </div>
-    
-    <div class="form-group">
-      <label>
-        <input type="checkbox" id="includeTags" checked>
-        Include tags in front matter
-      </label>
-    </div>
-    
-    <div class="form-group">
-      <label>
-        <input type="checkbox" id="includeDescription" checked>
-        Include description in front matter
-      </label>
-    </div>
-    
-    <button type="submit">Process Files</button>
-  </form>
-  
-  <div id="results" class="results" style="display: none;">
-    <h2>Results</h2>
-    <div id="summary"></div>
-    <div id="fileList" class="file-list"></div>
+    <footer>
+      <p>&copy; 2025 Ali Safari - ASafariM Tools</p>
+    </footer>
   </div>
   
-  <!-- JavaScript is loaded from external file -->
+  <script src="script.js"></script>
 </body>
 </html>

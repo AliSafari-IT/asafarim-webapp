@@ -53,6 +53,8 @@ export interface MarkdownExplorerProps {
     currentNode: FileNode; 
     onNodeClick: (node: FileNode) => void;
   }) => ReactNode;
+  /** Disable auto-selection of first file in folder */
+  disableAutoSelect?: boolean;
 }
 
 export interface FileTreeProps {

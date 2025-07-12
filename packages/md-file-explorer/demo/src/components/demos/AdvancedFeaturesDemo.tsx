@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserMdFileExplorer, FileNode, MdFileExplorerOptions } from '../../browserMock'
+import { MdFileExplorer, FileNode, ExplorerOptions } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
-import styles from './AdvancedFeaturesDemo.module.css'
-import LoadingSpinner from '../ui/LoadingSpinner'
 import FileTree from '../ui/FileTree'
+import LoadingSpinner from '../ui/LoadingSpinner'
+import styles from './AdvancedFeaturesDemo.module.css'
 
 const AdvancedFeaturesDemo: React.FC = () => {
   const [fileTree, setFileTree] = useState<FileNode[]>([])
@@ -24,16 +24,16 @@ const AdvancedFeaturesDemo: React.FC = () => {
     setLoading(true)
     
     try {
-      const options: Partial<MdFileExplorerOptions> = {
+      const options: Partial<ExplorerOptions> = {
         includeExtensions: filters.includeExtensions,
         excludePatterns: filters.excludePatterns,
         sortBy: filters.sortBy,
-        sortDirection: filters.sortOrder,
-        parseMarkdownMetadata: filters.showMetadata,
-        maxDepth: filters.maxDepth
+        sortOrder: filters.sortOrder,
+        maxDepth: filters.maxDepth,
+        parseMarkdownMetadata: filters.showMetadata
       }
       
-      const explorer = new BrowserMdFileExplorer('/docs', options)
+      const explorer = new MdFileExplorer('../../test-docs', options)
       const result = await explorer.scanDirectory()
       setFileTree(result.nodes)
       filterTree(result.nodes, filters.searchTerm)
@@ -56,7 +56,7 @@ const AdvancedFeaturesDemo: React.FC = () => {
         const matchesMetadata = node.metadata && (
           (node.metadata.title && node.metadata.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
           (node.metadata.description && node.metadata.description.toLowerCase().includes(searchTerm.toLowerCase())) ||
-          (node.metadata.tags && node.metadata.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase())))
+          (node.metadata.tags && node.metadata.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())))
         )
         
         if (node.type === 'folder' && node.children) {
@@ -85,14 +85,6 @@ const AdvancedFeaturesDemo: React.FC = () => {
     }
   }
 
-  const handleTagClick = (tag: string) => {
-    // Filter files by tag
-    setFilters(prev => ({
-      ...prev,
-      searchTerm: `tag:${tag}`
-    }))
-  }
-
   useEffect(() => {
     loadAdvancedTree()
   }, [filters.includeExtensions, filters.excludePatterns, filters.sortBy, filters.sortOrder, filters.maxDepth, filters.showMetadata])
@@ -108,7 +100,7 @@ const options = {
   includeExtensions: ['.md', '.txt', '.json'],
   excludePatterns: ['node_modules', '.git', 'dist'],
   sortBy: 'name', // 'name', 'date', or 'size'
-  sortDirection: 'asc', // 'asc' or 'desc'
+  sortOrder: 'asc', // 'asc' or 'desc'
   maxDepth: 3,
   parseMarkdownMetadata: true
 }
@@ -292,14 +284,8 @@ const hasTitleMatch = (node) =>
                     <div className={styles.metadataItem}>
                       <strong>Tags:</strong>
                       <div className={styles.tags}>
-                        {selectedFile.metadata.tags.map((tag: string, index: number) => (
-                          <span 
-                            key={index} 
-                            className={styles.tag}
-                            onClick={() => handleTagClick(tag)}
-                          >
-                            {tag}
-                          </span>
+                        {selectedFile.metadata.tags.map((tag, index) => (
+                          <span key={index} className={styles.tag}>{tag}</span>
                         ))}
                       </div>
                     </div>

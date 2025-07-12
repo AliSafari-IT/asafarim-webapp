@@ -46,7 +46,8 @@ export const MarkdownExplorer: React.FC<MarkdownExplorerProps> = ({
   showBreadcrumbs = true,
   markdownComponents,
   contentFetcher,
-  renderFolderContent
+  renderFolderContent,
+  disableAutoSelect = false
 }) => {
   const [navigationState, setNavigationState] = useState<NavigationState>({
     currentPath: initialRoute || rootPath,
@@ -82,12 +83,13 @@ export const MarkdownExplorer: React.FC<MarkdownExplorerProps> = ({
     };
   }, [fileTree, rootPath]);
 
-  // Auto-select logic: always show a file if possible
+  // Auto-select logic: always show a file if possible (unless disabled)
   useEffect(() => {
     let node = findNodeByPath(resolvedFileTree, navigationState.currentPath);
 
-    // If folder: find best child to open
+    // If folder: find best child to open (only if auto-select is not disabled)
     if (
+      !disableAutoSelect &&
       node &&
       node.type === 'folder' &&
       node.children &&

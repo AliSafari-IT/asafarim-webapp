@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserMdFileExplorer, FileNode, ScanResult } from '../../browserMock'
+import { MdFileExplorer, FileNode, ScanResult } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
 import FileTree from '../ui/FileTree'
 import LoadingSpinner from '../ui/LoadingSpinner'
@@ -24,11 +24,12 @@ const BasicExplorerDemo: React.FC = () => {
     setError(null)
     
     try {
-      // Use the browser-compatible mock explorer instead of the actual MdFileExplorer
-      const explorer = new BrowserMdFileExplorer(path)
-      
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 800))
+      const explorer = new MdFileExplorer(path, {
+        includeExtensions: ['.md', '.txt', '.json'],
+        maxDepth: 3,
+        sortBy: 'name',
+        parseMarkdownMetadata: true
+      })
       
       const result = await explorer.scanDirectory()
       setScanResult(result)

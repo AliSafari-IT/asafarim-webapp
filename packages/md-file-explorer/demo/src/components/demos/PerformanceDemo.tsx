@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserMdFileExplorer } from '../../browserMock'
+import { MdFileExplorer } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import styles from './PerformanceDemo.module.css'
@@ -46,7 +46,7 @@ const PerformanceDemo: React.FC = () => {
       const basicResult = await runBenchmark(
         'Basic Directory Scan',
         async () => {
-          const explorer = new BrowserMdFileExplorer('../../test-docs')
+          const explorer = new MdFileExplorer('../../test-docs')
           return await explorer.scanDirectory()
         },
         10 // Estimated files
@@ -59,7 +59,10 @@ const PerformanceDemo: React.FC = () => {
       const metadataResult = await runBenchmark(
         'Scan with Metadata Parsing',
         async () => {
-          const explorer = new BrowserMdFileExplorer('/docs')
+          const explorer = new MdFileExplorer('../../test-docs', {
+            parseMarkdownMetadata: true,
+            includeExtensions: ['.md']
+          })
           return await explorer.scanDirectory()
         },
         5 // Estimated markdown files
@@ -72,7 +75,7 @@ const PerformanceDemo: React.FC = () => {
       const lazyResult = await runBenchmark(
         'Lazy Loading (Depth 1)',
         async () => {
-          const explorer = new BrowserMdFileExplorer('/docs')
+          const explorer = new MdFileExplorer('../../test-docs', { maxDepth: 1 })
           return await explorer.getFileTree()
         },
         3 // Estimated top-level items
@@ -85,7 +88,7 @@ const PerformanceDemo: React.FC = () => {
       const deepResult = await runBenchmark(
         'Deep Scan (Max Depth)',
         async () => {
-          const explorer = new BrowserMdFileExplorer('/docs')
+          const explorer = new MdFileExplorer('../../test-docs', { maxDepth: 10 })
           return await explorer.scanDirectory()
         },
         15 // Estimated total files
@@ -98,7 +101,11 @@ const PerformanceDemo: React.FC = () => {
       const filteredResult = await runBenchmark(
         'Filtered Scan',
         async () => {
-          const explorer = new BrowserMdFileExplorer('/docs')
+          const explorer = new MdFileExplorer('../../test-docs', {
+            includeExtensions: ['.md'],
+            excludePatterns: ['temp', 'cache'],
+            sortBy: 'name'
+          })
           return await explorer.scanDirectory()
         },
         5 // Estimated filtered files
@@ -111,13 +118,13 @@ const PerformanceDemo: React.FC = () => {
       const contentResult = await runBenchmark(
         'File Content Reading (5 files)',
         async () => {
-          const explorer = new BrowserMdFileExplorer('/docs')
+          const explorer = new MdFileExplorer('../../test-docs')
           const scanResult = await explorer.scanDirectory()
           const files = scanResult.nodes
-            .filter((node: any) => node.type === 'file')
+            .filter(node => node.type === 'file')
             .slice(0, 5)
           
-          const promises = files.map((file: any) => 
+          const promises = files.map(file => 
             explorer.getFileContent(file.path).catch(() => null)
           )
           return await Promise.all(promises)
