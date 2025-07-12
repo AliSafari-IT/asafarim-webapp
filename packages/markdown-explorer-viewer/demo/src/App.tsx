@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { createSampleFileTree } from './sampleData';
 import { MarkdownExplorer } from '../../src/components/MarkdownExplorer';
+import { CustomFolderRenderer } from './CustomFolderRenderer';
 import './App.css';
 import './sidebar-scroll.css';
+import './folder-content.css';
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -32,6 +34,14 @@ function App() {
           enableSearch={true}
           showBreadcrumbs={true}
           className="demo-explorer"
+          disableAutoSelect={true}
+          renderFolderContent={({currentNode, onNodeClick}) => (
+            <CustomFolderRenderer 
+              currentNode={currentNode} 
+              onNodeClick={onNodeClick} 
+              theme={theme}
+            />
+          )}
         />
       </main>
       
