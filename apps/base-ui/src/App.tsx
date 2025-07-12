@@ -6,8 +6,6 @@ import { AppRouter } from './router/AppRouter';
 import { useTheme } from './context';
 import { createDocumentationSidebarItems } from './utils/apiMdDocsUtils';
 import type { SidebarItemType } from '@asafarim/sidebar';
-import sidebarItems from '@/data/sidebarItems';
-import { updateDocumentationPaths } from './utils/docNavigationUtils';
 
 const App: React.FC = () => {
   const { effectiveTheme, toggleTheme } = useTheme();
@@ -49,15 +47,98 @@ const App: React.FC = () => {
 
     loadDocumentationItems();
   }, []);
-
-  // Update the documentation children
-const docItem = sidebarItems.find((item: { id: string; }) => item.id === 'documentation');
-if (docItem && docItem.children) {
-  docItem.children = documentationItems;
-}
-
-// Ensure all documentation paths are properly prefixed with /docs
-const normalizedSidebarItems = updateDocumentationPaths([...sidebarItems]);
+  
+  const sidebarItems: SidebarItemType[] = [
+    {
+      id: 'home',
+      label: 'Home',
+      icon: '🏠',
+      url: '/',
+    },
+    {
+      id: 'projects',
+      label: 'Projects',
+      icon: '📋',
+      url: '/projects',
+      children: [
+        {
+          id: 'portfolio',
+          label: 'Portfolio',
+          url: '/projects/portfolio',
+        },
+        {
+          id: 'web-apps',
+          label: 'Web Apps',
+          url: '/projects/web-apps',
+        },
+        {
+          id: 'mobile-apps',
+          label: 'Mobile Apps',
+          url: '/projects/mobile-apps',
+        }
+      ]
+    },
+    {
+      id: 'components',
+      label: 'UI Components',
+      icon: '🧩',
+      url: '/components',
+      children: [
+        {
+          id: 'project-cards',
+          label: 'Project Cards',
+          url: '/components/project-cards',
+        },
+        {
+          id: 'paginated-grid',
+          label: 'Paginated Grid',
+          url: '/components/paginated-grid',
+        },
+        {
+          id: 'sidebar',
+          label: 'Sidebar',
+          url: '/components/sidebar',
+        }
+      ]
+    },
+    {
+      id: 'documentation',
+      label: 'Documentation',
+      icon: '📚',
+      url: '/docs',
+      children: documentationItems
+    },
+    {
+      id: 'about',
+      label: 'About',
+      icon: '👤',
+      url: '/about',
+    },
+    {
+      id: 'contact',
+      label: 'Contact',
+      icon: '📧',
+      url: '/contact',
+    },
+    {
+      id: 'settings',
+      label: 'Settings',
+      icon: '⚙️',
+      url: '/settings',
+      children: [
+        {
+          id: 'theme',
+          label: 'Theme Settings',
+          url: '/settings/theme',
+        },
+        {
+          id: 'preferences',
+          label: 'Preferences',
+          url: '/settings/preferences',
+        }
+      ]
+    }
+  ];
 
   // Theme toggle is handled by the context's toggleTheme
 
@@ -67,7 +148,7 @@ const normalizedSidebarItems = updateDocumentationPaths([...sidebarItems]);
       brandImageAlt="ASafariM Logo"
       title="ASafariM"
       theme={effectiveTheme}
-      sidebarItems={normalizedSidebarItems}
+      sidebarItems={sidebarItems}
       showSidebar={isMobileView || !isDocumentationExplorer}
       onThemeToggle={toggleTheme}
     >

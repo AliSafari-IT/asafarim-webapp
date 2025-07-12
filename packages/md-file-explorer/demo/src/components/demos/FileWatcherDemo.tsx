@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { BrowserMdFileExplorer } from '../../browserMock'
+import { MdFileExplorer } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import styles from './FileWatcherDemo.module.css'
@@ -22,14 +22,17 @@ const FileWatcherDemo: React.FC = () => {
     foldersRemoved: 0
   })
   
-  const explorerRef = useRef<BrowserMdFileExplorer | null>(null)
+  const explorerRef = useRef<MdFileExplorer>()
 
   const startWatching = () => {
     if (!explorerRef.current) {
-      explorerRef.current = new BrowserMdFileExplorer('../../test-docs')
+      explorerRef.current = new MdFileExplorer('../../test-docs', {
+        includeExtensions: ['.md', '.txt', '.json'],
+        parseMarkdownMetadata: true
+      })
     }
 
-    explorerRef.current.watchDirectory((event: 'add' | 'change' | 'unlink' | 'addDir' | 'unlinkDir', path: string) => {
+    explorerRef.current.watchDirectory((event, path) => {
       const fileEvent: FileEvent = {
         event,
         path,
@@ -238,17 +241,26 @@ explorer.stopWatching()`
                     {event.timestamp.toLocaleTimeString()}
                   </span>
                 </div>
-                <div className={styles.eventPath}>
-                  {event.path}
-                </div>
+                <div className={styles.eventPath}>{event.path}</div>
               </div>
             ))}
           </div>
         </div>
 
         <div className={styles.section}>
-          <h2>Code Example</h2>
+          <h2>Implementation</h2>
           <CodeExample code={codeExample} language="typescript" />
+          
+          <div className={styles.instructions}>
+            <h3>Try It Out</h3>
+            <ul>
+              <li>Start the file watcher</li>
+              <li>Create a new file in the test-docs folder</li>
+              <li>Edit an existing markdown file</li>
+              <li>Delete a file or folder</li>
+              <li>Watch the events appear in real-time!</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

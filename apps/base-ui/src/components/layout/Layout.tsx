@@ -72,13 +72,11 @@ export const Layout: React.FC<LayoutProps> = ({
   };
 
   const handleSidebarItemClick = (item: SidebarItemType) => {
-    setIsSidebarCollapsed(false);
     if (item.url) {
       navigate(item.url);
     }
     if (item.onClick) {
       item.onClick();
-      setIsSidebarCollapsed(false);
     }
   };
 

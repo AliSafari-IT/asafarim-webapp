@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserMdFileExplorer, FileNode } from '../../browserMock'
+import { MdFileExplorer, FileNode } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
+import FileTree from '../ui/FileTree'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import styles from './LazyLoadingDemo.module.css'
 
@@ -16,8 +17,11 @@ const LazyLoadingDemo: React.FC = () => {
     totalRequests: 0
   })
 
-  // Use the browser-compatible mock explorer instead of the actual MdFileExplorer
-  const explorer = new BrowserMdFileExplorer('../../test-docs')
+  const explorer = new MdFileExplorer('../../test-docs', {
+    includeExtensions: ['.md', '.txt', '.json'],
+    maxDepth: 1, // Only load first level initially
+    sortBy: 'name'
+  })
 
   const loadInitialTree = async () => {
     setLoading(true)
@@ -213,7 +217,7 @@ const LazyFileTree: React.FC<LazyFileTreeProps> = ({ nodes, onExpandFolder }) =>
         
         {isFolder && isExpanded && hasChildren && (
           <div className={styles.children}>
-            {node.children && node.children.map((child: FileNode) => renderNode(child, level + 1))}
+            {node.children!.map(child => renderNode(child, level + 1))}
           </div>
         )}
       </div>
