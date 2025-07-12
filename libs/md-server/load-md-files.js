@@ -9,6 +9,15 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3011;
 
+// Enable CORS for all routes
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3003', 'http://localhost:5173', 'http://localhost:4173'],
+  credentials: true
+}));
+
+// Add JSON middleware
+app.use(express.json());
+
 // Proper way to get __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -96,20 +105,63 @@ app.get('/api/md-content/*', async (req, res) => {
 });
 // usage example: /api/md-content/docs/api/overview.md
 
-// Endpoint to get the folder structure
+// Endpoint to get the folder structure as a hierarchical tree
 app.get('/api/folder-structure', async (req, res) => {
   try {
-    const files = await fs.readdir(MD_DIR);
-    const folderStructure = files.map(file => {
-      return {
-        name: file,
-        isDirectory: fsSync.statSync(path.join(MD_DIR, file)).isDirectory()
-      };
+    const buildFileTree = async (dirPath, basePath = '') => {
+      const files = await fs.readdir(dirPath);
+      const children = [];
+      
+      for (const file of files) {
+        const filePath = path.join(dirPath, file);
+        const stat = await fs.stat(filePath);
+        const relativePath = path.join(basePath, file).replace(/\\/g, '/');
+        const fullPath = relativePath.startsWith('/') ? relativePath : '/' + relativePath;
+        
+        if (stat.isDirectory()) {
+          const subChildren = await buildFileTree(filePath, relativePath);
+          children.push({
+            name: file,
+            path: fullPath,
+            type: 'folder',
+            children: subChildren,
+            lastModified: stat.mtime.toISOString(),
+            size: stat.size
+          });
+        } else if (file.endsWith('.md') || file.endsWith('.mdx')) {
+          children.push({
+            name: file,
+            path: fullPath,
+            type: 'file',
+            lastModified: stat.mtime.toISOString(),
+            size: stat.size
+          });
+        }
+      }
+      
+      return children;
+    };
+    
+    const rootChildren = await buildFileTree(MD_DIR);
+    
+    const fileTree = {
+      name: 'root',
+      path: '/',
+      type: 'folder',
+      children: rootChildren
+    };
+    
+    // Set cache control headers to prevent caching issues
+    res.set({
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0'
     });
-    res.json(folderStructure);
+    
+    res.json(fileTree);
   } catch (error) {
-    console.error('Error reading directory:', error);
-    res.status(500).json({ error: 'Failed to read directory' });
+    console.error('Error building folder structure:', error);
+    res.status(500).json({ error: 'Failed to build folder structure' });
   }
 });
 
@@ -134,3 +186,9 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
+// Add markdown processing dependency (you'll need to install this)
+// npm install marked highlight.js
+
+// import { marked } from 'marked';
+// import hljs from 'highlight.js';
