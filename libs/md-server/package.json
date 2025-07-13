@@ -1,6 +1,6 @@
 {
   "name": "md-file-folder-server",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple server for serving markdown files within a folder and nested subfolders from a given specified directory",
   "type": "module",
   "main": "index.js",
