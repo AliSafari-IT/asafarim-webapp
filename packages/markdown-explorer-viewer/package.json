@@ -1,6 +1,6 @@
 {
   "name": "@asafarim/markdown-explorer-viewer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A reusable React component for exploring and viewing markdown files with file tree navigation",
   "type": "module",
   "main": "dist/index.js",
@@ -9,6 +9,7 @@
   "files": [
     "dist",
     "demo",
+    "markdown-explorer-viewer-demo",
     "README.md"
   ],
   "scripts": {

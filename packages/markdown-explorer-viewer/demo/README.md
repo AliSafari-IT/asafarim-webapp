@@ -384,7 +384,7 @@ pnpm test
 ## 📚 Documentation
 
 - **Component API:** See the main package README
-- **Server API:** Check `../../libs/md-server/README.md`
+- **Server API:** Check [`../../../libs/md-server/README.md`](../../../libs/md-server/README)
 - **Styling Guide:** Explore the demo's CSS files
 - **Examples:** Browse the sample markdown files
 
