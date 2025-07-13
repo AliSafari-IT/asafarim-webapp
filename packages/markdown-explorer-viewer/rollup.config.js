@@ -3,6 +3,7 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 
 export default defineConfig({
   input: 'src/index.ts',
@@ -29,6 +30,12 @@ export default defineConfig({
       modules: true,
       extract: false,
       inject: true
+    }),
+    copy({
+      targets: [
+        { src: 'markdown-explorer-viewer-demo.png', dest: 'dist' },
+        { src: 'README.md', dest: 'dist' }
+      ]
     })
   ]
 });
