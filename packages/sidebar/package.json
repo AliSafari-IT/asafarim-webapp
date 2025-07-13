@@ -1,6 +1,6 @@
 {
   "name": "@asafarim/sidebar",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "type": "module",
   "description": "A collapsible sidebar component for React applications",
   "main": "dist/index.js",
@@ -44,6 +44,9 @@
     "sidebar-demo-screenshot.png",
     "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
@@ -52,8 +55,5 @@
   "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/sidebar",
   "bugs": {
     "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

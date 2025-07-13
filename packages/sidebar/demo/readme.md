@@ -1,6 +1,6 @@
 # ASafariM Sidebar Demo
 
-[![Deploy Sidebar Demo to Pages](https://github.com/AliSafari-IT/asafarim-webapp/actions/workflows/static/sidebar-package.yml/badge.svg)](https://github.com/AliSafari-IT/asafarim-webapp/actions/workflows/static/sidebar-package.yml)
+[![Deploy Sidebar Demo to Pages](https://github.com/AliSafari-IT/asafarim-webapp/actions/workflows/static/sidebar-package.yml/badge.svg)](https://github.com/AliSafari-IT/asafarim-webapp/blob/main/.github/workflows/deploy-sidebar-demo.yml)
 
 A comprehensive demo application showcasing the [@asafarim/sidebar](https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/sidebar) React component with various configuration options and theming capabilities.
 

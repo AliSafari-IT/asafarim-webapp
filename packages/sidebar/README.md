@@ -5,6 +5,7 @@ A flexible and customizable collapsible sidebar component for React applications
 ## Demo
 
 ![Sidebar Component Demo](./sidebar-demo-screenshot.png)
+Goto [demo](./demo/readme.md)
 
 ## Features
 
@@ -30,9 +31,12 @@ pnpm add @asafarim/sidebar
 
 ## Version History
 
+- **1.1.6** - updated publishConfig to public
+- **1.1.5** - Added demo image
+- **1.1.4** - Added demo folder
 - **1.1.3** - Added support for React component icons
-- **1.1.0** - Repositioned toggle button, added support for dynamic sidebar positioning
-- **1.0.1** - Initial stable release
+- **1.1.2** - Repositioned toggle button, added support for dynamic sidebar positioning
+- **1.1.1** - Initial stable release
 
 ## Basic Usage
 
@@ -365,6 +369,14 @@ The sidebar component is built with accessibility in mind:
 - Edge (latest)
 
 ## Changelog
+
+### Version 1.1.6
+
+- updated publishConfig to public
+
+### Version 1.1.5
+
+- Added demo image
 
 ### Version 1.1.4
 
