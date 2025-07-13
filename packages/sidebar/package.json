@@ -49,11 +49,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
-    "directory": "packages/sidebar"
+    "url": "https://github.com/AliSafari-IT/asafarim-sidebar.git"
   },
-  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/sidebar",
+  "homepage": "https://github.com/AliSafari-IT/asafarim-sidebar",
   "bugs": {
-    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+    "url": "https://github.com/AliSafari-IT/asafarim-sidebar/issues"
   }
 }
