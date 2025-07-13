@@ -37,7 +37,7 @@ export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: number | null = null;
+  let timeout: ReturnType<typeof setTimeout> | null = null;
   
   return (...args: Parameters<T>): void => {
     if (timeout) {
@@ -46,7 +46,7 @@ export function debounce<T extends (...args: any[]) => any>(
     
     timeout = setTimeout(() => {
       func(...args);
-    }, wait) as number;
+    }, wait);
   };
 }
 

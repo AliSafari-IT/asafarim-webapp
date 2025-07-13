@@ -15,27 +15,18 @@ function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch file tree from the server
+    // Simulate fetching file tree from an API or static source
     const fetchFileTree = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        
-        // Add cache-busting parameter to avoid 304 issues
-        const response = await fetch(`http://localhost:3011/api/folder-structure?t=${Date.now()}`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
+        // Replace with actual API call or static data
+        const response = await fetch('http://localhost:3011/api/folder-structure'); // Example endpoint
         const data = await response.json();
-        console.log('File tree loaded:', data);
-        
         setFileTree(data);
+        setLoading(false);
+        console.log('File tree loaded:', data);
       } catch (err) {
         console.error('Failed to fetch file tree:', err);
-        const errorMessage = (err instanceof Error) ? err.message : String(err);
-        setError(`Failed to load file tree: ${errorMessage}`);
+        setError('Failed to load file tree');
       } finally {
         setLoading(false);
       }
@@ -168,42 +159,24 @@ function App() {
       </header>
       
       <main className="app-main">
-        {loading && (
-          <div className="loading-state">
-            <p>Loading file tree...</p>
-          </div>
-        )}
-        
-        {error && (
-          <div className="error-state">
-            <h2>Error</h2>
-            <p>{error}</p>
-            <button onClick={() => window.location.reload()}>
-              Retry
-            </button>
-          </div>
-        )}
-        
-        {!loading && !error && fileTree && (
-          <MarkdownExplorer
-            fileTree={fileTree}
-            theme={theme}
-            enableSearch={true}
-            showBreadcrumbs={true}
-            className="demo-explorer"
-            disableAutoSelect={true}
-            initialRoute={initialRoute}
-            onNavigate={(path, node) => handleNavigate(path, node)}
-            contentFetcher={fetchMarkdownContent}
-            renderFolderContent={({currentNode, onNodeClick}) => (
-              <CustomFolderRenderer 
-                currentNode={currentNode} 
-                onNodeClick={onNodeClick} 
-                theme={theme}
-              />
-            )}
-          />
-        )}
+        <MarkdownExplorer
+          fileTree={fileTree}
+          theme={theme}
+          enableSearch={true}
+          showBreadcrumbs={true}
+          className="demo-explorer"
+          disableAutoSelect={true}
+          initialRoute={initialRoute}
+          onNavigate={(path, node) => handleNavigate(path, node)}
+          contentFetcher={fetchMarkdownContent}
+          renderFolderContent={({currentNode, onNodeClick}) => (
+            <CustomFolderRenderer 
+              currentNode={currentNode} 
+              onNodeClick={onNodeClick} 
+              theme={theme}
+            />
+          )}
+        />
       </main>
       
       <footer className="app-footer">

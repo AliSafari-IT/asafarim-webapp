@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { MdFileExplorer, FileNode } from '@asafarim/md-file-explorer'
 import CodeExample from '../ui/CodeExample'
-import FileTree from '../ui/FileTree'
 import LoadingSpinner from '../ui/LoadingSpinner'
 import styles from './LazyLoadingDemo.module.css'
 

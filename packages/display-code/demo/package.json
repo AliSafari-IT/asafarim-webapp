@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Demo for the @asafarim/display-code component",
   "scripts": {
-    "dev": "npx kill-port 3002 && vite",
+    "dev": "vite",
+    "predev": "npx kill-port 3003",
     "build": "vite build",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview"

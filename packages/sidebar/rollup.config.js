@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
+import copy from 'rollup-plugin-copy';
 
 export default {
   input: 'src/index.ts',
@@ -30,6 +31,12 @@ export default {
       extract: false,
       modules: true,
       use: ['sass'],
+    }),
+    copy({
+      targets: [
+        { src: 'sidebar-demo-screenshot.png', dest: 'dist' },
+        { src: 'README.md', dest: 'dist' }
+      ]
     }),
   ],
 };

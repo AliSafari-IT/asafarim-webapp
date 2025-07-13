@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npx kill-port 3006 && vite",
+    "dev": "vite",
+    "predev": "npx kill-port 3009",
     "build": "tsc && vite build",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview"

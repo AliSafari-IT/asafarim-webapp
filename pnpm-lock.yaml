@@ -322,7 +322,7 @@ importers:
     dependencies:
       '@asafarim/markdown-explorer-viewer':
         specifier: file:../
-        version: file:packages/markdown-explorer-viewer(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: link:..
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -589,6 +589,9 @@ importers:
       rollup:
         specifier: ^4.0.0
         version: 4.44.2
+      rollup-plugin-copy:
+        specifier: ^3.5.0
+        version: 3.5.0
       rollup-plugin-postcss:
         specifier: ^4.0.0
         version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
@@ -603,7 +606,7 @@ importers:
         version: link:../../../libs/shared
       '@asafarim/sidebar':
         specifier: file:..
-        version: link:..
+        version: file:packages/sidebar(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -642,12 +645,11 @@ packages:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
 
-  '@asafarim/markdown-explorer-viewer@file:packages/markdown-explorer-viewer':
-    resolution: {directory: packages/markdown-explorer-viewer, type: directory}
+  '@asafarim/sidebar@file:packages/sidebar':
+    resolution: {directory: packages/sidebar, type: directory}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
-      react-router-dom: ^6.0.0
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -4016,19 +4018,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@asafarim/markdown-explorer-viewer@file:packages/markdown-explorer-viewer(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.30.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@asafarim/sidebar@file:packages/sidebar(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      highlight.js: 11.11.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-markdown: 9.1.0(@types/react@18.3.23)(react@18.3.1)
-      react-router-dom: 6.30.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-syntax-highlighter: 15.6.1(react@18.3.1)
-      rehype-highlight: 7.0.2
-      remark-gfm: 4.0.1
-    transitivePeerDependencies:
-      - '@types/react'
-      - supports-color
 
   '@babel/code-frame@7.27.1':
     dependencies:

@@ -15,13 +15,7 @@ A powerful, flexible React component for exploring and viewing markdown files wi
 - 🎯 **TypeScript First** - Complete type safety and IntelliSense support
 - 🔗 **Router Integration** - Works seamlessly with React Router and other routers
 
-## � Demo Preview
-
-![Markdown Explorer Viewer Demo](https://github.com/AliSafari-IT/asafarim-webapp/blob/main/packages/markdown-explorer-viewer/markdown-explorer-viewer-demo.png)
-
-*Live demo showing the file tree navigation, markdown rendering with syntax highlighting, search functionality, and responsive design.*
-
-## �📦 Installation
+## 📦 Installation
 
 ```bash
 npm install @asafarim/markdown-explorer-viewer

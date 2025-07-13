@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     base: isProd ? '/sidebar-demo/' : '/',  // Match the path in the built HTML file
     server: {
-      port: 3007,
+      port: 3009,
       open: true
     },
     build: {

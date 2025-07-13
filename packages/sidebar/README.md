@@ -2,6 +2,10 @@
 
 A flexible and customizable collapsible sidebar component for React applications.
 
+## Demo
+
+![Sidebar Component Demo](./sidebar-demo-screenshot.png)
+
 ## Features
 
 - 🎯 **Fully Collapsible** - Smooth toggle between expanded and collapsed states

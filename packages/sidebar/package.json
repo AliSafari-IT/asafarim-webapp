@@ -1,6 +1,6 @@
 {
   "name": "@asafarim/sidebar",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "type": "module",
   "description": "A collapsible sidebar component for React applications",
   "main": "dist/index.js",
@@ -28,18 +28,21 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "rollup": "^4.0.0",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "rollup": "^4.0.0",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.0",
     "typescript": "^5.0.0"
   },
   "files": [
     "dist",
-    "demo"
+    "demo",
+    "sidebar-demo-screenshot.png",
+    "README.md"
   ],
   "repository": {
     "type": "git",

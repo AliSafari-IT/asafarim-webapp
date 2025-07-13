@@ -1,7 +1,7 @@
 /**
  * Custom content fetcher for markdown files
  * This fetcher handles loading markdown content from the server
- * It fetches content using the server's API endpoints
+ * It supports both relative and absolute paths
  */
 
 /**
@@ -11,29 +11,36 @@
  */
 export async function fetchMarkdownContent(filePath: string): Promise<string> {
   try {
-    // Remove leading slash for API endpoint
-    const cleanPath = filePath.startsWith('/') ? filePath.substring(1) : filePath;
+    // Normalize path to ensure it has .md extension for fetching
+    const fetchPath = ensureMdExtension(filePath);
     
-    // Use the server's API endpoint to fetch content
-    const apiUrl = `http://localhost:3011/api/md-content/${cleanPath}`;
-    console.log(`🔍 Fetching markdown content from: ${apiUrl}`);
-    console.log(`📄 Original filePath: ${filePath}, cleanPath: ${cleanPath}`);
-    
-    const response = await fetch(apiUrl);
+    // Fetch the content
+    const response = await fetch(fetchPath);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch markdown content: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log(`✅ Content fetched successfully:`, { 
-      length: data.content?.length, 
-      firstChars: data.content?.substring(0, 100) + '...' 
-    });
-    
-    return data.content;
+    return await response.text();
   } catch (error) {
-    console.error('❌ Error fetching markdown content:', error);
+    console.error('Error fetching markdown content:', error);
     return `# Error Loading Content\n\nFailed to load content for: ${filePath}\n\n${error}`;
   }
+}
+
+/**
+ * Ensure a path has .md extension for fetching
+ * @param path Path to normalize
+ * @returns Path with .md extension
+ */
+function ensureMdExtension(path: string): string {
+  // Remove leading slash for relative paths
+  const normalizedPath = path.startsWith('/') ? path.substring(1) : path;
+  
+  // Add .md extension if not present
+  if (!normalizedPath.endsWith('.md')) {
+    return `${normalizedPath}.md`;
+  }
+  
+  return normalizedPath;
 }

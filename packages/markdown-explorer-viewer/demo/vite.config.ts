@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     ],
     base: isProd ? '/markdown-explorer-viewer/' : '/',  // Match the path in the built HTML file
     server: {
-      port: 3003,
+      port: 3004,
       open: true,
       // Handle SPA routing with proper history fallback
       historyApiFallback: true

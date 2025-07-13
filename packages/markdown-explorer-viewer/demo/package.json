@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predev": "npx kill-port 3003",
+    "predev": "npx kill-port 3004",
     "build": "tsc && vite build",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview",
