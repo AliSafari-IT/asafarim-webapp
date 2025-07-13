@@ -1,0 +1,3 @@
+[submodule "packages/sidebar"]
+	path = packages/sidebar
+	url = https://github.com/AliSafari-IT/sidebar.git

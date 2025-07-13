@@ -81,7 +81,8 @@
   padding: var(--space-6);
   margin-bottom: var(--space-8);
   border: 1px solid var(--color-border);
-  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+  transition: box-shadow var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .card:hover {
@@ -204,7 +205,11 @@
 }
 
 .logo-text {
-  background: linear-gradient(135deg, var(--color-success), var(--color-warning));
+  background: linear-gradient(
+    135deg,
+    var(--color-success),
+    var(--color-warning)
+  );
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -286,17 +291,17 @@
   .content {
     padding: var(--space-4);
   }
-  
+
   .controls-grid,
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .demo-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .theme-toggle {
     position: absolute;
     top: var(--space-2);

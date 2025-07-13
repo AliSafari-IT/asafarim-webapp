@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Sidebar } from "@asafarim/sidebar";
-import "./App.css";
+import "./App.css"; 
 import { PackageLinks } from "@asafarim/shared";
 import { BiSolidDashboard, BiTask, BiCalendar, BiHelpCircle } from "react-icons/bi";
 import { VscFolderOpened } from "react-icons/vsc";
