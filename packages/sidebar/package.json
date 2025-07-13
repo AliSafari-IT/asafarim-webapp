@@ -11,7 +11,8 @@
     "all": "pnpm i && pnpm run build",
     "prepare": "npm run build",
     "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "github-pages": "cd demo && gh-pages -d dist"
   },
   "keywords": [
     "asafarim",
@@ -51,7 +52,7 @@
     "type": "git",
     "url": "https://github.com/AliSafari-IT/asafarim-sidebar.git"
   },
-  "homepage": "https://github.com/AliSafari-IT/asafarim-sidebar",
+  "homepage": "https://alisafari-it.github.io/asafarim-sidebar",
   "bugs": {
     "url": "https://github.com/AliSafari-IT/asafarim-sidebar/issues"
   }

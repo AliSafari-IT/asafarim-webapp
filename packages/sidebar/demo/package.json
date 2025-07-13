@@ -7,6 +7,7 @@
     "dev": "vite",
     "predev": "npx kill-port 3009",
     "build": "tsc && vite build",
+    "github-pages": "gh-pages -d dist",
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview"
   },

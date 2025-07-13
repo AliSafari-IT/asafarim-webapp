@@ -606,7 +606,7 @@ importers:
         version: link:../../../libs/shared
       '@asafarim/sidebar':
         specifier: file:..
-        version: file:packages/sidebar(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: link:..
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -644,12 +644,6 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
-
-  '@asafarim/sidebar@file:packages/sidebar':
-    resolution: {directory: packages/sidebar, type: directory}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -4014,11 +4008,6 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.29
 
   '@asafarim/display-code@1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@asafarim/sidebar@file:packages/sidebar(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
