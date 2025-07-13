@@ -17,7 +17,7 @@ A powerful, flexible React component for exploring and viewing markdown files wi
 
 ## � Demo Preview
 
-![Markdown Explorer Viewer Demo](/dist/markdown-explorer-viewer-demo.png)
+![Markdown Explorer Viewer Demo](https://github.com/AliSafari-IT/asafarim-webapp/blob/main/packages/markdown-explorer-viewer/markdown-explorer-viewer-demo.png)
 
 *Live demo showing the file tree navigation, markdown rendering with syntax highlighting, search functionality, and responsive design.*
 
