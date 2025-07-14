@@ -1,3 +1,7 @@
 [submodule "packages/sidebar"]
 	path = packages/sidebar
 	url = https://github.com/AliSafari-IT/sidebar.git
+
+[submodule "packages/project-card"]
+	path = packages/project-card
+	url = https://github.com/AliSafari-IT/project-card.git

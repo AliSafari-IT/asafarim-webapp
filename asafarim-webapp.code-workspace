@@ -4,10 +4,28 @@
 			"path": "."
 		},
 		{
-			"path": "apps"
+			"path": "apps/base-ui"
 		},
 		{
-			"path": "packages"
+			"path": "packages/sidebar"
+		},
+		{
+			"path": "packages/project-card"
+		},
+		{
+			"path": "packages/paginated-project-grid"
+		},
+		{
+			"path": "packages/markdown-explorer-viewer"
+		},
+		{
+			"path": "packages/md-file-explorer"
+		},
+		{
+			"path": "packages/display-code"
+		},
+		{
+			"path": "libs/shared"
 		}
 	],
 	"settings": {
