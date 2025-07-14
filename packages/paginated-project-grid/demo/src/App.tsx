@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { PaginatedProjectGrid } from '@asafarim/paginated-project-grid'
 import { mockProjects } from './mockData'
 import './App.css'
+import { PackageLinks } from '@asafarim/shared'
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
@@ -33,6 +34,12 @@ const App: React.FC = () => {
           A responsive React component for displaying paginated project cards with built-in search functionality.
           Try out the different configurations below.
         </p>
+        <PackageLinks
+          packageName="@asafarim/paginated-project-grid"
+          githubPath="paginated-project-grid"
+          demoPath="paginated-project-grid"
+        />
+
       </header>
 
       <main>

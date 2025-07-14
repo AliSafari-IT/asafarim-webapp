@@ -8,6 +8,7 @@ on:
     paths:
       - 'demo/**'
       - '.github/workflows/static_demo.yml'
+      - 'package.json'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
