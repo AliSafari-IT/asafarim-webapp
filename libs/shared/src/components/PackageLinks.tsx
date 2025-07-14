@@ -45,9 +45,10 @@ export const PackageLinks: React.FC<PackageLinksProps> = ({
   githubPath,
   demoPath
 }) => {
-  const npmUrl = `https://www.npmjs.com/package/${packageName}`;
-  const githubUrl = `https://github.com/AliSafari-IT/asafarim-webapp/tree/main/${githubPath}`;
-  const demoUrl = demoPath ? `https://alisafari-it.github.io/asafarim-webapp/${demoPath}/` : undefined;
+
+  const npmUrl = packageName.includes('npmjs.com') ? packageName : `https://www.npmjs.com/package/${packageName}`;
+  const githubUrl = githubPath.includes('github.com') ? githubPath : `https://github.com/AliSafari-IT/${githubPath}`;
+  const demoUrl = demoPath ? demoPath.includes('alisafari-it.github.io') ? demoPath : `https://alisafari-it.github.io/${demoPath}/` : undefined;
   
   return (
     <div style={styles.packageLinks}>
