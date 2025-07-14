@@ -18,8 +18,8 @@
     "prepare": "npm run build",
     "clean": "rm -rf dist",
     "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
-    "gp": "cd demo && gh-pages -d dist && echo 'Deployed to GitHub Pages'",
-    "pregp": "pnpm run build && echo 'Deploying to GitHub Pages'"
+    "predeploy": "pnpm build && cd demo && pnpm install && pnpm build",
+    "deploy": "gh-pages -d demo/dist"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
