@@ -22,6 +22,10 @@ export default defineConfig(({ mode }) => {
         '@asafarim/shared': path.resolve(__dirname, '../../../libs/shared/src')
       }
     },
+    workspace: {
+      root: resolve(__dirname, '../../../libs/shared/src'),
+      packages: ['../../../libs/shared/src']
+    }
   };
 })
  

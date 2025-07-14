@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "cleanInstall": "rm -rf node_modules && pnpm i && pnpm run build",
     "dev": "vite",
     "predev": "npx kill-port 3008",
     "build": "vite build",
@@ -13,8 +14,9 @@
     "pregp": "pnpm run build"
   },
   "dependencies": {
-    "@asafarim/display-code": "file:../../display-code",
-    "@asafarim/project-card": "file:..",
+    "@asafarim/display-code": "^1.0.1",
+    "@asafarim/project-card": "file:../../project-card",
+    "@asafarim/shared": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

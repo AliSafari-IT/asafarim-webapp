@@ -16,6 +16,13 @@
     "isolatedModules": true,
     "emitDeclarationOnly": true,
     "jsx": "react-jsx",
+    
+    /* Path Mappings */
+    "baseUrl": ".",
+    "paths": {
+      "@asafarim/shared": ["../../../libs/shared/src"],
+      "@asafarim/shared/*": ["../../../libs/shared/src/*"]
+    },
 
     /* Linting */
     "strict": true,
@@ -23,7 +30,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "../../../libs/shared/src"],
   "references": [
     {
       "path": "./tsconfig.node.json"

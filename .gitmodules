@@ -1,3 +1,7 @@
+[submodule "libs/shared"]
+	path = libs/shared
+	url = https://github.com/AliSafari-IT/shared.git
+
 [submodule "packages/sidebar"]
 	path = packages/sidebar
 	url = https://github.com/AliSafari-IT/sidebar.git

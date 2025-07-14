@@ -229,11 +229,8 @@ importers:
   packages/display-code/demo:
     dependencies:
       '@asafarim/display-code':
-        specifier: ^1.0.1
-        version: 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@asafarim/shared':
-        specifier: workspace:*
-        version: link:../../../libs/shared
+        specifier: file:../
+        version: link:..
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -468,12 +465,18 @@ importers:
 
   packages/paginated-project-grid/demo:
     dependencies:
+      '@asafarim/display-code':
+        specifier: ^1.0.1
+        version: 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@asafarim/paginated-project-grid':
         specifier: workspace:*
         version: link:..
       '@asafarim/project-card':
         specifier: workspace:*
         version: link:../../project-card
+      '@asafarim/shared':
+        specifier: workspace:*
+        version: link:../../../libs/shared
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -505,9 +508,6 @@ importers:
 
   packages/project-card:
     dependencies:
-      '@asafarim/shared':
-        specifier: workspace:*
-        version: link:../../libs/shared
       react:
         specifier: ^17.0.0 || ^18.0.0
         version: 18.3.1
@@ -540,11 +540,14 @@ importers:
   packages/project-card/demo:
     dependencies:
       '@asafarim/display-code':
-        specifier: file:../../display-code
-        version: link:../../display-code
+        specifier: ^1.0.1
+        version: 1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@asafarim/project-card':
-        specifier: file:..
-        version: file:packages/project-card(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: file:../../project-card
+        version: link:..
+      '@asafarim/shared':
+        specifier: workspace:*
+        version: link:../../../libs/shared
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -610,9 +613,6 @@ importers:
 
   packages/sidebar/demo:
     dependencies:
-      '@asafarim/shared':
-        specifier: workspace:*
-        version: link:../../../libs/shared
       '@asafarim/sidebar':
         specifier: file:..
         version: link:..
@@ -650,12 +650,6 @@ packages:
 
   '@asafarim/display-code@1.0.1':
     resolution: {integrity: sha512-HX+Q9x1x6iC6U+YPNCfQZ7mSsDeQOlvUX2RXH6YxcpM+qWIiQvntehBETOmI9730GmEa/PpLPfQl2ISxiAdjpQ==}
-    peerDependencies:
-      react: ^17.0.0 || ^18.0.0
-      react-dom: ^17.0.0 || ^18.0.0
-
-  '@asafarim/project-card@file:packages/project-card':
-    resolution: {directory: packages/project-card, type: directory}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
@@ -4079,12 +4073,6 @@ snapshots:
 
   '@asafarim/display-code@1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-
-  '@asafarim/project-card@file:packages/project-card(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@asafarim/shared': link:libs/shared
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 

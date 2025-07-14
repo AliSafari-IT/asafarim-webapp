@@ -16,6 +16,11 @@
     
     /* Path Mappings */
     "baseUrl": ".",
+    "paths": {
+      "@asafarim/paginated-project-grid": ["../node_modules/@asafarim/paginated-project-grid"],
+      "@asafarim/project-card": ["../node_modules/@asafarim/project-card"],
+      "@asafarim/shared": ["../node_modules/@asafarim/shared"]
+    },
     
     /* Linting */
     "strict": true,

@@ -7,14 +7,16 @@
     "dev": "vite",
     "predev": "npx kill-port 3007",
     "build": "tsc && vite build",
+    "buildClean": "pnpm exec tsc --build --clean && pnpm run build",
     "preview": "vite preview",
     "gp": "gh-pages -d dist",
-    "pregp": "pnpm run build"
+    "pregp": "pnpm run buildClean"
   },
   "dependencies": {
-    "@asafarim/paginated-project-grid": "file:../../",
+    "@asafarim/paginated-project-grid": "workspace:*",
     "@asafarim/display-code": "^1.0.1",
-    "@asafarim/project-card": "1.0.3",
+    "@asafarim/project-card": "workspace:*",
+    "@asafarim/shared": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
