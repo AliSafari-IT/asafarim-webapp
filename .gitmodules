@@ -5,3 +5,7 @@
 [submodule "packages/project-card"]
 	path = packages/project-card
 	url = https://github.com/AliSafari-IT/project-card.git
+
+[submodule "packages/paginated-project-grid"]
+	path = packages/paginated-project-grid
+	url = https://github.com/AliSafari-IT/paginated-project-grid.git
