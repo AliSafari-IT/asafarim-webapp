@@ -61,11 +61,42 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   if (isLoading) {
     return (
-      <div className={cardClasses}>
-        <div className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} style={{ height: '200px', marginBottom: '1rem' }} />
-        <div className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} style={{ height: '1.5rem', marginBottom: '0.75rem' }} />
-        <div className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} style={{ height: '3rem', marginBottom: '1rem' }} />
-        <div className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} style={{ height: '2rem' }} />
+      <div className={cardClasses} style={{ width: '100%' }}>
+        <div 
+          className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} 
+          style={{ 
+            height: '200px', 
+            marginBottom: '1rem', 
+            width: '100%',
+            display: 'block'
+          }} 
+        />
+        <div 
+          className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} 
+          style={{ 
+            height: '1.5rem', 
+            marginBottom: '0.75rem', 
+            width: '100%',
+            display: 'block'
+          }} 
+        />
+        <div 
+          className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} 
+          style={{ 
+            height: '3rem', 
+            marginBottom: '1rem', 
+            width: '100%',
+            display: 'block'
+          }} 
+        />
+        <div 
+          className={`${styles.loadingPlaceholder} ${isDark ? styles.loadingPlaceholderDark : ''}`} 
+          style={{ 
+            height: '2rem',
+            width: '100%',
+            display: 'block'
+          }} 
+        />
       </div>
     );
   }

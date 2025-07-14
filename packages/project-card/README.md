@@ -10,9 +10,10 @@ Experience the full power of the ProjectCard component with our interactive demo
 npm run demo
 ```
 
-Or explore the demo online: [ProjectCard Demo](https://asafarim-project-card-demo.netlify.app)
+Or explore the demo online: [ProjectCard Demo](https://alisafari-it.github.io/project-card)
 
 The demo showcases:
+
 - 🌓 Light/Dark theme switching
 - 📱 Responsive design
 - 🎨 Featured cards
@@ -77,6 +78,7 @@ const MyComponent = () => {
 ## Types
 
 ### TechStackItem
+
 ```tsx
 interface TechStackItem {
   name: string;
@@ -86,6 +88,7 @@ interface TechStackItem {
 ```
 
 ### ProjectLink
+
 ```tsx
 interface ProjectLink {
   type: 'demo' | 'repo' | 'documentation' | 'custom';

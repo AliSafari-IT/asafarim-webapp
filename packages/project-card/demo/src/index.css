@@ -151,6 +151,15 @@ body {
   color: #a0aec0;
 }
 
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 @media (max-width: 768px) {
   .demo-container {
     padding: 1rem;

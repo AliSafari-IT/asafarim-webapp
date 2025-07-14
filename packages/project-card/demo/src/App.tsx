@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ProjectCard } from '@asafarim/project-card';
 import { DisplayCode } from '@asafarim/display-code';
 import type { ProjectCardProps } from '@asafarim/project-card';
+import { PackageLinks } from '@asafarim/shared';
 
 const sampleProjects: ProjectCardProps[] = [
   {
@@ -91,6 +92,7 @@ function App() {
       <div className="demo-header">
         <h1>@asafarim/project-card</h1>
         <p>A powerful and flexible React component for displaying project cards</p>
+        <PackageLinks packageName="@asafarim/project-card" githubPath="project-card" demoPath="project-card" />
         
         <div className="theme-toggle">
           <button onClick={toggleTheme}>
@@ -184,14 +186,70 @@ function App() {
         </div>
         {showLoadingDemo && (
           <div className="demo-single">
-            <ProjectCard
-              title="Loading Project"
-              description="This is loading..."
-              techStack={[]}
-              links={[]}
-              currentTheme={theme}
-              isLoading={true}
-            />
+            <div 
+              style={{
+                border: '1px solid #e2e8f0',
+                borderRadius: '8px',
+                padding: '1rem',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                backgroundColor: theme === 'dark' ? '#1a202c' : '#ffffff',
+                width: '100%',
+                maxWidth: '400px',
+                overflow: 'hidden'
+              }}
+            >
+              <div 
+                style={{
+                  height: '200px',
+                  marginBottom: '1rem',
+                  borderRadius: '4px',
+                  background: theme === 'dark' 
+                    ? 'linear-gradient(90deg, #333 25%, #444 50%, #333 75%)'
+                    : 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'loading 1.5s infinite',
+                  width: '100%'
+                }}
+              />
+              <div 
+                style={{
+                  height: '1.5rem',
+                  marginBottom: '0.75rem',
+                  borderRadius: '4px',
+                  background: theme === 'dark' 
+                    ? 'linear-gradient(90deg, #333 25%, #444 50%, #333 75%)'
+                    : 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'loading 1.5s infinite',
+                  width: '70%'
+                }}
+              />
+              <div 
+                style={{
+                  height: '3rem',
+                  marginBottom: '1rem',
+                  borderRadius: '4px',
+                  background: theme === 'dark' 
+                    ? 'linear-gradient(90deg, #333 25%, #444 50%, #333 75%)'
+                    : 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'loading 1.5s infinite',
+                  width: '100%'
+                }}
+              />
+              <div 
+                style={{
+                  height: '2rem',
+                  borderRadius: '4px',
+                  background: theme === 'dark' 
+                    ? 'linear-gradient(90deg, #333 25%, #444 50%, #333 75%)'
+                    : 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+                  backgroundSize: '200% 100%',
+                  animation: 'loading 1.5s infinite',
+                  width: '40%'
+                }}
+              />
+            </div>
           </div>
         )}
       </div>
@@ -321,7 +379,7 @@ const projectProps: ProjectCardProps = {
 
       <div style={{ textAlign: 'center', margin: '4rem 0 2rem' }}>
         <p style={{ fontSize: '1.1rem', color: theme === 'dark' ? '#a0aec0' : '#4a5568' }}>
-          Built with ❤️ by Ali Safari
+          Built with ❤️ using the package <a href="https://github.com/AliSafari-IT/project-card">@asafarim/project-card</a> by Ali Safari
         </p>
       </div>
     </div>

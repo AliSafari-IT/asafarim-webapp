@@ -93,6 +93,49 @@
   color: #ccc;
 }
 
+/* Loading state styles */
+.loading {
+  pointer-events: none;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  width: 100% !important;
+  display: block !important;
+}
+
+.loadingPlaceholder {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+  width: 100% !important;
+  display: block !important;
+  min-height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.loadingPlaceholderDark {
+  background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%) !important;
+  background-size: 200% 100% !important;
+  animation: loading 1.5s infinite !important;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 .techStack {
   display: flex;
   flex-wrap: wrap;
@@ -229,29 +272,7 @@
   color: #6b7280;
 }
 
-.loading {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.loadingPlaceholder {
-  background: #f3f4f6;
-  border-radius: 4px;
-  height: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.loadingPlaceholderDark {
-  background: #374151;
-}
 
 @media (max-width: 768px) {
   .card {

@@ -26,12 +26,14 @@ packages/project-card/
 ## 🎨 Demo Features
 
 ### 1. **Interactive Examples**
+
 - 4 different project cards with various configurations
 - Real-time theme switching (light/dark)
 - Clickable cards with alert demonstrations
 - Featured vs regular card styling
 
 ### 2. **Component Showcase**
+
 - **Theme Support**: Live theme switching
 - **Status Indicators**: Active, archived, in-progress
 - **Loading States**: Animated loading placeholders
@@ -40,6 +42,7 @@ packages/project-card/
 - **Multiple Link Types**: Demo, repo, documentation, custom
 
 ### 3. **Documentation**
+
 - Complete usage examples
 - Installation instructions
 - TypeScript type definitions
@@ -47,19 +50,22 @@ packages/project-card/
 - Feature explanations
 
 ### 4. **Responsive Design**
+
 - Works on mobile, tablet, and desktop
 - Adaptive grid layouts
 - Touch-friendly interactions
 
 ## 🏃‍♂️ How to Run
 
-### Quick Start:
+### Quick Start
+
 ```bash
 # From the project-card directory
 npm run demo
 ```
 
-### Manual Steps:
+### Manual Steps
+
 ```bash
 # Build the package
 npm run build
@@ -72,7 +78,8 @@ npm install
 npm run dev
 ```
 
-### Using Scripts:
+### Using Scripts
+
 ```bash
 # Linux/Mac
 ./demo-setup.sh
@@ -83,7 +90,7 @@ demo-setup.bat
 
 ## 🎯 Demo URL
 
-The demo runs at: `http://localhost:3001`
+The demo runs at: `http://localhost:3008`
 
 ## 📊 What You'll See
 
@@ -104,7 +111,7 @@ The demo runs at: `http://localhost:3001`
 - **Styling**: CSS Modules + Custom CSS
 - **Package Resolution**: Local file dependency
 - **Hot Reload**: Enabled for development
-- **Port**: 3001 (configurable)
+- **Port**: 3008 (configurable)
 
 ## 🎨 Styling Features
 
@@ -139,6 +146,7 @@ The demo runs at: `http://localhost:3001`
 ## 🎯 Educational Value
 
 The demo serves as:
+
 - **Documentation**: Live examples of all features
 - **Testing Ground**: Interactive component testing
 - **Reference**: Implementation patterns
@@ -148,6 +156,7 @@ The demo serves as:
 ## 🚀 Production Ready
 
 The demo is production-ready and can be:
+
 - Deployed to any static hosting service
 - Used as a component library showcase
 - Integrated into documentation sites

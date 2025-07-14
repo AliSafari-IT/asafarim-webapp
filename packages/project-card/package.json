@@ -1,6 +1,6 @@
 {
   "name": "@asafarim/project-card",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A React component for displaying project cards with title, image, description, tech stack, and links.",
   "main": "dist/index.js",
   "type": "module",
@@ -23,6 +23,9 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
+  "dependencies": {
+    "@asafarim/shared": "workspace:*"
+  },
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
@@ -34,8 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AliSafari-IT/asafarim-webapp.git",
-    "directory": "packages/project-card"
+    "url": "https://github.com/AliSafari-IT/project-card.git"
   },
   "keywords": [
     "asafarim",
@@ -48,9 +50,9 @@
   ],
   "author": "Ali Safari",
   "license": "MIT",
-  "homepage": "https://github.com/AliSafari-IT/asafarim-webapp/tree/main/packages/project-card",
+  "homepage": "https://alisafari-it.github.io/project-card",
   "bugs": {
-    "url": "https://github.com/AliSafari-IT/asafarim-webapp/issues"
+    "url": "https://github.com/AliSafari-IT/project-card/issues"
   },
   "publishConfig": {
     "access": "public"
