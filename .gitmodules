@@ -9,3 +9,9 @@
 [submodule "packages/paginated-project-grid"]
 	path = packages/paginated-project-grid
 	url = https://github.com/AliSafari-IT/paginated-project-grid.git
+
+[submodule "packages/display-code"]
+	path = packages/display-code
+	url = https://github.com/AliSafari-IT/display-code.git
+
+	
