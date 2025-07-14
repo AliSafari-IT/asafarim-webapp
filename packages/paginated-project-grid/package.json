@@ -16,6 +16,8 @@
     "watch": "rollup -c -w",
     "prepare": "npm run build",
     "demo": "pnpm build && cd demo && pnpm run build && pnpm dev",
+    "predeploy": "pnpm build && cd demo && pnpm install && pnpm build",
+    "deploy": "gh-pages -d demo/dist",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
