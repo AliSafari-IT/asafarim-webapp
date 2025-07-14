@@ -8,7 +8,9 @@
     "predev": "npx kill-port 3008",
     "build": "vite build",
     "all": "pnpm i && pnpm run build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gp": "gh-pages -d dist",
+    "pregp": "pnpm run build"
   },
   "dependencies": {
     "@asafarim/display-code": "file:../../display-code",
@@ -20,6 +22,7 @@
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "gh-pages": "^5.0.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
