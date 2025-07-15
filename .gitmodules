@@ -1,23 +1,27 @@
 [submodule "libs/shared"]
-	path = libs/shared
-	url = https://github.com/AliSafari-IT/shared.git
+path = libs/shared
+url = https://github.com/AliSafari-IT/shared.git
 
 [submodule "packages/sidebar"]
-	path = packages/sidebar
-	url = https://github.com/AliSafari-IT/sidebar.git
+path = packages/sidebar
+url = https://github.com/AliSafari-IT/sidebar.git
 
 [submodule "packages/project-card"]
-	path = packages/project-card
-	url = https://github.com/AliSafari-IT/project-card.git
+path = packages/project-card
+url = https://github.com/AliSafari-IT/project-card.git
 
 [submodule "packages/paginated-project-grid"]
-	path = packages/paginated-project-grid
-	url = https://github.com/AliSafari-IT/paginated-project-grid.git
+path = packages/paginated-project-grid
+url = https://github.com/AliSafari-IT/paginated-project-grid.git
 
 [submodule "packages/display-code"]
-	path = packages/display-code
-	url = https://github.com/AliSafari-IT/display-code.git
+path = packages/display-code
+url = https://github.com/AliSafari-IT/display-code.git
 
 [submodule "packages/markdown-explorer-viewer"]
-	path = packages/markdown-explorer-viewer
-	url = https://github.com/AliSafari-IT/markdown-explorer-viewer.git
+path = packages/markdown-explorer-viewer
+url = https://github.com/AliSafari-IT/markdown-explorer-viewer.git
+
+[submodule "packages/md-file-explorer"]
+path = packages/md-file-explorer
+url = https://github.com/AliSafari-IT/md-file-explorer.git
