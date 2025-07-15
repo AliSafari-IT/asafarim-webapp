@@ -166,6 +166,9 @@ importers:
       rollup-plugin-postcss:
         specifier: ^4.0.2
         version: 4.0.2(postcss@8.5.6)(ts-node@10.9.2(@types/node@24.0.13)(typescript@5.8.3))
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
       typescript:
         specifier: ^5.0.2
         version: 5.8.3
@@ -231,6 +234,9 @@ importers:
       '@asafarim/display-code':
         specifier: file:../
         version: link:..
+      '@asafarim/shared':
+        specifier: ^1.0.3
+        version: 1.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -475,8 +481,8 @@ importers:
         specifier: workspace:*
         version: link:../../project-card
       '@asafarim/shared':
-        specifier: workspace:*
-        version: link:../../../libs/shared
+        specifier: ^1.0.3
+        version: 1.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -546,8 +552,8 @@ importers:
         specifier: file:../../project-card
         version: link:..
       '@asafarim/shared':
-        specifier: workspace:*
-        version: link:../../../libs/shared
+        specifier: ^1.0.3
+        version: 1.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -613,6 +619,9 @@ importers:
 
   packages/sidebar/demo:
     dependencies:
+      '@asafarim/shared':
+        specifier: ^1.0.3
+        version: 1.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@asafarim/sidebar':
         specifier: file:..
         version: link:..
@@ -653,6 +662,12 @@ packages:
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
+
+  '@asafarim/shared@1.0.3':
+    resolution: {integrity: sha512-b2VOnOsUrO9DEnIT3nUV/BwNygX1m3+AtKBEqKC9q2U1Lv+DBwjsXx/Yxr4A2EGJ8rtf2hNTM7OIJJTZqAgWNg==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -4072,6 +4087,11 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.29
 
   '@asafarim/display-code@1.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  '@asafarim/shared@1.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

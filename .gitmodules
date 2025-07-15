@@ -18,4 +18,6 @@
 	path = packages/display-code
 	url = https://github.com/AliSafari-IT/display-code.git
 
-	
+[submodule "packages/markdown-explorer-viewer"]
+	path = packages/markdown-explorer-viewer
+	url = https://github.com/AliSafari-IT/markdown-explorer-viewer.git

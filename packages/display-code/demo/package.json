@@ -14,6 +14,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "@asafarim/shared": "^1.0.3",
     "@asafarim/display-code": "file:../"
   },
   "devDependencies": {
