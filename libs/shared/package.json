@@ -1,13 +1,19 @@
 {
   "name": "@asafarim/shared",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Shared components and utilities for ASafariM web applications",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": " rollup -c -w",
+    "demo:dev": "cd demo && pnpm dev",
+    "demo:build": "cd demo && pnpm build",
+    "demo:preview": "cd demo && pnpm preview",
+    "demo:install": "cd demo && pnpm install",
+    "predeploy": "rm -rf node_modules demo/node_modules dist demo/dist && pnpm install && pnpm build && pnpm demo:install && pnpm demo:build",
+    "deploy": "gh-pages -d demo/dist -b gh-pages"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -23,6 +29,33 @@
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.8.1",
     "typescript": "^5.0.2"
+  },
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
+  "files": [
+    "dist",
+    "src",
+    "demo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AliSafari-IT/shared.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "utilities",
+    "asafarim",
+    "shared"
+  ],
+  "license": "MIT",
+  "author": "Ali Safari",
+  "bugs": {
+    "url": "https://github.com/AliSafari-IT/shared/issues"
+  },
+  "homepage": "https://alisafari-it.github.io/shared/",
+  "publishConfig": {
+    "access": "public"
   }
 }

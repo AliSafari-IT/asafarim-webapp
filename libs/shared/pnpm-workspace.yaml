@@ -1,0 +1,6 @@
+packages:
+  - demo
+  - src
+
+onlyBuiltDependencies:
+  - esbuild
