@@ -1,0 +1,4 @@
+packages:
+  - demo
+  - src
+  - md-server

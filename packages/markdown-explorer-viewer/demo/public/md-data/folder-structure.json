@@ -1,0 +1,97 @@
+{
+  "name": "root",
+  "path": "/",
+  "type": "folder",
+  "children": [
+    {
+      "name": "changelog.md",
+      "path": "changelog.md",
+      "type": "file",
+      "lastModified": "2025-07-15T10:23:39.045Z",
+      "size": 3230
+    },
+    {
+      "name": "docs",
+      "path": "docs",
+      "type": "folder",
+      "lastModified": "2025-07-15T10:23:39.054Z",
+      "size": 0,
+      "children": [
+        {
+          "name": "api",
+          "path": "docs/api",
+          "type": "folder",
+          "lastModified": "2025-07-15T10:23:39.049Z",
+          "size": 0,
+          "children": [
+            {
+              "name": "overview.md",
+              "path": "docs/api/overview.md",
+              "type": "file",
+              "lastModified": "2025-07-15T10:23:39.049Z",
+              "size": 3226
+            },
+            {
+              "name": "reference.md",
+              "path": "docs/api/reference.md",
+              "type": "file",
+              "lastModified": "2025-07-15T10:23:39.051Z",
+              "size": 5669
+            }
+          ]
+        },
+        {
+          "name": "getting-started.md",
+          "path": "docs/getting-started.md",
+          "type": "file",
+          "lastModified": "2025-07-15T10:23:39.052Z",
+          "size": 1601
+        },
+        {
+          "name": "introduction.md",
+          "path": "docs/introduction.md",
+          "type": "file",
+          "lastModified": "2025-07-15T10:23:39.053Z",
+          "size": 1107
+        },
+        {
+          "name": "theming.md",
+          "path": "docs/theming.md",
+          "type": "file",
+          "lastModified": "2025-07-15T10:23:39.054Z",
+          "size": 6773
+        }
+      ]
+    },
+    {
+      "name": "examples",
+      "path": "examples",
+      "type": "folder",
+      "lastModified": "2025-07-15T10:23:39.058Z",
+      "size": 0,
+      "children": [
+        {
+          "name": "advanced.md",
+          "path": "examples/advanced.md",
+          "type": "file",
+          "lastModified": "2025-07-15T10:23:39.057Z",
+          "size": 12887
+        },
+        {
+          "name": "basic.md",
+          "path": "examples/basic.md",
+          "type": "file",
+          "lastModified": "2025-07-15T10:23:39.058Z",
+          "size": 6669
+        }
+      ]
+    },
+    {
+      "name": "README.md",
+      "path": "README.md",
+      "type": "file",
+      "lastModified": "2025-07-15T10:23:39.043Z",
+      "size": 929
+    }
+  ]
+}

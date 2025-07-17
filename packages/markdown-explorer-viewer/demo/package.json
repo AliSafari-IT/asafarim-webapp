@@ -10,10 +10,13 @@
     "all": "pnpm i && pnpm run build",
     "preview": "vite preview",
     "export-data": "node exportSampleData.js",
-    "create-md-files": "node createMarkdownFiles.js"
+    "create-md-files": "node createMarkdownFiles.js",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@asafarim/markdown-explorer-viewer": "file:../",
+    "@asafarim/shared": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0"
@@ -22,8 +25,8 @@
     "@types/node": "^24.0.13",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "gh-pages": "^5.0.0",
     "@vitejs/plugin-react": "^4.0.3",
-    "esbuild-register": "^3.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
