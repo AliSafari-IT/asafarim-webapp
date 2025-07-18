@@ -8,7 +8,7 @@ import { ThemeProvider } from './context'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider defaultTheme="light" storageKey="base-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="asafarim-base-ui-theme">
         <App />
       </ThemeProvider>
     </BrowserRouter>

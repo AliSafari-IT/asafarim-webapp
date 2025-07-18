@@ -5,6 +5,7 @@ This directory contains the layout components for the Base UI application, built
 ## Components
 
 ### Layout
+
 The main layout component that wraps your application with a header, sidebar, footer, and content area.
 
 ```tsx
@@ -48,9 +49,11 @@ function App() {
 ```
 
 ### Header
+
 Displays the application title and navigation actions.
 
 ### Footer
+
 Contains copyright information and footer links.
 
 ## Features
@@ -100,6 +103,7 @@ The layout uses CSS modules for styling with CSS custom properties for theming:
 ## Theme Variables
 
 ### Light Theme
+
 ```css
 --bg-primary: #ffffff;
 --bg-secondary: #f8f9fa;
@@ -109,6 +113,7 @@ The layout uses CSS modules for styling with CSS custom properties for theming:
 ```
 
 ### Dark Theme
+
 ```css
 --bg-primary: #1a1a1a;
 --bg-secondary: #2d2d2d;
@@ -120,6 +125,7 @@ The layout uses CSS modules for styling with CSS custom properties for theming:
 ## Mobile Responsiveness
 
 The layout automatically adapts to smaller screens:
+
 - Header becomes more compact
 - Sidebar may overlay content on mobile
 - Touch-friendly button sizes

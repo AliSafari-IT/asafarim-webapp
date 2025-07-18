@@ -18,20 +18,20 @@ export const Footer: React.FC<FooterProps> = ({
       <div className={styles.footerContent}>
         <div className={styles.copyright}>
           <span>©</span>
-          <span>{currentYear} Base UI App</span>
+          <span>{currentYear} ASafariM</span>
         </div>
         
         <div className={styles.brand}>
-          <div className={styles.brandText}>⚡ Base UI</div>
+          <div className={styles.brandText}>⚡ ASafariM</div>
           <div className={styles.tagline}>Built with React & TypeScript</div>
           <div className={styles.socialLinks}>
-            <a href="https://github.com" className={styles.socialLink} aria-label="GitHub">
+            <a href="https://github.com/alisafari-it" className={styles.socialLink} aria-label="GitHub">
               ⚡
             </a>
-            <a href="https://twitter.com" className={styles.socialLink} aria-label="Twitter">
+            <a href="https://twitter.com/asafarim" className={styles.socialLink} aria-label="Twitter">
               🐦
             </a>
-            <a href="https://linkedin.com" className={styles.socialLink} aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/ali-safari-m/" className={styles.socialLink} aria-label="LinkedIn">
               💼
             </a>
           </div>
@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className={styles.linkGroupTitle}>Resources</div>
             <a href="/docs" className={styles.link}>Documentation</a>
             <a href="/api" className={styles.link}>API Reference</a>
-            <a href="/examples" className={styles.link}>Examples</a>
+            <a href="/current-projects" className={styles.link}>Current Projects</a>
           </div>
           
           <div className={styles.linkGroup}>

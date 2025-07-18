@@ -16,8 +16,8 @@ export const Header: React.FC<HeaderProps> = ({
   style = {} as React.CSSProperties,
 }) => {
   const location = useLocation();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [notificationCount] = useState(3);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [notificationCount,] = useState<number>(3);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);

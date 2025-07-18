@@ -11,26 +11,18 @@ const App: React.FC = () => {
   const { effectiveTheme, toggleTheme } = useTheme();
   const location = useLocation();
   const [documentationItems, setDocumentationItems] = useState<SidebarItemType[]>([]);
-
+  const [isMobile, setIsMobile] = useState(false);
   // Check if we're in documentation explorer mode
   const isDocumentationExplorer = location.pathname.startsWith('/docs/') && location.pathname !== '/docs';
-  
+
   // Detect mobile view to always show sidebar in mobile mode
-  const [isMobileView, setIsMobileView] = useState(false);
-  
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobileView(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 768);
     };
-    
-    // Initial check
     checkMobile();
-    
-    // Add event listener for resize
-    window.addEventListener('resize', checkMobile);
-    
-    // Clean up
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Load documentation items asynchronously
@@ -149,7 +141,7 @@ const App: React.FC = () => {
       title="ASafariM"
       theme={effectiveTheme}
       sidebarItems={sidebarItems}
-      showSidebar={isMobileView || !isDocumentationExplorer}
+      showSidebar={isMobile || !isDocumentationExplorer}
       onThemeToggle={toggleTheme}
     >
       <AppRouter />
