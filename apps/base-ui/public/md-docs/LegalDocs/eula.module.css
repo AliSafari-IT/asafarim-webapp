@@ -1,0 +1,32 @@
+/* eula.module.css */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    align-items: center;
+  }
+  
+  .container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

@@ -10,10 +10,7 @@ import SettingsPage from "./pages/SettingsPage";
 
 export const AppRouter: React.FC = () => {
   return (
-    <Router future={{ 
-      v7_startTransition: true,
-      v7_relativeSplatPath: true 
-    }}>
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />

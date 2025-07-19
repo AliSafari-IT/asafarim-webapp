@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Layout } from './components/layout';
@@ -6,6 +5,7 @@ import { AppRouter } from './router/AppRouter';
 import { useTheme } from './context';
 import { createDocumentationSidebarItems } from './utils/apiMdDocsUtils';
 import type { SidebarItemType } from '@asafarim/sidebar';
+import './App.css';
 
 const App: React.FC = () => {
   const { effectiveTheme, toggleTheme } = useTheme();
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   const [documentationItems, setDocumentationItems] = useState<SidebarItemType[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   // Check if we're in documentation explorer mode
-  const isDocumentationExplorer = location.pathname.startsWith('/docs/') && location.pathname !== '/docs';
+  const isDocumentationExplorer = location.pathname.startsWith('/docs/') || location.pathname === '/docs';
 
   // Detect mobile view to always show sidebar in mobile mode
   useEffect(() => {
@@ -141,7 +141,7 @@ const App: React.FC = () => {
       title="ASafariM"
       theme={effectiveTheme}
       sidebarItems={sidebarItems}
-      showSidebar={isMobile || !isDocumentationExplorer}
+      showSidebar={isMobile || isDocumentationExplorer}
       onThemeToggle={toggleTheme}
     >
       <AppRouter />

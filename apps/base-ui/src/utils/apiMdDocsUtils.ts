@@ -1,6 +1,9 @@
-import type { FileNode } from '@asafarim/markdown-explorer-viewer';
+import type { FileNode } from "./mdDocsUtils";
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const environment = import.meta.env as unknown as Record<string, string>;
+console.log("SERVER_PORT: ",environment.SERVER_PORT);
+
+const API_BASE_URL = 'http://localhost:3500/api';
 
 // API client for fetching documentation data from the server
 export class DocsApiClient {
@@ -34,16 +37,23 @@ export class DocsApiClient {
     path: string;
     lastModified?: string;
   }> {
-    const params = new URLSearchParams();
-    params.append('path', filePath);
+    // Normalize the file path before sending to the API
+    // Remove any leading /docs/ prefix as the backend will handle this
+    const normalizedPath = filePath.replace(/^\/docs\//, '');
     
+    const params = new URLSearchParams();
+    params.append('path', normalizedPath);
+    
+    console.log(`Fetching file content for path: ${normalizedPath}`);
     const response = await fetch(`${this.baseUrl}/docs/file?${params}`);
     if (!response.ok) {
+      console.error(`Failed to fetch file content: ${response.statusText}`);
       throw new Error(`Failed to fetch file content: ${response.statusText}`);
     }
     
     const data = await response.json();
     if (!data.success) {
+      console.error(`API returned error: ${data.error}`);
       throw new Error(data.error || 'Failed to fetch file content');
     }
     
@@ -156,7 +166,16 @@ export const createDocumentationSidebarItems = async () => {
   }
   
   const convertNodeToSidebarItem = (node: FileNode): SidebarItem => {
-    const url = node.path;
+    // Ensure the URL path is correctly formatted for routing
+    let url = node.path;
+    
+    // Make sure the URL starts with /docs for proper routing
+    if (!url.startsWith('/docs')) {
+      url = `/docs/${url}`;
+    }
+    
+    // Remove any duplicate /docs prefixes that might cause issues
+    url = url.replace(/\/docs\/docs\//g, '/docs/');
     
     const item: SidebarItem = {
       id: node.path.replace(/[/.]/g, '-'),

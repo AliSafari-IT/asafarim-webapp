@@ -1,4 +1,12 @@
-import type { FileNode } from '@asafarim/markdown-explorer-viewer';
+// Define our own FileNode interface that's compatible with both packages
+// This is based on the memory about adding FileNode interface to custom type declarations
+export interface FileNode {
+  name: string;
+  path: string;
+  type: 'file' | 'folder';
+  children?: FileNode[];
+  content?: string; // Added for our mock data
+}
 
 // Mock file tree data for the md-docs folder
 // In a real application, you would read this from the filesystem or API

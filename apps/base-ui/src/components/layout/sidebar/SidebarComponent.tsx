@@ -26,25 +26,25 @@ export function SidebarComponent({
   collapsedWidth: string;
   onToggle: (collapsed: boolean) => void;
 }) {
-    const [isMobile, setIsMobile] = useState(false);
-    const [overlay, setOverlay] = useState(false);
-    const navigate = useNavigate();
-    
-    // Detect mobile view to always show sidebar in mobile mode
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth <= 768);
-      };
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => window.removeEventListener("resize", checkMobile);
-    }, []);
-  
-    useEffect(() => {
-      if (isMobile) {
-        setOverlay(true);
-      }
-    }, [isMobile]);
+  const [isMobile, setIsMobile] = useState(false);
+  const [overlay, setOverlay] = useState(false);
+  const navigate = useNavigate();
+
+  // Detect mobile view to always show sidebar in mobile mode
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setOverlay(true);
+    }
+  }, [isMobile]);
 
   // Handle item click to expand sidebar when clicking on items with children
   const handleItemClick = (item: SidebarItemType) => {
@@ -63,20 +63,20 @@ export function SidebarComponent({
 
   return (
     <Sidebar
-    items={items}
-    isCollapsed={isCollapsed}
-    onToggle={onToggle}
-    theme={theme}
-    position={position}
-    overlay={overlay}
-    showToggleButton={showToggleButton}
-    logo={logo}
-    footer={footer}
-    onItemClick={handleItemClick}
-    sidebarWidth={sidebarWidth}
-    collapsedWidth={collapsedWidth}
-    aria-label="Sidebar Main navigation"
-    className="sidebar"
-  />
+      items={items}
+      isCollapsed={isCollapsed}
+      onToggle={onToggle}
+      theme={theme}
+      position={position}
+      overlay={overlay}
+      showToggleButton={showToggleButton}
+      logo={logo}
+      footer={footer}
+      onItemClick={handleItemClick}
+      sidebarWidth={sidebarWidth}
+      collapsedWidth={collapsedWidth}
+      aria-label="Sidebar Main navigation"
+      className="sidebar"
+    />
   );
 }

@@ -1,0 +1,22 @@
+/* Hide the built-in file tree from the markdown viewer */
+.main > .sidebar {
+  display: none !important;
+}
+
+/* Adjust the content area to take full width when file tree is hidden */
+.main > .content {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+/* Make sure the main container takes full width */
+.main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+/* Hide any file-tree elements */
+.file-tree {
+  display: none !important;
+}

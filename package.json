@@ -1,9 +1,10 @@
 {
   "name": "asafarim-webapp",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "rm": "rimraf --no-glob node_modules && rimraf --no-glob .turbo && rimraf --no-glob dist && rimraf --no-glob pnpm-lock.yaml",
     "dev": "turbo run dev",
     "all": "turbo run all",
     "dev:all": "turbo run dev --parallel",
@@ -17,6 +18,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
   "devDependencies": {
+    "rimraf": "^6.0.1",
     "turbo": "^2.5.4"
   },
   "dependencies": {

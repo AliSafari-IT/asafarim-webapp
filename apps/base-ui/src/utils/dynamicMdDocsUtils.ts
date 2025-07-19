@@ -1,7 +1,8 @@
-import type { FileNode as ViewerFileNode } from '@asafarim/markdown-explorer-viewer';
+// Import our custom FileNode interface
+import type { FileNode } from './mdDocsUtils';
 
 // API base URL - in production this would be configurable
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'http://localhost:3500/api';
 
 // Type for API response nodes
 interface ApiFileNode {
@@ -9,14 +10,10 @@ interface ApiFileNode {
   path: string;
   type: 'file' | 'folder';
   children?: ApiFileNode[];
-  lastModified?: string;
-  size?: number;
-  content?: string;
-  metadata?: Record<string, unknown>;
 }
 
-// Convert API response node to ViewerFileNode format
-const convertApiNode = (node: ApiFileNode): ViewerFileNode => {
+// Convert API response node to FileNode format
+const convertApiNode = (node: ApiFileNode): FileNode => {
   // The API already returns the correct relative paths, just add /docs prefix
   const fullPath = `/docs/${node.path}`;
   
@@ -25,15 +22,11 @@ const convertApiNode = (node: ApiFileNode): ViewerFileNode => {
     path: fullPath,
     type: node.type,
     children: node.children?.map(convertApiNode), // Simple recursive call
-    lastModified: node.lastModified,
-    size: node.size,
-    content: node.content,
-    metadata: node.metadata
   };
 };
 
 // Get the file tree dynamically from the API
-export const createMdDocsFileTree = async (): Promise<ViewerFileNode> => {
+export const createMdDocsFileTree = async (): Promise<FileNode> => {
   try {
     const response = await fetch(`${API_BASE_URL}/docs/tree`);
     
@@ -48,7 +41,7 @@ export const createMdDocsFileTree = async (): Promise<ViewerFileNode> => {
     }
     
     // Create a root node that matches the expected structure
-    const rootNode: ViewerFileNode = {
+    const rootNode: FileNode = {
       name: 'Documentation',
       path: '/docs',
       type: 'folder',
@@ -107,7 +100,7 @@ export const createDocumentationSidebarItems = async () => {
     children?: SidebarItem[];
   }
   
-  const convertNodeToSidebarItem = (node: ViewerFileNode): SidebarItem => {
+  const convertNodeToSidebarItem = (node: FileNode): SidebarItem => {
     const url = node.path;
     
     const item: SidebarItem = {
@@ -117,7 +110,7 @@ export const createDocumentationSidebarItems = async () => {
     };
     
     if (node.children && node.children.length > 0) {
-      item.children = node.children.map((child: ViewerFileNode) => 
+      item.children = node.children.map((child: FileNode) => 
         convertNodeToSidebarItem(child)
       );
     }
@@ -136,14 +129,14 @@ export const createDocumentationSidebarItems = async () => {
   
   // Add items from the file tree
   if (fileTree.children) {
-    items.push(...fileTree.children.map((child: ViewerFileNode) => convertNodeToSidebarItem(child)));
+    items.push(...fileTree.children.map((child: FileNode) => convertNodeToSidebarItem(child)));
   }
   
   return items;
 };
 
 // Search functionality
-export const searchDocumentation = async (query: string): Promise<ViewerFileNode[]> => {
+export const searchDocumentation = async (query: string): Promise<FileNode[]> => {
   try {
     const response = await fetch(`${API_BASE_URL}/docs/search?q=${encodeURIComponent(query)}`);
     
