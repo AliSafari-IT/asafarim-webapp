@@ -5,12 +5,17 @@ declare module '@asafarim/simple-md-viewer' {
     showHomePage?: boolean;
     apiBaseUrl?: string;
     hideFileTree?: boolean;
+    hideHeader?: boolean;
+    hideFooter?: boolean;
     apiEndpoints?: {
       tree: string;
       file: string;
       search: string;
       exists: string;
     };
+    showFrontMatter?: boolean;
+    // full, minimal, header-only, or hidden
+    frontMatterMode?: "full" | "minimal" | "header-only" | "hidden";  
   }
 
   export const MarkdownContent: React.FC<MarkdownContentProps>;
