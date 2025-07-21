@@ -4,6 +4,7 @@
   "version": "0.2.1",
   "type": "module",
   "scripts": {
+    "clean":"rm -rf node_modules && rm -rf dist && rm -rf pnpm-lock.yaml",
     "predev": "npx kill-port 3000",
     "serve": "npx kill-port 3500 3501 && node server.cjs || node server.js ",
     "start": "npx kill-port 3000 && vite",
@@ -17,7 +18,7 @@
     "@asafarim/paginated-project-grid": "workspace:^",
     "@asafarim/project-card": "workspace:^",
     "@asafarim/sidebar": "workspace:^",
-    "@asafarim/simple-md-viewer": "^1.4.0",
+    "@asafarim/simple-md-viewer": "^1.5.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^4.18.2",
