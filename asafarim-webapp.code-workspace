@@ -7,6 +7,9 @@
 			"path": "apps/base-ui"
 		},
 		{
+			"path": "packages/simple-md-viewer"
+		},
+		{
 			"path": "packages/sidebar"
 		},
 		{

@@ -25,3 +25,7 @@ url = https://github.com/AliSafari-IT/markdown-explorer-viewer.git
 [submodule "packages/md-file-explorer"]
 path = packages/md-file-explorer
 url = https://github.com/AliSafari-IT/md-file-explorer.git
+
+[submodule "packages/simple-md-viewer"]
+path = packages/simple-md-viewer
+url = https://github.com/AliSafari-IT/simple-md-viewer.git

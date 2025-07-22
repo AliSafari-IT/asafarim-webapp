@@ -1,0 +1,195 @@
+/* MdDocsPage.css */
+
+.md-docs-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #ffffff);
+  color: var(--text-color, #333333);
+}
+
+.md-docs-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Loading State */
+.md-docs-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: var(--background-color, #ffffff);
+  color: var(--text-color, #333333);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007acc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.md-docs-loading h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.md-docs-loading p {
+  margin: 5px 0;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+
+/* Error State */
+.md-docs-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  background: var(--background-color, #ffffff);
+  color: var(--text-color, #333333);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.md-docs-error h2 {
+  margin: 10px 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #dc3545;
+}
+
+.md-docs-error p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.error-instructions {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-instructions h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: #495057;
+}
+
+.error-instructions ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.error-instructions li {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.error-instructions code {
+  background: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.retry-button {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+.retry-button:hover {
+  background: #005999;
+}
+
+.retry-button:active {
+  background: #004477;
+}
+
+/* Dark theme support */
+.md-docs-container.dark .error-instructions {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+.md-docs-container.dark .error-instructions h3 {
+  color: #e2e8f0;
+}
+
+.md-docs-container.dark .error-instructions code {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .md-docs-error {
+    padding: 15px;
+  }
+  
+  .error-icon {
+    font-size: 3rem;
+  }
+  
+  .md-docs-error h2 {
+    font-size: 1.5rem;
+  }
+  
+  .md-docs-error p {
+    font-size: 1rem;
+  }
+  
+  .error-instructions {
+    padding: 15px;
+  }
+}
+
+/* Integration with simple-md-viewer styles */
+.md-docs-container .simple-markdown-viewer {
+  height: 100%;
+  width: 100%;
+}
+
+/* Ensure the viewer takes full height */
+.md-docs-container > div {
+  height: 100%;
+}

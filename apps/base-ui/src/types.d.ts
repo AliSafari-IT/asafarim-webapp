@@ -13,6 +13,7 @@ declare module '@asafarim/simple-md-viewer' {
     hideFileTree?: boolean;
     hideHeader?: boolean;
     hideFooter?: boolean;
+    basePath?: string;
   }
 
   export interface FileNode {

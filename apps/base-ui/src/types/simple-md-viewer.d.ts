@@ -15,7 +15,14 @@ declare module '@asafarim/simple-md-viewer' {
     };
     showFrontMatter?: boolean;
     // full, minimal, header-only, or hidden
-    frontMatterMode?: "full" | "minimal" | "header-only" | "hidden";  
+    frontMatterMode?: "full" | "minimal" | "header-only" | "hidden";
+    // Directory view props
+    directoryViewEnabled?: boolean;
+    directoryViewStyle?: "list" | "grid" | "detailed";
+    showDirectoryBreadcrumbs?: boolean;
+    enableDirectorySorting?: boolean;
+    basePath?: string;
+    onNavigate?: (path: string) => boolean;
   }
 
   export const MarkdownContent: React.FC<MarkdownContentProps>;

@@ -1,9 +1,12 @@
 import type { FileNode } from "./mdDocsUtils";
 
 const environment = import.meta.env as unknown as Record<string, string>;
-console.log("SERVER_PORT: ",environment.SERVER_PORT);
 
-const API_BASE_URL = 'http://localhost:3500/api';
+// Use VITE_API_PORT or VITE_SERVER_PORT with fallback to 3500
+const serverPort = environment.VITE_API_PORT || environment.VITE_SERVER_PORT || 3500;
+console.log("Using server port:", serverPort);
+
+const API_BASE_URL = `http://localhost:${serverPort}/api`;
 
 // API client for fetching documentation data from the server
 export class DocsApiClient {
@@ -39,7 +42,18 @@ export class DocsApiClient {
   }> {
     // Normalize the file path before sending to the API
     // Remove any leading /docs/ prefix as the backend will handle this
-    const normalizedPath = filePath.replace(/^\/docs\//, '');
+    let normalizedPath = filePath;
+    
+    // Remove any leading /docs/ prefix
+    if (normalizedPath.startsWith('/docs/')) {
+      normalizedPath = normalizedPath.substring(6);
+    } else if (normalizedPath.startsWith('docs/')) {
+      normalizedPath = normalizedPath.substring(5);
+    } else if (normalizedPath.startsWith('/')) {
+      normalizedPath = normalizedPath.substring(1);
+    }
+    
+    console.log(`Original path: ${filePath}, Normalized path: ${normalizedPath}`);
     
     const params = new URLSearchParams();
     params.append('path', normalizedPath);
@@ -60,7 +74,7 @@ export class DocsApiClient {
     return {
       content: data.content,
       metadata: data.metadata,
-      path: data.path,
+      path: filePath, // Return the original path to maintain the URL structure
       lastModified: data.lastModified
     };
   }
@@ -117,18 +131,51 @@ const docsApiClient = new DocsApiClient();
 export const createMdDocsFileTree = async (): Promise<FileNode> => {
   try {
     const nodes = await docsApiClient.getFileTree();
+    console.log('Received file tree nodes:', nodes);
     
     // Create a root node that matches the expected structure
     const rootNode: FileNode = {
       name: 'Documentation',
       path: '/docs',
       type: 'folder',
-      children: nodes.map((node: FileNode) => ({
-        ...node,
-        path: `/docs/${node.path}`
-      }))
+      children: nodes.map((node: FileNode) => {
+        // Ensure path starts with /docs/ but doesn't have duplicate /docs/docs/
+        let nodePath = node.path;
+        if (!nodePath.startsWith('/docs/') && !nodePath.startsWith('docs/')) {
+          nodePath = `/docs/${nodePath}`;
+        } else if (nodePath.startsWith('docs/')) {
+          nodePath = `/${nodePath}`;
+        }
+        
+        // Recursively update paths for children
+        const updateChildPaths = (children: FileNode[] | undefined): FileNode[] | undefined => {
+          if (!children) return undefined;
+          
+          return children.map(child => {
+            let childPath = child.path;
+            if (!childPath.startsWith('/docs/') && !childPath.startsWith('docs/')) {
+              childPath = `/docs/${childPath}`;
+            } else if (childPath.startsWith('docs/')) {
+              childPath = `/${childPath}`;
+            }
+            
+            return {
+              ...child,
+              path: childPath,
+              children: updateChildPaths(child.children)
+            };
+          });
+        };
+        
+        return {
+          ...node,
+          path: nodePath,
+          children: updateChildPaths(node.children)
+        };
+      })
     };
     
+    console.log('Processed file tree root node:', rootNode);
     return rootNode;
   } catch (error) {
     console.error('Error loading documentation tree:', error);
